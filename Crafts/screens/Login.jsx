@@ -15,7 +15,7 @@ export default function Login() {
         // Signed in 
         console.log("login done")
         const user = userCredential.user;
-        router.replace("/(tabs)/chatlist")
+        // router.replace("/(tabs)/chatlist")
         // ...
       })
       .catch((error) => {
@@ -49,7 +49,7 @@ export default function Login() {
           secureTextEntry
         />
         <View >
-          <Link href="./forget" style={styles.text1}> Forget Password </Link>
+          <Link href= "./forget"  style={styles.text1}> Forget Password </Link>
           <View style={styles.buttonView}>
             <Pressable style={styles.button} onPress={handelSignin}>
               <Text style={styles.buttonText}>LOGIN</Text>
