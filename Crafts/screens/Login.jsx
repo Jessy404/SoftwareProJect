@@ -13,19 +13,19 @@ export default function Login() {
 
 
   const handelSignin = () => {
-    // signInWithEmailAndPassword(auth, email, password)
-    //   .then((userCredential) => {
-    //     // Signed in 
-    //     console.log("login done")
-    //     const user = userCredential.user;
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        console.log("login done")
+        const user = userCredential.user;
         router.replace("/Home/home")
-      //   // ...
-      // })
-      // .catch((error) => {
-      //   const errorCode = error.code;
-      //   const errorMessage = error.message;
-      //   console.log(errorMessage);
-      // });
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
   }
   return (
     <View style={styles.container}>
