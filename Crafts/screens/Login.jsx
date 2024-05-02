@@ -52,7 +52,7 @@ export default function Login() {
           secureTextEntry
         />
         <View >
-          <Link href= "./forget"  style={styles.text1}> Forget Password </Link>
+          <Link href= "Account/forget"  style={styles.text1}> Forget Password </Link>
           <View style={styles.buttonView}>
             <Pressable style={styles.button} onPress={handelSignin}>
               <Text style={styles.buttonText}>LOGIN</Text>
@@ -65,7 +65,7 @@ export default function Login() {
             {/* <Text style={styles.text}>
              "Register Now"
             </Text> */}
-            <Pressable onPress={() => router.replace("./two")}>
+            <Pressable onPress={() => router.replace("Account/signup")}>
               <Text style={{ fontWeight: "bold" }}>"Register Now"</Text>
             </Pressable>
           </View>

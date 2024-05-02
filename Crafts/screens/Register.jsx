@@ -96,7 +96,7 @@ export default function Register() {
              "Register Now"
             </Text> */}
 
-            <Link href="/(tabs)/login" style={styles.text1}> "LOGIN Now" </Link>
+            <Link href="Account/login" style={styles.text1}> "LOGIN Now" </Link>
           </View>
 
         </View>
