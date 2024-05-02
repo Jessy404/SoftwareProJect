@@ -9,20 +9,23 @@ import profile from './profile';
 export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+
+
+
   const handelSignin = () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in 
-        console.log("login done")
-        const user = userCredential.user;
-        // router.replace("/(tabs)/chatlist")
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
-      });
+    // signInWithEmailAndPassword(auth, email, password)
+    //   .then((userCredential) => {
+    //     // Signed in 
+    //     console.log("login done")
+    //     const user = userCredential.user;
+        router.replace("/Home/home")
+      //   // ...
+      // })
+      // .catch((error) => {
+      //   const errorCode = error.code;
+      //   const errorMessage = error.message;
+      //   console.log(errorMessage);
+      // });
   }
   return (
     <View style={styles.container}>
