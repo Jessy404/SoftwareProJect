@@ -8,11 +8,15 @@ import {
   ImageBackground,
   Animated,
   useWindowDimensions,
+  Dimensions
 } from 'react-native';
 
 const images = new Array(6).fill(
   'https://images.unsplash.com/photo-1556740749-887f6717d7e4',
 );
+
+const { width, height } = Dimensions.get('window');
+const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * factor;
 
 const Scroll = () => {
   const scrollX = useRef(new Animated.Value(0)).current;
@@ -81,7 +85,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   scrollContainer: {
-    height: 300,
+    height: height*0.9,
     alignItems: 'center',
     justifyContent: 'center',
   },
