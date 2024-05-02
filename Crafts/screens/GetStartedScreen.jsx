@@ -1,7 +1,6 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image, Dimensions } from 'react-native';
 import React from 'react';
 import { router } from "expo-router";
-import { MonoText } from '../components/StyledText';
 import * as Font from 'expo-font';
 
 const { width, height } = Dimensions.get('window');
@@ -49,7 +48,7 @@ export default function GetStartedScreen() {
 
             <View style={styles.rectangle} />
             <TouchableOpacity style={styles.button} onPress={() => router.replace("/Account/login")}>
-                <MonoText style={styles.buttonText}>Let's Get Started</MonoText>
+                <Text style={styles.buttonText}>Let's Get Started</Text>
             </TouchableOpacity>
             <Text style={styles.text}>Let your imagination run wild with our app, where every swipe is a brushstroke</Text>
             <Text style={styles.text3}>Bestow your creativity with every touch; our app is the gateway to a world where your craft comes alive,
@@ -87,6 +86,7 @@ const styles = StyleSheet.create({
         color: '#C65BCF',
         fontSize: moderateScale(18),
         fontWeight: 'bold',
+        fontFamily: 'Lato-Bold',
     },
     text: {
         fontFamily: 'Lato-Bold',

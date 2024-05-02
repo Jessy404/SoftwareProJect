@@ -1,5 +1,4 @@
-import { Pressable, StyleSheet, TextInput } from 'react-native';
-import { Text, View } from '@/components/Themed';
+import { Text, View,Pressable, StyleSheet, TextInput } from 'react-native';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { auth } from '../firebase/config';
 import { Link, Stack, router } from 'expo-router';
@@ -31,7 +30,7 @@ export default function Login() {
     <View style={styles.container}>
 
       <Text style={styles.title}> Login </Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <View style={styles.separator} />
       <View style={styles.inputView}>
         <TextInput
           style={styles.input}
@@ -147,5 +146,6 @@ const styles = StyleSheet.create({
     marginVertical: 30,
     height: 1,
     width: '80%',
+    color: '#eee'
   },
 });
