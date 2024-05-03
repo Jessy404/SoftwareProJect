@@ -5,7 +5,6 @@ import { auth } from '../firebase/config';
 import { Link, Stack, router } from 'expo-router';
 import { useState } from 'react';
 import {signInWithEmailAndPassword } from "firebase/auth";
-import profile from './profile';
 export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -18,7 +17,7 @@ export default function Login() {
         // Signed in 
         console.log("login done")
         const user = userCredential.user;
-        router.replace("/Home/home")
+        router.replace("/NavScreens/home")
         // ...
       })
       .catch((error) => {
