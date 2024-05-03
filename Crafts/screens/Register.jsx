@@ -37,7 +37,7 @@ export default function Register() {
   }
   const docRef = async () => {
     if (auth.currentUser)
-    await addDoc(collection(db, `users/${auth.currentUser.uid}/Chatlist`),{
+    await addDoc(collection(db, `users/${auth.currentUser.uid}/Userdata`),{
   name : name 
     });
     console.log("Document written with ID: ", docRef.id);
