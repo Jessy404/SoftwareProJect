@@ -5,7 +5,6 @@ import { auth } from '../firebase/config';
 import { Link, Stack, router } from 'expo-router';
 import { useState } from 'react';
 import {signInWithEmailAndPassword } from "firebase/auth";
-import profile from './profile';
 export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -13,19 +12,19 @@ export default function Login() {
 
 
   const handelSignin = () => {
-    // signInWithEmailAndPassword(auth, email, password)
-    //   .then((userCredential) => {
-    //     // Signed in 
-    //     console.log("login done")
-    //     const user = userCredential.user;
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        console.log("login done")
+        const user = userCredential.user;
         router.replace("/NavScreens/home")
-      //   // ...
-      // })
-      // .catch((error) => {
-      //   const errorCode = error.code;
-      //   const errorMessage = error.message;
-      //   console.log(errorMessage);
-      // });
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
   }
   return (
     <View style={styles.container}>
@@ -52,7 +51,7 @@ export default function Login() {
           secureTextEntry
         />
         <View >
-          <Link href= "./forget"  style={styles.text1}> Forget Password </Link>
+          <Link href= "Account/forget"  style={styles.text1}> Forget Password </Link>
           <View style={styles.buttonView}>
             <Pressable style={styles.button} onPress={handelSignin}>
               <Text style={styles.buttonText}>LOGIN</Text>
@@ -65,7 +64,7 @@ export default function Login() {
             {/* <Text style={styles.text}>
              "Register Now"
             </Text> */}
-            <Pressable onPress={() => router.replace("./two")}>
+            <Pressable onPress={() => router.replace("Account/signup")}>
               <Text style={{ fontWeight: "bold" }}>"Register Now"</Text>
             </Pressable>
           </View>
