@@ -19,8 +19,8 @@ export default function HomeScreen() {
             <View style={styles.scrollContainer}>
                 <Scroll />
             </View> */}
-            <Hamburger/>
-            <NavBar/>
+            <Hamburger />
+            <NavBar />
         </View>
     );
 }

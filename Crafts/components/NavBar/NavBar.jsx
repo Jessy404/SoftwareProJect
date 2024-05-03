@@ -1,6 +1,6 @@
-import { View, Text, Image, Dimensions, StyleSheet } from 'react-native'
+import { View, Text, Image, Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
-
+import { router } from "expo-router";
 
 const { width, height } = Dimensions.get('window');
 const userIcon = require('../../assets/regular icons/user.png');
@@ -14,10 +14,21 @@ const iconSize = width < smallScreenWidth ? 20 : 30;
 export default function NavBar() {
   return (
     <View style={styles.navbar}>
-      <Image source={homeIcon} style={[styles.icon, {}]} />
-      <Image source={editIcon} style={[styles.icon, {}]} />
-      <Image source={cartIcon} style={[styles.icon, {}]} />
-      <Image source={userIcon} style={[styles.icon, {}]} />
+      <TouchableOpacity onPress={() => router.replace("/NavScreens/home")}>
+        <Image source={homeIcon} style={[styles.icon, {}]} />
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => router.replace("/NavScreens/edit")}>
+        <Image source={editIcon} style={[styles.icon, {}]} />
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => router.replace("/NavScreens/cart")}>
+        <Image source={cartIcon} style={[styles.icon, {}]} />
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => router.replace("/NavScreens/user")}>
+        <Image source={userIcon} style={[styles.icon, {}]} />
+      </TouchableOpacity>
     </View>
   )
 }
