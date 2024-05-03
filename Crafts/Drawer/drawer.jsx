@@ -32,6 +32,7 @@ const Drawer = () => {
         <Icoon name="home" size={24} color="#000" style={{ marginRight: 10 }} />
         <Text style={styles.link}>Home</Text>
       </TouchableOpacity>
+      
       </View>
     </View>
   );
@@ -43,7 +44,7 @@ const Drawer = () => {
       drawerPosition={drawerPosition}
       renderNavigationView={navigationView}>
       <View style={styles.container}>
-        <View style={{ position: 'absolute', top: 40, right: 10, padding: 10 }}>
+        <View style={styles.humburgermenuicon}>
           <TouchableOpacity onPress={() => drawer.current.openDrawer()}>
             <Icon name="menu" size={30} color="#000" />
           </TouchableOpacity>
@@ -73,7 +74,12 @@ const styles = StyleSheet.create({
      alignItems: 'center',
       marginBottom: 10,
   },
-  
+  humburgermenuicon:{
+
+
+
+  },
+
 });
 
 export default Drawer;

@@ -5,7 +5,7 @@ import { auth } from '../firebase/config';
 import { Link, Stack, router } from 'expo-router';
 import { useState } from 'react';
 import {signInWithEmailAndPassword } from "firebase/auth";
-import profile from './profile';
+// import profile from './profile';
 export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
