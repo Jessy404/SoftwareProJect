@@ -5,11 +5,12 @@ import { TextInput, Pressable } from 'react-native'
 export default function ChanagePass() {
   //   const [email , setEmail]= useState ("")
   const ChanagePass = () => {
-    console.log("done");
+    console.log("Chanaged");
     return (
       <Text>
         Chanaged
-      </Text>)
+      </Text>
+      )
 
   }
   return (

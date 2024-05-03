@@ -7,7 +7,19 @@ import { router } from 'expo-router'
 // import ChanagePass from "@/screens/ChanagePass"
 export default function forget() {
   const [email , setEmail]= useState ("")
-  const handelForget = () => {
+  const handelForget = async() => {
+    const [email, setEmail] = useState("");
+    const [error, setError] = useState("");
+
+      try {
+        if (email.trim() === "") {
+          throw new Error("Email field cannot be empty.");
+        }
+        await sendResetEmail(email);
+        setError({ code: "Check your email for the reset link." });
+      } catch (error) {
+        setError({ code: error.message });
+      }
 console.log("done");
 router.replace("Account/chanagePassword")
   }
