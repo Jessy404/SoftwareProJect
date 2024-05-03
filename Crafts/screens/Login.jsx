@@ -18,7 +18,7 @@ export default function Login() {
     //     // Signed in 
     //     console.log("login done")
     //     const user = userCredential.user;
-        router.replace("/Home/home")
+        router.replace("/NavScreens/home")
       //   // ...
       // })
       // .catch((error) => {
