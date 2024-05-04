@@ -56,14 +56,14 @@ export default function Register() {
         <TextInput
           style={styles.input}
           placeholder="Name"
-          placeholderTextColor="#0E46A3"
+          placeholderTextColor="#D20062"
           value={name}
           onChangeText={setName}
         />
         <TextInput
           style={styles.input}
           placeholder="Email"
-          placeholderTextColor="#0E46A3"
+          placeholderTextColor="#D20062"
           value={email}
           onChangeText={setEmail}
 
@@ -71,7 +71,7 @@ export default function Register() {
          <TextInput
           style={styles.input}
           placeholder="Phone"
-          placeholderTextColor="#0E46A3"
+          placeholderTextColor="#D20062"
           value={phone}
           onChangeText={setPhone}
 
@@ -79,7 +79,7 @@ export default function Register() {
         <TextInput
           style={styles.input}
           placeholder="Password"
-          placeholderTextColor="#0E46A3"
+          placeholderTextColor="#D20062"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
@@ -89,14 +89,14 @@ export default function Register() {
             <Text style={styles.buttonText}>Register</Text>
           </Pressable>
           <View style={styles.sideBySide}>
-            <Text style={styles.text1}>
+            <Text fontWeight = "bold">
               Already have an Email ?
             </Text>
             {/* <Text style={styles.text}>
              "Register Now"
             </Text> */}
 
-            <Link href="Account/login" style={styles.text1}> "LOGIN Now" </Link>
+            <Link href="Account/login" style={styles.text2}> "LOGIN Now" </Link>
           </View>
 
         </View>
@@ -112,8 +112,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  text1: {
-    fontWeight: "bold"
+  text2: {
+    fontWeight: "bold",
+    color:"#D20062"
   },
   sideBySide: {
 
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 60,
     fontWeight: 'bold',
-    color: "#0E46A3"
+    color: "#D20062"
   },
   sep: {
     height: "10%",
@@ -141,14 +142,14 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     paddingHorizontal: 20,
-    borderColor: "#0E46A3",
+    borderColor: "#D20062",
     borderWidth: 1,
     borderRadius: 7
   },
   button: {
     marginTop: 40,
     marginBottom: 10,
-    backgroundColor: "#0E46A3",
+    backgroundColor: "#D20062",
     height: 45,
     borderColor: "gray",
     borderWidth: 1,

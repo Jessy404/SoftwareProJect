@@ -35,7 +35,7 @@ export default function Login() {
         <TextInput
           style={styles.input}
           placeholder="Enter Your Email "
-          placeholderTextColor="#0E46A3"
+          placeholderTextColor="#D20062"
           value={email}
           onChangeText={setEmail}
 
@@ -45,7 +45,7 @@ export default function Login() {
         <TextInput
           style={styles.input}
           placeholder="Enter Your Password "
-          placeholderTextColor="#0E46A3"
+          placeholderTextColor="#D20062"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
@@ -65,7 +65,7 @@ export default function Login() {
              "Register Now"
             </Text> */}
             <Pressable onPress={() => router.replace("Account/signup")}>
-              <Text style={{ fontWeight: "bold" }}>"Register Now"</Text>
+              <Text style={{ fontWeight: "bold" , color :"#D20062" }}>"Register Now"</Text>
             </Pressable>
           </View>
 
@@ -82,7 +82,7 @@ export default function Login() {
 const styles = StyleSheet.create({
 
   text: {
-    color: "#0E46A3",
+    color: "#D20062",
     fontWeight: "bold"
   },
   text1: {
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     paddingHorizontal: 20,
-    borderColor: "#0E46A3",
+    borderColor: "#D20062",
     borderWidth: 1,
     borderRadius: 7
   },
@@ -118,11 +118,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 60,
     fontWeight: 'bold',
-    color: "#0E46A3",
+    color: "#D20062",
   },
 
   button: {
-    backgroundColor: "#0E46A3",
+    backgroundColor: "#D20062",
     height: 45,
     borderColor: "gray",
     borderWidth: 1,
