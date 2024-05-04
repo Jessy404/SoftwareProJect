@@ -35,7 +35,7 @@ export default function Login() {
         <TextInput
           style={styles.input}
           placeholder="Enter Your Email "
-          placeholderTextColor="#D20062"
+          placeholderTextColor="#10439F"
           value={email}
           onChangeText={setEmail}
 
@@ -45,7 +45,7 @@ export default function Login() {
         <TextInput
           style={styles.input}
           placeholder="Enter Your Password "
-          placeholderTextColor="#D20062"
+          placeholderTextColor="#10439F"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
@@ -65,7 +65,10 @@ export default function Login() {
              "Register Now"
             </Text> */}
             <Pressable onPress={() => router.replace("Account/signup")}>
-              <Text style={{ fontWeight: "bold" , color :"#D20062" }}>"Register Now"</Text>
+              <Text style={{ 
+                fontWeight: "bold" , 
+                color :"#10439F" 
+                }}>" Register Now "</Text>
             </Pressable>
           </View>
 
@@ -82,11 +85,12 @@ export default function Login() {
 const styles = StyleSheet.create({
 
   text: {
-    color: "#D20062",
+    // color: "#10439F",
     fontWeight: "bold"
   },
   text1: {
-    fontWeight: "bold"
+    fontWeight: "bold",
+    // color: "#10439F",
   },
   forget: {
     paddingRight: 80,
@@ -107,7 +111,7 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     paddingHorizontal: 20,
-    borderColor: "#D20062",
+    borderColor: "#10439F",
     borderWidth: 1,
     borderRadius: 7
   },
@@ -118,11 +122,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 60,
     fontWeight: 'bold',
-    color: "#D20062",
+    color: "#10439F",
   },
 
   button: {
-    backgroundColor: "#D20062",
+    backgroundColor: "#10439F",
     height: 45,
     borderColor: "gray",
     borderWidth: 1,
@@ -130,7 +134,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 10,
-    marginBottom: 10
+    marginBottom: 10 ,
+    borderRadius: 150,
   },
   buttonText: {
     color: "white",

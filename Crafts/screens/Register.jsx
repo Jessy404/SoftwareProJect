@@ -56,14 +56,14 @@ export default function Register() {
         <TextInput
           style={styles.input}
           placeholder="Name"
-          placeholderTextColor="#D20062"
+          placeholderTextColor="#10439F"
           value={name}
           onChangeText={setName}
         />
         <TextInput
           style={styles.input}
           placeholder="Email"
-          placeholderTextColor="#D20062"
+          placeholderTextColor="#10439F"
           value={email}
           onChangeText={setEmail}
 
@@ -71,7 +71,7 @@ export default function Register() {
          <TextInput
           style={styles.input}
           placeholder="Phone"
-          placeholderTextColor="#D20062"
+          placeholderTextColor="#10439F"
           value={phone}
           onChangeText={setPhone}
 
@@ -79,7 +79,7 @@ export default function Register() {
         <TextInput
           style={styles.input}
           placeholder="Password"
-          placeholderTextColor="#D20062"
+          placeholderTextColor="#10439F"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   },
   text2: {
     fontWeight: "bold",
-    color:"#D20062"
+    color:"#10439F"
   },
   sideBySide: {
 
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 60,
     fontWeight: 'bold',
-    color: "#D20062"
+    color: "#10439F"
   },
   sep: {
     height: "10%",
@@ -142,20 +142,21 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     paddingHorizontal: 20,
-    borderColor: "#D20062",
+    borderColor: "#10439F",
     borderWidth: 1,
     borderRadius: 7
   },
   button: {
     marginTop: 40,
     marginBottom: 10,
-    backgroundColor: "#D20062",
+    backgroundColor: "#10439F",
     height: 45,
     borderColor: "gray",
     borderWidth: 1,
     borderRadius: 5,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    borderRadius: 150,
   },
   buttonText: {
     color: "white",

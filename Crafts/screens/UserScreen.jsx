@@ -1,19 +1,37 @@
-import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet , VeiwMode } from 'react-native';
+import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, VeiwMode, TextInput } from 'react-native';
 import React from 'react'
 import NavBar from '../components/NavBar/NavBar';
 import Hamburger from "../components/Hamburger/Hamburger";
 import { db, auth } from '../firebase/config';
 import { useState } from 'react';
 import { doc, getDoc } from "firebase/firestore";
+import { updateDoc } from "firebase/firestore";
 export default function User() {
 
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
+  const [VeiwMode, setVeiwMode] = useState(true)
 
-//   const handleEditPress = () => {
-// setVeiwMode(false);
-//   }
+  const updateUserData = async () => {
+    const washingtonRef = doc(db, "users", auth.currentUser.uid);
+
+    // Set the "capital" field of the city 'DC'
+    await updateDoc(washingtonRef, {
+      name: name,
+      // email: email ,
+      phone: phone,
+
+    });
+  }
+
+  const handleEditPress = () => {
+    setVeiwMode(false);
+  }
+  const handleSavePress = () => {
+    updateUserData ();
+    setVeiwMode(true);
+  }
 
   const getUser = async () => {
     // if (uid)
@@ -31,18 +49,20 @@ export default function User() {
       console.log("No such document!");
     }
   }
-  getUser();
+{
+  VeiwMode ? getUser() : null
+}
   return (
     <View style={styles.container1}>
-   
+
       <ScrollView style={styles.container}>
         <View style={styles.headerContainer}>
-        <Hamburger />
+          <Hamburger />
           <View style={styles.profileContainer}>
             <Image
               style={styles.profilePhoto}
-              source={{ uri: 'https://i.pinimg.com/564x/31/ce/4e/31ce4ec91de94fc4aa81fbf89b07c430.jpg' }}
-             
+              source={{ uri: 'https://i.pinimg.com/564x/d1/fa/c1/d1fac1931c956c908f6b183e39097a88.jpg' }}
+
             />
             {/* <Text style={styles.nameText}>
               {name}
@@ -51,51 +71,79 @@ export default function User() {
           </View>
         </View>
 
-        <View style={styles.statsContainer}>
+        {/* <View style={styles.statsContainer}>
           <View style={styles.statContainer}>
-          <Text style={styles.statLabel}>Posts</Text>
+            <Text style={styles.statLabel}>Posts</Text>
             <Text style={styles.statCount}>1234</Text>
-           
-          </View>
-          <View style={styles.statContainer}>
-          <Text style={styles.statLabel}>orders</Text>
-            <Text style={styles.statCount}>555 </Text>
-       
-          </View>
-          <View style={styles.statContainer}>
-          <Text style={styles.statLabel}>Following</Text>
-            <Text style={styles.statCount}>9101</Text>
-        
-          </View>
-        </View>
 
-        <View style={styles.DataView}>
-        <Text style={styles.nameText1}>
-           User NAME :
-          </Text>
-          <Text style ={styles.nameText}>
-          {name}
-          </Text>
           </View>
-          <View style={styles.DataView}>
-          <Text style={styles.nameText1}>
-            EMAIL : 
-          </Text>
-          <Text style ={styles.nameText}>
-          {email}
-          </Text>
+          <View style={styles.statContainer}>
+            <Text style={styles.statLabel}>orders</Text>
+            <Text style={styles.statCount}>555 </Text>
+
           </View>
-          <View style={styles.DataView}>
-          <Text style={styles.nameText1}>
-            PHONE : 
-          </Text>
-          <Text style={styles.nameText}>
-          {phone}
-          </Text>
-        </View>
-        {/* <TouchableOpacity style={styles.button} onPress={handleEditPress}>
-          <Text style={styles.buttonText}>Edit Profile</Text>
-        </TouchableOpacity> */}
+          <View style={styles.statContainer}>
+            <Text style={styles.statLabel}>Following</Text>
+            <Text style={styles.statCount}>9101</Text>
+
+          </View>
+          <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+        </View> */}
+
+
+        {
+          VeiwMode ? (
+            <>
+              <View style={styles.DataView}>
+                <Text style={styles.nameText1}> User NAME :</Text>
+                <Text style={styles.nameText}> {name}</Text>
+                 </View>
+              <View style={styles.DataView}>
+                <Text style={styles.nameText1}> EMAIL : </Text>
+                <Text style={styles.nameText}>{email} </Text>
+                 </View>
+              <View style={styles.DataView}>
+                <Text style={styles.nameText1}>PHONE : </Text>
+                <Text style={styles.nameText}>{phone} </Text>
+              </View>
+              <TouchableOpacity style={styles.button} onPress={handleEditPress}>
+                <Text style={styles.buttonText}>Edit Profile</Text>
+              </TouchableOpacity>
+            </>
+          ) :
+            (
+              <>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Name"
+                  placeholderTextColor="#10439F"
+                  value={name}
+                  onChangeText={setName}
+                />
+                <TextInput
+                  style={styles.input}
+                  placeholder="Email"
+                  placeholderTextColor="#10439F"
+                  value={email}
+                  onChangeText={setEmail}
+
+                />
+                <TextInput
+                  style={styles.input}
+                  placeholder="Phone"
+                  placeholderTextColor="#10439F"
+                  value={phone}
+                  onChangeText={setPhone}
+
+                />
+                <TouchableOpacity style={styles.button} onPress={handleSavePress}>
+                  <Text style={styles.buttonText}>Save</Text>
+                </TouchableOpacity>
+              </>
+            )
+        }
+
+
       </ScrollView>
       <NavBar />
     </View>
@@ -116,20 +164,28 @@ const styles = {
   },
   headerContainer: {
     alignItems: 'center',
-    backgroundColor: "#D20062",
+    backgroundColor: "#FFF",
     flex: 1,
   },
   DataView: {
-    backgroundColor: "#FFB5DA",
+    // backgroundColor: "#FFB5DA",
     paddingTop: 20,
     paddingBottom: 20,
-    marginHorizontal : 20 ,
-    marginTop : 5 ,
-    flexDirection :"row",
-    marginBottom : 5,
-   borderWidth: 1,
-    borderColor: "#D20062" ,
-    borderRadius: 150,
+    marginHorizontal: 20,
+    marginTop: 5,
+    flexDirection: "row",
+    marginBottom: 5,
+    //  borderWidth: 1,
+    // borderColor: "#10439F" ,
+    // borderRadius: 150,
+  },
+  input: {
+    height: 50,
+    paddingHorizontal: 20,
+    // borderColor: "#10439F",
+    borderWidth: 1,
+    borderRadius: 7,
+    marginBottom: 10,
   },
   coverPhoto: {
     width: '100%',
@@ -137,8 +193,8 @@ const styles = {
   },
   profileContainer: {
     alignItems: 'center',
-    marginBottom: -140,
-    borderColor: "#FFFDCB ",
+    // marginBottom: -140,
+    borderColor: "#10439F ",
     paddingTop: 50,
     paddingBottom: 50,
 
@@ -146,22 +202,22 @@ const styles = {
   profilePhoto: {
     width: 150,
     height: 150,
-    borderRadius: 50,
+    borderRadius: 100,
     borderWidth: 4,
-    borderColor: "#D20062" ,
+    // borderColor: "#874CCC" ,
   },
   nameText: {
-    fontSize: 20,
-  
+    fontSize: 18,
     marginTop: 10,
-    color :"#fff"
-  }, 
-   nameText1: {
-    fontSize: 20,
+    // color :"#fff"
+  },
+  nameText1: {
+    fontSize: 18,
     // fontWeight: 'bold',
     marginTop: 10,
-    color :"#D20062",
-    marginHorizontal : 20 ,
+    // color :"#10439F",
+    marginHorizontal: 20,
+
 
   },
 
@@ -177,20 +233,20 @@ const styles = {
 
   },
   statCount: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 18,
+    // fontWeight: 'bold',
   },
   statLabel: {
-    fontSize: 20,
-    color: '#D20062',
-    fontWeight :"bold"
+    fontSize: 18,
+    // color: '#10439F',
+    // fontWeight :"bold"
   },
   button: {
-    backgroundColor: '#D20062',
+    backgroundColor: '#10439F',
     borderRadius: 5,
     padding: 10,
     marginHorizontal: 20,
-    marginTop : 10,
+    marginTop: 10,
     borderRadius: 150,
   },
   buttonText: {
