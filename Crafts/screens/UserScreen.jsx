@@ -34,12 +34,10 @@ export default function User() {
   getUser();
   return (
     <View style={styles.container1}>
-      <Hamburger />
+   
       <ScrollView style={styles.container}>
-
-
         <View style={styles.headerContainer}>
-
+        <Hamburger />
           <View style={styles.profileContainer}>
             <Image
               style={styles.profilePhoto}
@@ -113,6 +111,8 @@ const styles = {
   container1: {
     flex: 1,
     backgroundColor: '#fff',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
   headerContainer: {
     alignItems: 'center',
