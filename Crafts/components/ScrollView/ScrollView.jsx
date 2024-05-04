@@ -11,9 +11,14 @@ import {
   Dimensions
 } from 'react-native';
 
-const images = new Array(6).fill(
-  'https://images.unsplash.com/photo-1556740749-887f6717d7e4',
-);
+const bannerImage = require('../../assets/banner/banner.jpg'); // Adjust the path to your banner image
+
+const images = new Array(6).fill(bannerImage); // This will fill the array with your banner image
+
+
+// const images = new Array(6).fill(
+//   'https://images.unsplash.com/photo-1556740749-887f6717d7e4',
+// );
 
 const { width, height } = Dimensions.get('window');
 const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * factor;
@@ -43,11 +48,11 @@ const Scroll = () => {
           {images.map((image, imageIndex) => {
             return (
               <View style={{width: windowWidth, height: 250}} key={imageIndex}>
-                <ImageBackground source={{uri: image}} style={styles.card}>
+                <ImageBackground source={image} style={styles.card}>
                   <View style={styles.textContainer}>
-                    <Text style={styles.infoText}>
+                    {/* <Text style={styles.infoText}>
                       {'Image - ' + imageIndex}
-                    </Text>
+                    </Text> */}
                   </View>
                 </ImageBackground>
               </View>
@@ -85,7 +90,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   scrollContainer: {
-    height: height*0.9,
+    height: height*0.2,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -98,12 +103,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  textContainer: {
-    backgroundColor: 'rgba(0,0,0, 0.7)',
-    paddingHorizontal: 24,
-    paddingVertical: 8,
-    borderRadius: 5,
-  },
+  // textContainer: {
+  //   backgroundColor: 'rgba(0,0,0, 0.7)',
+  //   paddingHorizontal: 24,
+  //   paddingVertical: 8,
+  //   borderRadius: 5,
+  // },
   infoText: {
     color: 'white',
     fontSize: 16,
