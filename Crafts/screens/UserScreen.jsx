@@ -4,7 +4,6 @@ import NavBar from '../components/NavBar/NavBar';
 import Hamburger from "../components/Hamburger/Hamburger";
 
 export default function User() {
-  val user = Firebase.auth.currentUser
   return (
     <View style={styles.container}>
       <NavBar />
