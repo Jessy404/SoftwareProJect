@@ -2,15 +2,17 @@ import React, { useContext, useState } from 'react';
 import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, Pressable, TextInput } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
+import NavBar from '../../components/NavBar/NavBar';
+
 const Bags = {
     '1': {
         id: '1',
         name: 'CROSS-BODY BAG WITH WEBBING STRAP TEAL',
         price: 'EGP 800.00',
-        mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwa6d5ebfe/images/large/01_32000610174_1.jpg?sw=663&sh=848&sm=cut',
+        mainImage: 'https://img.freepik.com/premium-photo/woman-holding-blue-white-purse-street-corner-with-blue-wall-her-blue_961147-44091.jpg?w=996',
         additionalImages: [
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwaa4fd334/images/large/03_32000610174_2.jpg?sw=663&sh=848&sm=cut',
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw2112edae/images/large/04_32000610174_3.jpg?sw=663&sh=848&sm=cut',
+            'https://img.freepik.com/premium-photo/purse-sitting-bench-with-plant-background-blue-white-tile-wall-it_961147-44069.jpg?w=996',
+            'https://img.freepik.com/premium-photo/blue-white-purse-sitting-ledge-plant-potted-planter-ledge-jigsaw_961147-44070.jpg?w=996',
         ],
         description: 'Fail-safe. Designed in faux leather, this 2-in-1 bag boasts two short handles and a detachable, chevron, webbing strap. It features two main compartments with a separate.',
         rating: 4,
@@ -19,61 +21,61 @@ const Bags = {
         id: '2',
         name: 'MATTE OVAL EARRINGS',
         price: 'EGP 685.00',
-        mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw9f50ee5b/images/large/01_32000910008_1.jpg?sw=663&sh=848&sm=cut',
+        mainImage: 'https://i.etsystatic.com/18424646/r/il/e44634/5902110444/il_794xN.5902110444_sfuy.jpg',
         additionalImages: [
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw7578718e/images/large/03_32000910008_2.jpg?sw=663&sh=848&sm=cut',
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw1b821e9e/images/large/04_32000910008_3.jpg?sw=663&sh=848&sm=cut',
+            'https://i.etsystatic.com/18424646/r/il/aba704/5902094224/il_794xN.5902094224_hf57.jpg',
+            'https://i.etsystatic.com/18424646/r/il/54981c/5950174203/il_794xN.5950174203_lgrq.jpg',
         ],
 
-        description: 'Who doesnt love a 2-in-1? A timeless piece, this bag can be styled in-hand or over the shoulder thanks to the detachable, adjustable webbing strap. Its designed in faux leather with split compartments and a magnetic snap closure to fasten. Green',
+        description: 'rochet bag, Granny Square Bag from 100 % premium cotton, summer tote bag, crochet flowers bag, large beach bag for woman',
         rating: 5,
     },
     '3': {
         id: '3',
-        name: 'INLAY HOOP EARRINGS',
-        price: 'EGP 230.00',
-        mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwf0e21880/images/large/03_30105430004_2.jpg?sw=663&sh=848&sm=cut',
+        name: 'Crochet bag pattern',
+        price: 'EGP 899.00',
+        mainImage: 'https://img.freepik.com/free-photo/colorful-kitted-bag-by-window_23-2150709557.jpg?t=st=1714907630~exp=1714911230~hmac=c3f838bb2b1b2b28d6af0a1f0ed42b02609702d76742fbb572e460490ab408fd&w=996',
         additionalImages: [
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwccc104e1/images/large/05_30105430004_5.jpg?sw=1920&sh=2460&sm=cut',
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw1b393395/images/large/01_30105430004_1.jpg?sw=663&sh=848&sm=cut',
+            'https://img.freepik.com/free-photo/colorful-knitted-bag-still-life_23-2150709519.jpg?t=st=1714907676~exp=1714911276~hmac=753ff7acce377fd2d040347abd472b6340fbd80a163df0a2cd2a25fe7521f14e&w=996',
+            'https://img.freepik.com/free-photo/colorful-kitted-bag-by-window_23-2150709559.jpg?t=st=1714907772~exp=1714911372~hmac=1f57436f544078b64a62c1a46d65907b58c2eb3bcf837ca38a5f9127db898abb&w=996',
         ],
-        description: 'MOTHER OF PEARL INLAY HOOP EARRINGS',
+        description: 'Crochet bag pattern, Granny Square pattern, Granny Square tote bag tutorial',
         rating: 1,
     },
     '4': {
         id: '4',
-        name: '2-PACK SEED BEAD RINGS GOLD',
-        price: 'EGP 320.00',
-        mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dweaa8489c/images/large/01_30108020021_1.jpg?sw=663&sh=848&sm=cut',
+        name: 'A pink purse with white flower',
+        price: 'EGP 1350.00',
+        mainImage: 'https://img.freepik.com/premium-photo/pink-purse-with-white-flowers-it-sitting-wooden-bench-plant-wooden-fence_961147-20023.jpg?w=740',
         additionalImages: [
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw9bd2ce5b/images/large/02_30108020021_2.jpg?sw=663&sh=848&sm=cut',
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw3a936ffe/images/large/05_30108020021_5.jpg?sw=663&sh=848&sm=cut',
+            'https://img.freepik.com/premium-photo/handbag-with-flowers-it-sitting-table-wall-white-background-with-brown_961147-20004.jpg?w=740',
+            'https://img.freepik.com/premium-photo/pink-white-purse-with-flowers_961147-20003.jpg?w=740',
         ],
-        description: 'Ring stacks deserve a bit of colour too, so opt for this duo to brighten things up. Designed in gold-tone metal, theyre designed with red and blue seed beading on a wavy ring profile. Two included. Gold',
+        description: 'A handbag with flowers on it sitting on a table next to a wall',
         rating: 5,
     },
     '5': {
         id: '5',
-        name: '3-PACK MOLTEN STUDS',
-        price: 'EGP 230.00',
-        mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw59e292ee/images/large/02_30105540008_2.jpg?sw=663&sh=848&sm=cut',
+        name: 'Beautiful and modern handmade',
+        price: 'EGP 999.00',
+        mainImage: 'https://img.freepik.com/premium-photo/beautiful-luxury-handmade-knitted-bag-with-intricate-patterns-textures_670421-23994.jpg?w=1060',
         additionalImages: [
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwed021d96/images/large/01_30105540008_1.jpg?sw=663&sh=848&sm=cut',
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw73a593fb/images/large/05_30105540008_5.jpg?sw=663&sh=848&sm=cut',
+            'https://img.freepik.com/premium-photo/beautiful-modern-handmade-knitted-bag-with-intricate-patterns-textures_670421-23914.jpg?w=1060',
+            'https://img.freepik.com/premium-photo/beautiful-luxury-handmade-knitted-bag-with-intricate-patterns-textures_670421-24001.jpg?w=740',
         ],
         description: 'Set in molten gold-tone metal, these studs display twinkly, faceted stones in oceanic hues. Just add sunshineNon-refundable.',
         rating: 3,
     },
     '6': {
         id: '6',
-        name: 'MOLTEN DROP EARRINGS',
+        name: 'Mediterranean aesthetics bag still life',
         price: 'EGP 185.00',
-        mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwc75119c8/images/large/01_30108050021_1.jpg?sw=663&sh=848&sm=cut',
+        mainImage: 'https://img.freepik.com/free-photo/mediterranean-aesthetics-bag-still-life_23-2151141446.jpg?t=st=1714911920~exp=1714915520~hmac=f1bdf0f8785ad5e31481370f991f120bdef2fa3648679ba6fe1b250573b933a9&w=996',
         additionalImages: [
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw85570527/images/large/03_30108050021_2.jpg?sw=663&sh=848&sm=cut',
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwb74475df/images/large/05_30108050021_5.jpg?sw=663&sh=848&sm=cut',
+            'https://img.freepik.com/free-photo/mediterranean-aesthetics-bag-still-life_23-2151141483.jpg?t=st=1714911653~exp=1714915253~hmac=636528933c8bda3bbca2c63f902d30ef5df87ff6551482cdd0cd0bc2c1fdc887&w=360',
+            'https://img.freepik.com/free-photo/mediterranean-aesthetics-bag-still-life_23-2151141438.jpg?t=st=1714911984~exp=1714915584~hmac=2988f6f5e9ba0673a899dfc1b8589d104cff6d0eeb15366095c59aebcb6e47ff&w=360',
         ],
-        description: 'Mesmerising molten cascades from these earrings, designed in gold-tone metal. Tuck your hair behind your ears to show them off Non-refundable',
+        description: 'Mediterranean aesthetics bag still life',
         rating: 4,
     },
     '7': {
@@ -166,7 +168,7 @@ export default function ProductBags() {
                     <Text style={styles.addtocartButtonText}>Add to Cart</Text>
                 </TouchableOpacity>
             </View>
-
+            <NavBar/>
         </View>
     );
 }

@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Dimensions, Image, ScrollView, TextInput, FlatList, TouchableOpacity, } from 'react-native';
-import React from 'react';
+import {React,useState} from 'react';
 import Scroll from '../components/ScrollView/ScrollView';
 import NavBar from "../components/NavBar/NavBar";
 import Hamburger from "../components/Hamburger/Hamburger";
@@ -17,12 +17,18 @@ const scaleHeight = (size) => heightScale * size;
 const banner = require('../assets/banner/banner.jpg');
 
 export default function HomeScreen() {
+ 
     const cardData = [
         { id: '1', image: require('../assets/category list/1.jpg'), title: 'Product 1' },
         { id: '2', image: require('../assets/category list/2.jpg'), title: 'Product 2' },
         { id: '3', image: require('../assets/category list/3.jpg'), title: 'Product 3' },
         { id: '4', image: require('../assets/category list/4.jpg'), title: 'Product 4' },
     ];
+    const [searchQuery, setSearchQuery] = useState('');
+    const filteredProducts = cardData.filter((item) =>
+        item.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    
 
     const renderCardItem = ({ item }) => (
         <TouchableOpacity style={styles.card}>
@@ -36,6 +42,17 @@ export default function HomeScreen() {
     return (
 
         <View style={styles.container}>
+               <TextInput
+        style={styles.searchBar}
+        placeholder="Search...."
+        value={searchQuery}
+        onChangeText={setSearchQuery}
+      />
+
+
+      {/* Display filtered product list */}
+   
+            
             <Hamburger style={styles.hamburgerPosition} />
             {/* <TextInput style={styles.searchBar} placeholder="Search products" /> */}
             {/* <Image source={banner} style={styles.banner} /> */}
@@ -102,14 +119,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     searchBar: {
-        width: '97%',
-        height: height * 0.04,
-        backgroundColor: '#0f0f0f0f',
-        borderRadius: 20,
-        paddingHorizontal: 15,
-        marginVertical: 10,
-        bottom: '45%',
-    },
+        height: 40,
+        width: 300,
+        borderColor: '#10439F',
+        borderWidth: 1,
+        borderRadius: 5,
+        paddingLeft: 10,
+        marginBottom: 16,
+      },
     imgcategory1: {
         width: width * 0.40,
         height: height * 0.12,

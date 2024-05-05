@@ -3,7 +3,7 @@ import { db } from "../firebase/config";
 
 async function getProducts() {
 
-  const querySnapshot = await getDoc(collection(db, "products"));
+const querySnapshot = await getDoc(collection(db, "products"));
 querySnapshot.forEach((doc) => {
   console.log(doc.id, " => ", doc.products());
 });
