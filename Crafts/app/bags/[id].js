@@ -15,7 +15,7 @@ const Bags = {
             'https://img.freepik.com/premium-photo/blue-white-purse-sitting-ledge-plant-potted-planter-ledge-jigsaw_961147-44070.jpg?w=996',
         ],
         description: 'Fail-safe. Designed in faux leather, this 2-in-1 bag boasts two short handles and a detachable, chevron, webbing strap. It features two main compartments with a separate.',
-        rating: 4,
+        rating: 3,
     },
     '2': {
         id: '2',
@@ -40,7 +40,7 @@ const Bags = {
             'https://img.freepik.com/free-photo/colorful-kitted-bag-by-window_23-2150709559.jpg?t=st=1714907772~exp=1714911372~hmac=1f57436f544078b64a62c1a46d65907b58c2eb3bcf837ca38a5f9127db898abb&w=996',
         ],
         description: 'Crochet bag pattern, Granny Square pattern, Granny Square tote bag tutorial',
-        rating: 1,
+        rating: 2,
     },
     '4': {
         id: '4',
@@ -52,7 +52,7 @@ const Bags = {
             'https://img.freepik.com/premium-photo/pink-white-purse-with-flowers_961147-20003.jpg?w=740',
         ],
         description: 'A handbag with flowers on it sitting on a table next to a wall',
-        rating: 5,
+        rating: 1,
     },
     '5': {
         id: '5',
@@ -76,11 +76,11 @@ const Bags = {
             'https://img.freepik.com/free-photo/mediterranean-aesthetics-bag-still-life_23-2151141438.jpg?t=st=1714911984~exp=1714915584~hmac=2988f6f5e9ba0673a899dfc1b8589d104cff6d0eeb15366095c59aebcb6e47ff&w=360',
         ],
         description: 'Mediterranean aesthetics bag still life',
-        rating: 4,
+        rating: 3,
     },
     '7': {
         id: '7',
-        name: 'LEAF DROP ANKLET',
+        name: 'Tote bags',
         price: 'EGP 290.00',
         mainImage: 'https://i.imgur.com/K5X9fyb.png',
         additionalImages: [
@@ -88,7 +88,7 @@ const Bags = {
             'https://i.imgur.com/xLMQpNR.png',
         ],
         description: 'Tote bags , Kantha bag, Beach bag, Bags, Fashion bag,Handmade bag by indian women, Freeshipping, ONE OF A KIND ,',
-        rating: 5,
+        rating: 4,
     },
     '8': {
         id: '8',
@@ -100,7 +100,7 @@ const Bags = {
             'https://i.imgur.com/hztioug.png',
         ],
         description: 'CROCHET PATTERN Crochet Bag Pattern Tote Pattern crochet purse woman bag, shopping bag, summer bag beach bag, handbag, crochet market bag',
-        rating: 5,
+        rating: 1,
     },
 };
 const CartContext = React.createContext();

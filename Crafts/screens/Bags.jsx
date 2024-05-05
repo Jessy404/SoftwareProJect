@@ -164,11 +164,12 @@ const styles = StyleSheet.create({
 
   info: {
     justifyContent: 'center',
+    paddingTop: scale(10),
   },
   Buttons: {
-    flexDirection: 'row', // Arrange elements horizontally
-    justifyContent: 'space-between', // Distribute space evenly
-    paddingTop: 10, // Optional padding
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    paddingTop: scale(10),
   },
   addtocart: {
     justifyContent: 'center',
@@ -197,10 +198,11 @@ const styles = StyleSheet.create({
 
  },
   name: {
-    fontSize: 13,
+    
     textAlign: 'center',
     color: 'black',
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontSize: scale(14),
   },
   productContainer: {
     padding: 10,
@@ -208,7 +210,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   price: {
-    fontSize: 15,
+    fontSize: scale(15),
     fontWeight: "bold",
     textAlign: 'center',
     color: 'black',
@@ -227,9 +229,10 @@ const styles = StyleSheet.create({
   },
   addtocartButton: {
     backgroundColor: '#10439F',
-    padding: 1,
-    borderRadius: 1,
     alignSelf: 'center',
+    padding: scale(8),
+    borderRadius: scale(5),
+    marginTop: scale(10),
 },
 addtocartButtonText: {
   color: 'white',
@@ -243,7 +246,7 @@ addtocartButtonText: {
 
   searchBar: {
     height: 40,
-    width: 400,
+    width: 300,
     borderColor: '#10439F',
     borderWidth: 1,
     borderRadius: 5,
