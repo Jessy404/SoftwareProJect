@@ -14,7 +14,7 @@ const Bags = {
             'https://img.freepik.com/premium-photo/purse-sitting-bench-with-plant-background-blue-white-tile-wall-it_961147-44069.jpg?w=996',
             'https://img.freepik.com/premium-photo/blue-white-purse-sitting-ledge-plant-potted-planter-ledge-jigsaw_961147-44070.jpg?w=996',
         ],
-        description: 'Fail-safe. Designed in faux leather, this 2-in-1 bag boasts two short handles and a detachable, chevron, webbing strap. It features two main compartments with a separate.',
+        description: 'Fail-safe. Designed in faux leather, this 2-in-1 bag boasts two short handles and a detachable, chevron, webbing strap.',
         rating: 3,
     },
     '2': {
@@ -105,9 +105,9 @@ const Bags = {
 };
 const CartContext = React.createContext();
 export default function ProductBags() {
-    const [searchQuery, setSearchQuery] = useState(''); // State to store search input
+    const [searchQuery, setSearchQuery] = useState(''); 
     const [favorites, setFavorites] = useState([]);
-    const [cart, setCart] = useState([]); // State to track cart items
+    const [cart, setCart] = useState([]); 
     const { id } = useLocalSearchParams();
     const router = useRouter();
     const cartContext = useContext(CartContext);
@@ -148,8 +148,6 @@ export default function ProductBags() {
                 <Text style={styles.backToHomeText}>Craft</Text>
             </TouchableOpacity>
          
-
-            {/* Display filtered product list */}
             <Image source={{ uri: product.mainImage }} style={styles.productImage} />
             <View style={styles.additionalImagesContainer}>
                 {product.additionalImages.map((image, index) => (
