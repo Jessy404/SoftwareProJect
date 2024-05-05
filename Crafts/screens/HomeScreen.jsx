@@ -3,6 +3,8 @@ import React from 'react';
 import Scroll from '../components/ScrollView/ScrollView';
 import NavBar from "../components/NavBar/NavBar";
 import Hamburger from "../components/Hamburger/Hamburger";
+import { router } from "expo-router";
+
 
 const { width, height } = Dimensions.get('window');
 const smallScreenWidth = 400;
@@ -42,13 +44,13 @@ export default function HomeScreen() {
             </ScrollView>
             <Text style={styles.categtitle}>Discover</Text>
 
-            <TouchableOpacity style={styles.categoryCard}>
+            <TouchableOpacity style={styles.categoryCard} onPress={() => router.replace("/Account/accessories")}>
                 <Image source={require('../assets/category list/1.jpg')} style={styles.imgcategory1}></Image>
                 <Text style={styles.categtext}>Category 1</Text>
 
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.categoryCard2}>
+            <TouchableOpacity style={styles.categoryCard2} onPress={() => router.replace("/Account/bags")}>
                 <Image source={require('../assets/category list/4.jpg')} style={styles.imgcategory1}></Image>
                 <Text style={styles.categtext}>Category 2</Text>
 
