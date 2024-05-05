@@ -15,15 +15,15 @@ const heightScale = height / baseHeight;
 const scaleWidth = (size) => widthScale * size;
 const scaleHeight = (size) => heightScale * size;
 const banner = require('../assets/banner/banner.jpg');
-
+const cardData = [
+    { id: '1', image: require('../assets/category list/1.jpg'), title: 'Product 1' },
+    { id: '2', image: require('../assets/category list/2.jpg'), title: 'Product 2' },
+    { id: '3', image: require('../assets/category list/3.jpg'), title: 'Product 3' },
+    { id: '4', image: require('../assets/category list/4.jpg'), title: 'Product 4' },
+];
 export default function HomeScreen() {
  
-    const cardData = [
-        { id: '1', image: require('../assets/category list/1.jpg'), title: 'Product 1' },
-        { id: '2', image: require('../assets/category list/2.jpg'), title: 'Product 2' },
-        { id: '3', image: require('../assets/category list/3.jpg'), title: 'Product 3' },
-        { id: '4', image: require('../assets/category list/4.jpg'), title: 'Product 4' },
-    ];
+    
     const [searchQuery, setSearchQuery] = useState('');
     const filteredProducts = cardData.filter((item) =>
         item.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -48,12 +48,10 @@ export default function HomeScreen() {
         value={searchQuery}
         onChangeText={setSearchQuery}
       />
-
-
-      {/* Display filtered product list */}
-   
             
-            <Hamburger style={styles.hamburgerPosition} />
+<Hamburger style={styles.hamburgerPosition} />
+      {/* Display filtered product list */}
+      
             {/* <TextInput style={styles.searchBar} placeholder="Search products" /> */}
             {/* <Image source={banner} style={styles.banner} /> */}
             <ScrollView style={styles.scrollView}>
@@ -118,15 +116,15 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         alignItems: 'center',
     },
-    searchBar: {
-        height: 40,
-        width: 300,
-        borderColor: '#10439F',
-        borderWidth: 1,
-        borderRadius: 5,
-        paddingLeft: 10,
-        marginBottom: 16,
-      },
+        searchBar: {
+            height: 40,
+            width: 300,
+            borderColor: '#10439F',
+            borderWidth: 1,
+            borderRadius: 5,
+            paddingLeft: 10,
+            marginBottom: 16,
+          },
     imgcategory1: {
         width: width * 0.40,
         height: height * 0.12,

@@ -60,15 +60,15 @@ const Product = [
   },
   {
     id: '7',
-    name: 'LEAF DROP ANKLET',
-    price: 'EGP 140.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw403ddfec/images/large/01_30100360008_1.jpg?sw=663&sh=848&sm=cut',
+    name: 'Tote bags',
+    price: 'EGP 290.00',
+    image: 'https://i.imgur.com/K5X9fyb.png',
   },
   {
     id: '8',
-    name: 'RESIN INLAY DROP EARRINGS',
-    price: 'EGP 250.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw56ecb162/images/large/01_30105410008_1.jpg?sw=663&sh=848&sm=cut',
+    name: ' Crochet Bag',
+    price: 'EGP 380.00',
+    image: 'https://i.imgur.com/M4HL4mm.png',
   },
 ];
 export default function Bags() {

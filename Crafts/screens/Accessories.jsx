@@ -119,6 +119,7 @@ export default function Accessories() {
         data={filteredProducts}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
+          
           <TouchableOpacity style={styles.productContainer}
             onPress={() => handleNavigation(item.id)}
           >

@@ -81,25 +81,25 @@ const Bags = {
     '7': {
         id: '7',
         name: 'LEAF DROP ANKLET',
-        price: 'EGP 140.00',
-        mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw403ddfec/images/large/01_30100360008_1.jpg?sw=663&sh=848&sm=cut',
+        price: 'EGP 290.00',
+        mainImage: 'https://i.imgur.com/K5X9fyb.png',
         additionalImages: [
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw8df0cebd/images/large/03_30100360008_2.jpg?sw=663&sh=848&sm=cut',
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw53e481d7/images/large/05_30100360008_5.jpg?sw=663&sh=848&sm=cut',
+            'https://i.imgur.com/4mNbJLQ.png',
+            'https://i.imgur.com/xLMQpNR.png',
         ],
-        description: ' Which way to the beach? Stationed with leafy charms green beads, this anklet is designed in shiny gold-tone metal.',
+        description: 'Tote bags , Kantha bag, Beach bag, Bags, Fashion bag,Handmade bag by indian women, Freeshipping, ONE OF A KIND ,',
         rating: 5,
     },
     '8': {
         id: '8',
-        name: 'RESIN INLAY DROP EARRINGS',
-        price: 'EGP 250.00',
-        mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw56ecb162/images/large/01_30105410008_1.jpg?sw=663&sh=848&sm=cut',
+        name: 'Crochet Bag',
+        price: 'EGP 380.00',
+        mainImage: 'https://i.imgur.com/M4HL4mm.png',
         additionalImages: [
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw5eabf6c1/images/large/03_30105410008_2.jpg?sw=663&sh=848&sm=cut',
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw3051c037/images/large/05_30105410008_5.jpg?sw=663&sh=848&sm=cut',
+            'https://i.imgur.com/mYsy9E1.png',
+            'https://i.imgur.com/hztioug.png',
         ],
-        description: 'Keep it contemporary with these resin hoop earrings. The sage green hoop charm boasts a gold-tone inlay, hanging from a simple molten stud.Non-refundable.',
+        description: 'CROCHET PATTERN Crochet Bag Pattern Tote Pattern crochet purse woman bag, shopping bag, summer bag beach bag, handbag, crochet market bag',
         rating: 5,
     },
 };
@@ -181,12 +181,12 @@ const styles = StyleSheet.create({
     productName: {
         fontSize: 18,
         textAlign: 'center',
-        color: '#10439F',
+        color: 'black',
         fontWeight: "bold"
     },
     productPrice: {
         fontSize: 18,
-        color: '#10439F',
+        color: 'black',
     },
     ratingContainer: {
         flexDirection: 'row', // Aligns stars in a row
