@@ -2,32 +2,31 @@ import React, { useContext, useState } from 'react';
 import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, Pressable, TextInput } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
-const products = {
+const Bags = {
     '1': {
         id: '1',
-        name: 'TEXTURED DROP EARRINGS',
-        price: 'EGP 220.00',
-        mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw77c7e0a6/images/large/03_30105460021_2.jpg?sw=663&sh=848&sm=cut',
+        name: 'CROSS-BODY BAG WITH WEBBING STRAP TEAL',
+        price: 'EGP 800.00',
+        mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwa6d5ebfe/images/large/01_32000610174_1.jpg?sw=663&sh=848&sm=cut',
         additionalImages: [
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw6dffdebf/images/large/01_30105460021_1.jpg?sw=663&sh=848&sm=cut',
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwf43f6b13/images/large/05_30105460021_5.jpg?sw=663&sh=848&sm=cut',
+            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwaa4fd334/images/large/03_32000610174_2.jpg?sw=663&sh=848&sm=cut',
+            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw2112edae/images/large/04_32000610174_3.jpg?sw=663&sh=848&sm=cut',
         ],
-        description: 'Beautiful textured drop earrings perfect for any occasion.',
-        rating: 3,
+        description: 'Fail-safe. Designed in faux leather, this 2-in-1 bag boasts two short handles and a detachable, chevron, webbing strap. It features two main compartments with a separate.',
+        rating: 4,
     },
     '2': {
         id: '2',
         name: 'MATTE OVAL EARRINGS',
-        price: 'EGP 185.00',
-        mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw6c9d4ae9/images/large/02_30103170008_2.jpg?sw=663&sh=848&sm=cut',
+        price: 'EGP 685.00',
+        mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw9f50ee5b/images/large/01_32000910008_1.jpg?sw=663&sh=848&sm=cut',
         additionalImages: [
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw3d328a7c/images/large/01_30103170008_1.jpg?sw=663&sh=848&sm=cut',
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwea97f116/images/large/05_30103170008_5.jpg?sw=663&sh=848&sm=cut',
+            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw7578718e/images/large/03_32000910008_2.jpg?sw=663&sh=848&sm=cut',
+            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw1b821e9e/images/large/04_32000910008_3.jpg?sw=663&sh=848&sm=cut',
         ],
 
-
-        description: 'MATTE OVAL EARRINGS',
-        rating: 4,
+        description: 'Who doesnt love a 2-in-1? A timeless piece, this bag can be styled in-hand or over the shoulder thanks to the detachable, adjustable webbing strap. Its designed in faux leather with split compartments and a magnetic snap closure to fasten. Green',
+        rating: 5,
     },
     '3': {
         id: '3',
@@ -103,14 +102,14 @@ const products = {
     },
 };
 const CartContext = React.createContext();
-export default function ProductDetail() {
+export default function ProductBags() {
     const [searchQuery, setSearchQuery] = useState(''); // State to store search input
     const [favorites, setFavorites] = useState([]);
     const [cart, setCart] = useState([]); // State to track cart items
     const { id } = useLocalSearchParams();
     const router = useRouter();
     const cartContext = useContext(CartContext);
-    const product = products[id];
+    const product = Bags[id];
     const addToCart = (product) => {
         if (cartContext) {
             cartContext.addToCart(product); // Add product to the cart
@@ -146,7 +145,7 @@ export default function ProductDetail() {
             <TouchableOpacity onPress={() => router.push('/')}>
                 <Text style={styles.backToHomeText}>Craft</Text>
             </TouchableOpacity>
-          
+         
 
             {/* Display filtered product list */}
             <Image source={{ uri: product.mainImage }} style={styles.productImage} />
@@ -246,8 +245,8 @@ const styles = StyleSheet.create({
 
     },
     productImage: {
-        width: 250,
-        height: 200,
+        width: 180,
+        height: 180,
         alignSelf: 'center',
     },
 

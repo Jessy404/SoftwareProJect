@@ -1,9 +1,8 @@
-import { Image, FlatList, Text, View,  Dimensions, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { Image, FlatList, Text, View, Dimensions, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Link, useRouter } from 'expo-router';
 import { useState,useEffect } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
-import NavBar from '../components/NavBar/NavBar';
 const { width, height } = Dimensions.get('window');
 const guidelineBaseWidth = 350;
 const guidelineBaseHeight = 680;
@@ -15,18 +14,18 @@ async function loadFonts() {
         'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
     });
 }
-const products = [
+const Product = [
   {
     id: '1',
-    name: 'TEXTURED DROP EARRINGS',
-    price: 'EGP 220.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw77c7e0a6/images/large/03_30105460021_2.jpg?sw=663&sh=848&sm=cut',
+    name: 'CROSS-BODY BAG',
+    price: 'EGP 800.00',
+    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwa6d5ebfe/images/large/01_32000610174_1.jpg?sw=663&sh=848&sm=cut',
   },
   {
     id: '2',
-    name: 'MATTE OVAL EARRINGS',
-    price: 'EGP 185.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw6c9d4ae9/images/large/02_30103170008_2.jpg?sw=663&sh=848&sm=cut',
+    name: 'HANDHELD BAG ',
+    price: 'EGP 685.00',
+    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw9f50ee5b/images/large/01_32000910008_1.jpg?sw=663&sh=848&sm=cut',
 
 
   },
@@ -71,39 +70,39 @@ const products = [
     image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw56ecb162/images/large/01_30105410008_1.jpg?sw=663&sh=848&sm=cut',
   },
 ];
-export default function Accessories() {
+export default function Bags() {
   const [searchQuery, setSearchQuery] = useState(''); // State to store search input
   const [favorites, setFavorites] = useState([]);
   const [cart, setCart] = useState([]); // State to track cart items
-  const [accessories, setAccessories] = useState(products);
+  const [bags, setBags] = useState(Product);
   const router = useRouter();
 
-  const handleNavigation = (productId) => {
-    router.push(`/accessories/${productId}`); // Navigate to the product detail page
+  const handleNavigation = (ProductId) => {
+    router.push(`/bags/${ProductId}`); // Navigate to the product detail page
   };
 
-  const addToCart = (product) => {
-    setCart([...cart, product]); // Add the product to the cart
+  const addToCart = (Product) => {
+    setCart([...cart, Product]); // Add the product to the cart
   };
-  const toggleFavorite = (productId) => {
-    if (favorites.includes(productId)) {
-      setFavorites(favorites.filter((id) => id !== productId)); // Remove from favorites
+  const toggleFavorite = (ProductId) => {
+    if (favorites.includes(ProductId)) {
+      setFavorites(favorites.filter((id) => id !== ProductId)); // Remove from favorites
     } else {
-      setFavorites([...favorites, productId]); // Add to favorites
+      setFavorites([...favorites, ProductId]); // Add to favorites
     }
 
   };
 
   // Filter the products based on the search query
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredProducts = Product.filter((Product) =>
+    Product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
 
     <View style={styles.container}>
+
       
-    
       {/* Search bar */}
       <TextInput
         style={styles.searchBar}
@@ -111,8 +110,10 @@ export default function Accessories() {
         value={searchQuery}
         onChangeText={setSearchQuery}
       />
+     <View style={styles.texttitle}>
+<Text style={styles.texttitle}> HANDBAGS& PURSES FOR WOMEN </Text>
 
-
+</View>
       {/* Display filtered product list */}
       <FlatList
         numColumns={2}
@@ -158,17 +159,11 @@ const styles = StyleSheet.create({
 
   info: {
     justifyContent: 'center',
-   
   },
   Buttons: {
     flexDirection: 'row', // Arrange elements horizontally
     justifyContent: 'space-between', // Distribute space evenly
     paddingTop: 10, // Optional padding
-  },
-  row: {
-    flexDirection: 'row', // Horizontal alignment
-    justifyContent: 'space-around', // Space between texts
-    marginBottom: 25, // Optional margin for spacing
   },
   addtocart: {
     justifyContent: 'center',
@@ -177,11 +172,21 @@ const styles = StyleSheet.create({
     width: 175,
     height: 50,
   },
+  texttitle:{
+    fontFamily: 'Lato-Bold',
+     color: '#874CCC',
+     fontSize: moderateScale(17),
+     textAlign: 'center',
+     marginVertical: 10,
+     bottom: '0%',
+     width: width,
+
+ },
   name: {
     fontSize: 13,
     textAlign: 'center',
     color: '#10439F',
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   productContainer: {
     padding: 10,
@@ -193,26 +198,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: 'center',
     color: '#874CCC',
-    fontFamily: 'Lato-Bold',
   },
-  
-    texttitle:{
-      fontSize: moderateScale(12),
-      fontWeight: 'bold',
-      color: '#874CCC',
-    },
-    texttitle2:{
-      fontFamily: 'Lato-Bold',
-       color: '#874CCC',
-       fontSize: moderateScale(20),
-       textAlign: 'center',
-       marginVertical: 10,
-       bottom: '0%',
-       width: width,
-       flexDirection:'row',
-       alignItems: 'center', // Align items in the center vertically
-       justifyContent: 'space-between',
-   },
 
   backToHomeText: {
     fontWeight: "bold",
@@ -223,7 +209,7 @@ const styles = StyleSheet.create({
     width: 150,
     color: '#874CCC',
     marginLeft: 8,
-    fontFamily: 'Lato-Bold', 
+    fontFamily: 'Lato-Bold', // Adds space between icon and text
   },
 
   searchBar: {
@@ -245,7 +231,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingTop: 70,
-     flex: 1,
+    flex: 1,
   },
   description: {
     fontSize: 16,
