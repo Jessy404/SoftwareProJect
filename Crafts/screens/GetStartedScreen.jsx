@@ -98,8 +98,6 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         top: '3%',
         width: width,
-
-
     },
     text3: {
         fontFamily: 'Lato-Bold',
