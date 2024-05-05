@@ -12,7 +12,6 @@ export default function User() {
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
   const [VeiwMode, setVeiwMode] = useState(true)
-
   const updateUserData = async () => {
     const washingtonRef = doc(db, "users", auth.currentUser.uid);
 
