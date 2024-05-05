@@ -1,0 +1,253 @@
+// import { View, Text, StyleSheet, Dimensions, Image, ScrollView, TextInput, FlatList, TouchableOpacity, Platform } from 'react-native';
+// import React from 'react';
+// import Scroll from '../components/ScrollView/ScrollView';
+// import NavBar from "../components/NavBar/NavBar";
+// import Hamburger from "../components/Hamburger/Hamburger";
+// import CategoryCard from '../components/CategoryCard/CategoryCard'; // Import the new component
+// const { width, height } = Dimensions.get('window');
+// const isSmallScreen = width < 400;
+
+// const smallScreenWidth = 400;
+
+// const banner = require('../assets/banner/banner.jpg');
+
+// export default function HomeScreen() {
+//     const cardData = [
+//         { id: '1', image: require('../assets/category list/1.jpg'), title: 'Product 1' },
+//         { id: '2', image: require('../assets/category list/2.jpg'), title: 'Product 2' },
+//         { id: '3', image: require('../assets/category list/3.jpg'), title: 'Product 3' },
+//         { id: '4', image: require('../assets/category list/4.jpg'), title: 'Product 4' },
+//         // Add more items here
+//     ];
+
+//     const renderCardItem = ({ item }) => (
+//         <TouchableOpacity style={styles.card}>
+//             <Image source={item.image} style={styles.cardImage} />
+//             <Text style={styles.cardTitle}>{item.title}</Text>
+//         </TouchableOpacity>
+//     );
+
+
+
+//     return (
+
+//         <View style={styles.container}>
+//             <Hamburger style={styles.hamburgerPosition} />
+//             <TextInput style={styles.searchBar} placeholder="Search products" />
+//             {/* <Image source={banner} style={styles.banner} /> */}
+//             <ScrollView style={styles.scrollView}>
+//                 <Scroll />
+//             </ScrollView>
+//             <Text style={styles.categtitle}>Discover</Text>
+
+//             <TouchableOpacity style={styles.categoryCard}>
+//                 <Image source={require('../assets/category list/1.jpg')} style={styles.imgcategory1}></Image>
+//                 <Text style={styles.categtext}>Category 1</Text>
+
+//             </TouchableOpacity>
+
+//             <TouchableOpacity style={styles.categoryCard2}>
+//                 <Image source={require('../assets/category list/4.jpg')} style={styles.imgcategory1}></Image>
+//                 <Text style={styles.categtext}>Category 2</Text>
+
+
+//             </TouchableOpacity>
+
+//             <TouchableOpacity style={styles.categoryCard3}>
+//                 <Image source={require('../assets/category list/3.jpg')} style={styles.imgcategory1}></Image>
+
+//                 <Text style={styles.categtext}>Category 3</Text>
+
+//             </TouchableOpacity>
+
+//             <TouchableOpacity style={styles.categoryCard4}>
+//                 <Image source={require('../assets/category list/2.jpg')} style={styles.imgcategory1}></Image>
+//                 <Text style={styles.categtext}>Category 4</Text>
+
+
+//             </TouchableOpacity>
+
+//             <Text style={styles.featuredtitle}>Featured Products</Text>
+//             <View style={styles.flatscrollcontanier}></View>
+
+//             <FlatList
+//                 data={cardData}
+//                 renderItem={renderCardItem}
+//                 keyExtractor={item => item.id}
+//                 horizontal={true}
+//                 showsHorizontalScrollIndicator={false}
+//                 style={styles.cardList}
+//             />
+
+//             <NavBar/>
+
+
+//         </View>
+
+//     );
+// }
+
+// const styles = StyleSheet.create({
+   
+//     container: {
+//         flex: 1,
+//         backgroundColor: 'white',
+//         alignItems: 'center',
+//         justifyContent: 'flex-start',
+//     },
+//     searchBar: {
+//         width: '90%',
+//         height: 40,
+//         backgroundColor: '#f0f0f0',
+//         borderRadius: 20,
+//         paddingHorizontal: 15,
+//         marginVertical: 10,
+//     },
+//     imgcategory1: {
+//         width: isSmallScreen ? width * 0.8 : width * 0.4,
+//         height: isSmallScreen ? height * 0.2 : height * 0.12,
+//         resizeMode: 'cover',
+//         borderRadius: 10,
+//         // margin: 10,
+//         // alignSelf: 'flex-start', // Aligns the image to the left
+//         // marginRight: isSmallScreen ? -20 : width * 0.01, // Adjust the left margin based on screen size
+//         right:'9%',
+//         bottom:'20%',
+//     },
+//     categtext: {
+//         fontWeight: 'bold',
+//         textAlign: 'center',
+//         bottom:'16%',
+
+//     },
+//     categtitle: {
+//         fontWeight: 'bold',
+//         fontSize: isSmallScreen ? 20 : 25,
+//         // marginVertical: 0,
+//         bottom:'20%',
+//     },
+//     featuredtitle: {
+//         fontWeight: 'bold',
+//         fontSize: isSmallScreen ? 20 : 25,
+//         marginVertical: 10,
+//     },
+    
+//     cardList: {
+//         flexGrow: 0,
+//         marginVertical: 10,
+//     },
+//     card: {
+//         backgroundColor: '#e0e0e0',
+//         borderRadius: 20,
+//         marginHorizontal: 10,
+//         padding: 15,
+//         shadowColor: '#000',
+//         shadowOffset: { width: 0, height: 2 },
+//         shadowOpacity: 0.25,
+//         shadowRadius: 3.84,
+//         elevation: 5,
+//         width: isSmallScreen ? width * 0.9 : width * 0.5,
+//         height: isSmallScreen ? height * 0.2 : height * 0.13,
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//     },
+//     cardImage: {
+//         width: '100%',
+//         height: '70%',
+//         resizeMode: 'cover',
+//         borderRadius: 10,
+//     },
+//     cardTitle: {
+//         fontWeight: 'bold',
+//         marginTop: 5,
+//     },
+//     categoryCard: {
+//         backgroundColor: '#e0e0e0',
+//         borderRadius: 20,
+//         margin: 10,
+//         padding: 15,
+//         shadowColor: '#000',
+//         shadowOffset: { width: 0, height: 2 },
+//         shadowOpacity: 0.25,
+//         shadowRadius: 3.84,
+//         elevation: 5,
+//         width: isSmallScreen ? width * 0.9 : width * 0.4,
+//         height: isSmallScreen ? height * 0.25 : height * 0.15,
+//         marginRight: isSmallScreen ? 10 : '50%', // Adjusts the left margin based on screen size
+
+//     },
+   
+//     categoryCard2: {
+//         backgroundColor: '#e0e0e0',
+//         borderRadius: 20,
+//         // marginHorizontal: 10,
+//         margin: 10,
+//         padding: 15,
+//         shadowColor: '#000',
+//         shadowOffset: { width: 0, height: 2},
+//         shadowOpacity: 0.25,
+//         shadowRadius: 3.84,
+//         elevation: 5,
+//         width: isSmallScreen ? width * 0.9 : width * 0.4,
+//         height: isSmallScreen ? height * 0.25 : height * 0.15,
+//         // alignSelf: 'flex-start',
+//         marginLeft: isSmallScreen ? 10 : width * 0.55,
+//         // marginBottom: isSmallScreen ? 10 : '10%', // Adjusts the top margin based on screen size
+//         bottom:'18%',
+
+//     },
+//     categoryCard3: {
+//         backgroundColor: '#e0e0e0',
+//         borderRadius: 20,
+//         marginHorizontal: 10,
+//         padding: 15,
+//         shadowColor: '#000',
+//         shadowOffset: { width: 0, height: 5 },
+//         shadowOpacity: 0.25,
+//         shadowRadius: 3.84,
+//         elevation: 7,
+//         width: isSmallScreen ? width * 0.9 : width * 0.4,
+//         height: isSmallScreen ? height * 0.25 : height * 0.15,
+//         alignSelf: 'flex-start',
+//         marginLeft: isSmallScreen ? 10 : width * 0.06,
+//         // marginBottom: isSmallScreen ? 10 : '10%', // Adjusts the top margin based on screen size
+//         bottom:'15%',
+
+
+
+//     },
+//     categoryCard4: {
+//         backgroundColor: '#e0e0e0',
+//         borderRadius: 20,
+//         marginHorizontal: 10,
+//         padding: 15,
+//         shadowColor: '#000',
+//         shadowOffset: { width: 0, height: 5 },
+//         shadowOpacity: 0.25,
+//         shadowRadius: 3.84,
+//         elevation: 7,
+//         width: isSmallScreen ? width * 0.9 : width * 0.4,
+//         height: isSmallScreen ? height * 0.25 : height * 0.15,
+//         alignSelf: 'flex-end',
+//         // marginRight: isSmallScreen ? 10 : width * 0.27,
+//         bottom:'30.5%',
+//         // marginLeft: isSmallScreen ? 10 : width * 0.05,
+//         right:'2%',
+
+//     },
+//     categoryText: {
+//         fontSize: 16,
+//         fontWeight: 'bold',
+//     },
+//     scrollView: {
+//         // flex:1,
+//         width: '100%',
+//         marginTop: 5,
+//     },
+//     hamburgerPosition: {
+//         position: 'absolute',
+//         top: 40,
+//         left: 20,
+//     },
+    
+// });

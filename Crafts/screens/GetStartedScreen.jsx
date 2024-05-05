@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         position: 'absolute',
-        bottom: '30%',
+        bottom: '25%',
     },
     buttonText: {
         color: '#C65BCF',
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         fontSize: moderateScale(20),
         textAlign: 'center',
         marginVertical: 10,
-        bottom: '0%',
+        top: '3%',
         width: width,
 
 
@@ -111,12 +111,12 @@ const styles = StyleSheet.create({
     },
     rectangle: {
         width: '100%',
-        height: height * 0.6,
+        height: height * 0.7,
         backgroundColor: '#874CCC',
         borderRadius: 50,
         alignSelf: 'center',
         marginTop: '10%',
         position: 'absolute',
-        bottom: '-2%',
+        top: '35%',
     },
 });
