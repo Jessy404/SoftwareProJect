@@ -51,6 +51,12 @@ export default function GetStartedScreen() {
             <TouchableOpacity style={styles.button} onPress={() => router.replace("/Account/login")}>
                 <MonoText style={styles.buttonText}>Let's Get Started</MonoText>
             </TouchableOpacity>
+            <View>
+                
+            <TouchableOpacity style={styles.button} onPress={() => router.replace("/Account/accessories")}>
+                <MonoText style={styles.buttonText}>Accessories</MonoText>
+            </TouchableOpacity>
+            </View>
             <Text style={styles.text}>Let your imagination run wild with our app, where every swipe is a brushstroke</Text>
             <Text style={styles.text3}>Bestow your creativity with every touch; our app is the gateway to a world where your craft comes alive,
                 one masterpiece at a time.</Text>

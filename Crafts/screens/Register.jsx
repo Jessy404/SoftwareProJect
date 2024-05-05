@@ -37,7 +37,7 @@ export default function Register() {
   }
   const docRef = async () => {
     if (auth.currentUser)
-    await addDoc(collection(db, `users/${auth.currentUser.uid}/Chatlist`),{
+    await addDoc(collection(db, `users/${auth.currentUser.uid}/Userdata`),{
   name : name 
     });
     console.log("Document written with ID: ", docRef.id);
@@ -56,14 +56,14 @@ export default function Register() {
         <TextInput
           style={styles.input}
           placeholder="Name"
-          placeholderTextColor="#0E46A3"
+          placeholderTextColor="#10439F"
           value={name}
           onChangeText={setName}
         />
         <TextInput
           style={styles.input}
           placeholder="Email"
-          placeholderTextColor="#0E46A3"
+          placeholderTextColor="#10439F"
           value={email}
           onChangeText={setEmail}
 
@@ -71,7 +71,7 @@ export default function Register() {
          <TextInput
           style={styles.input}
           placeholder="Phone"
-          placeholderTextColor="#0E46A3"
+          placeholderTextColor="#10439F"
           value={phone}
           onChangeText={setPhone}
 
@@ -79,7 +79,7 @@ export default function Register() {
         <TextInput
           style={styles.input}
           placeholder="Password"
-          placeholderTextColor="#0E46A3"
+          placeholderTextColor="#10439F"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
@@ -89,14 +89,14 @@ export default function Register() {
             <Text style={styles.buttonText}>Register</Text>
           </Pressable>
           <View style={styles.sideBySide}>
-            <Text style={styles.text1}>
+            <Text fontWeight = "bold">
               Already have an Email ?
             </Text>
             {/* <Text style={styles.text}>
              "Register Now"
             </Text> */}
 
-            <Link href="Account/login" style={styles.text1}> "LOGIN Now" </Link>
+            <Link href="Account/login" style={styles.text2}> "LOGIN Now" </Link>
           </View>
 
         </View>
@@ -112,8 +112,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  text1: {
-    fontWeight: "bold"
+  text2: {
+    fontWeight: "bold",
+    color:"#10439F"
   },
   sideBySide: {
 
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 60,
     fontWeight: 'bold',
-    color: "#0E46A3"
+    color: "#10439F"
   },
   sep: {
     height: "10%",
@@ -141,20 +142,21 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     paddingHorizontal: 20,
-    borderColor: "#0E46A3",
+    borderColor: "#10439F",
     borderWidth: 1,
     borderRadius: 7
   },
   button: {
     marginTop: 40,
     marginBottom: 10,
-    backgroundColor: "#0E46A3",
+    backgroundColor: "#10439F",
     height: 45,
     borderColor: "gray",
     borderWidth: 1,
     borderRadius: 5,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    borderRadius: 150,
   },
   buttonText: {
     color: "white",
