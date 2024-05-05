@@ -22,13 +22,6 @@ const heightScale = height / baseHeight;
 const scaleWidth = (size) => widthScale * size;
 const scaleHeight = (size) => heightScale * size;
 const banner = require('../assets/banner/banner.jpg');
-const scale = size => (width / guidelineBaseWidth) * size;
-const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * factor;
-async function loadFonts() {
-    await Font.loadAsync({
-        'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
-    });
-}
 
 
 
@@ -38,6 +31,7 @@ export default function HomeScreen() {
     const toggleHeartFill = () => {
         setIsHeartFilled(!isHeartFilled);
     };
+
 
 
 
@@ -184,15 +178,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         alignItems: 'center',
     },
-    searchBar: {
-        position: 'absolute',
-        height: 40,
-        width: "80%",
-        borderColor: 'white',
-        borderWidth: 2,
-        borderRadius: 30,
-        paddingLeft: 10,
-        marginBottom: 16,
+
     },
     scrollView: {
         position: 'absolute',

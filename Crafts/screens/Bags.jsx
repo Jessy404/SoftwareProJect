@@ -9,6 +9,7 @@ const guidelineBaseWidth = 350;
 const guidelineBaseHeight = 680;
 
 const scale = size => (width / guidelineBaseWidth) * size;
+
 const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * factor;
 async function loadFonts() {
     await Font.loadAsync({
@@ -60,15 +61,15 @@ const Product = [
   },
   {
     id: '7',
-    name: 'LEAF DROP ANKLET',
-    price: 'EGP 140.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw403ddfec/images/large/01_30100360008_1.jpg?sw=663&sh=848&sm=cut',
+    name: 'Tote bags',
+    price: 'EGP 290.00',
+    image: 'https://i.imgur.com/K5X9fyb.png',
   },
   {
     id: '8',
-    name: 'RESIN INLAY DROP EARRINGS',
-    price: 'EGP 250.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw56ecb162/images/large/01_30105410008_1.jpg?sw=663&sh=848&sm=cut',
+    name: ' Crochet Bag',
+    price: 'EGP 380.00',
+    image: 'https://i.imgur.com/M4HL4mm.png',
   },
 ];
 export default function Bags() {
@@ -111,10 +112,8 @@ export default function Bags() {
         value={searchQuery}
         onChangeText={setSearchQuery}
       />
-  
-      {/* Display filtered product list */}
       <FlatList
-        numColumns={2}
+        numColumns={Math.floor(width / 200)}
         data={filteredProducts}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
@@ -164,17 +163,19 @@ const styles = StyleSheet.create({
 
   info: {
     justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: scale(10),
   },
   Buttons: {
-    flexDirection: 'row', // Arrange elements horizontally
-    justifyContent: 'space-between', // Distribute space evenly
-    paddingTop: 10, // Optional padding
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    paddingTop: scale(10),
   },
   addtocart: {
     justifyContent: 'center',
     color: '#10439F',
     fontSize: 17,
-    width: 175,
+    width: 160,
     height: 50,
   },
  icon: {
@@ -186,32 +187,27 @@ const styles = StyleSheet.create({
    
   },
 
-  texttitle:{
-    fontFamily: 'Lato-Bold',
-     color: '#874CCC',
-     fontSize: moderateScale(17),
-     textAlign: 'center',
-     marginVertical: 10,
-     bottom: '0%',
-     width: width,
-
- },
   name: {
-    fontSize: 13,
+    
     textAlign: 'center',
-    color: 'black',
-    fontWeight: "bold"
+    color: '#10439F',
+    fontWeight: "bold",
+    fontSize: scale(14),
   },
   productContainer: {
-    padding: 10,
-    marginBottom: 1,
+    padding: scale(10),
+    alignItems: 'center',
+    justifyContent: 'center',
+    justifyContent: 'center',
+    marginBottom: scale(16),
     borderRadius: 10,
+    borderRadius: scale(10),
   },
   price: {
-    fontSize: 15,
+    fontSize: scale(15),
     fontWeight: "bold",
     textAlign: 'center',
-    color: 'black',
+    color: '#10439F',
   },
 
   backToHomeText: {
@@ -227,9 +223,10 @@ const styles = StyleSheet.create({
   },
   addtocartButton: {
     backgroundColor: '#10439F',
-    padding: 1,
-    borderRadius: 1,
     alignSelf: 'center',
+    padding: scale(8),
+    borderRadius: scale(5),
+    marginTop: scale(10),
 },
 addtocartButtonText: {
   color: 'white',
@@ -240,76 +237,29 @@ addtocartButtonText: {
   paddingHorizontal: 40,
   paddingBottom: 4,
 },
-
   searchBar: {
-    height: 40,
-    width: 400,
+    height: scale(40),
+    width: '90%',
     borderColor: '#10439F',
     borderWidth: 1,
-    borderRadius: 5,
-    paddingLeft: 10,
-    marginBottom: 16,
+    borderRadius: scale(5),
+    paddingLeft: scale(10),
+    marginBottom: scale(30),
   },
-
   image: {
-    width: 200,
-    height: 200,
-    alignSelf: 'center',
+    width: '100%',
+    height:200, 
+    aspectRatio: 1, 
+    borderRadius: scale(10),
+    marginBottom: scale(10),
+    marginTop:scale(16),
   },
   container: {
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: 70,
+    paddingTop: 30,
     flex: 1,
-  },
-  description: {
-    fontSize: 16,
-    textAlign: 'center',
-    marginVertical: 10,
-  },
-  inputView: {
-    gap: 20,
-    width: "100%",
-    paddingHorizontal: 40,
-    marginBottom: 5
-  },
-  input: {
-    height: 50,
-    paddingHorizontal: 20,
-    borderColor: "#0E46A3",
-    borderWidth: 1,
-    borderRadius: 7
+    
   },
 
-  title: {
-    fontSize: 60,
-    fontWeight: 'bold',
-    color: "#0E46A3",
-  },
-
-  button: {
-    backgroundColor: "#0E46A3",
-    height: 32,
-    borderColor: "gray",
-    borderRadius: 4,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 9,
-    marginBottom: 7
-  },
-  buttonText: {
-    color: "white",
-    fontSize: 4,
-    fontWeight: "bold"
-  },
-  buttonView: {
-    // width: "100%",
-    paddingHorizontal: 50
-  },
-
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
 });
