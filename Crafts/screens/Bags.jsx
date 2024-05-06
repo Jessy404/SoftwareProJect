@@ -3,6 +3,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Link, useRouter } from 'expo-router';
 import { useState,useEffect } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
+import NavBar from '../components/NavBar/NavBar';
 const { width, height } = Dimensions.get('window');
 const guidelineBaseWidth = 350;
 const guidelineBaseHeight = 680;
@@ -214,7 +215,7 @@ const styles = StyleSheet.create({
 
   searchBar: {
     height: 40,
-    width: 400,
+    width: 300,
     borderColor: '#10439F',
     borderWidth: 1,
     borderRadius: 5,
