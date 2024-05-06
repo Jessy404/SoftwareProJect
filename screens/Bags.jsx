@@ -234,6 +234,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingHorizontal: 40,
     paddingBottom: 4,
+    paddingTop: scale(5),
   },
   searchBar: {
     height: scale(40),

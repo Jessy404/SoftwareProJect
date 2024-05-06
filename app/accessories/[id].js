@@ -1,14 +1,19 @@
 import React, { useContext, useState } from 'react';
-import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, Pressable, TextInput } from 'react-native';
+import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, Pressable, TextInput,Dimensions } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
 import NavBar from '../../components/NavBar/NavBar';
+const scale = size => (width / guidelineBaseWidth) * size;
+const guidelineBaseWidth = 350;
+const guidelineBaseHeight = 680;
+const { width, height } = Dimensions.get('window');
+const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * factor;
 const products = {
     '1': {
         id: '1',
         name: 'TEXTURED DROP EARRINGS',
         price: 'EGP 220.00',
-        mainImage: 'https://www.accessorizware.static/-/Sites-accessorize-master-catalog/default/dw77c7e0a6/images/large/03_30105460021_2.jpg?sw=663&sh=848&sm=cut',
+        mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw77c7e0a6/images/large/03_30105460021_2.jpg?sw=663&sh=848&sm=cut',
         additionalImages: [
             'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw6dffdebf/images/large/01_30105460021_1.jpg?sw=663&sh=848&sm=cut',
             'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwf43f6b13/images/large/05_30105460021_5.jpg?sw=663&sh=848&sm=cut',
@@ -179,14 +184,14 @@ const styles = StyleSheet.create({
         padding: 16,
     },
     productName: {
-        fontSize: 18,
+        fontSize: scale(18),
         textAlign: 'center',
-        color: '#10439F',
+        color: 'black',
         fontWeight: "bold"
     },
     productPrice: {
         fontSize: 18,
-        color: '#10439F',
+        color: 'black',
     },
     ratingContainer: {
         flexDirection: 'row', // Aligns stars in a row
@@ -247,8 +252,8 @@ const styles = StyleSheet.create({
 
     },
     productImage: {
-        width: 250,
-        height: 200,
+        width: 180,
+        height: 180,
         alignSelf: 'center',
     },
 
@@ -262,7 +267,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 5,
         alignSelf: 'center',
-
+        paddingTop: scale(10),
     },
     addtocartButtonText: {
         color: 'white',
@@ -272,6 +277,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         paddingHorizontal: 40,
         paddingBottom: 4,
+        paddingTop: scale(6),
     },
 
 });

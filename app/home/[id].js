@@ -1,14 +1,18 @@
 import React, { useContext, useState } from 'react';
-import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, Pressable, TextInput } from 'react-native';
+import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, Pressable, TextInput,Dimensions } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
 import NavBar from '../../components/NavBar/NavBar';
-
+const scale = size => (width / guidelineBaseWidth) * size;
+const guidelineBaseWidth = 350;
+const guidelineBaseHeight = 680;
+const { width, height } = Dimensions.get('window');
+const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * factor;
 const Decore = {
     '1': {
         id: '1',
         name: 'Decorative Plates',
-        price: 'EGP 2200.00',
+        price: 'EGP 930.00',
         mainImage: 'https://eg-rv.homzmart.net/catalog/product/w/p/wp104_1_1024x1024_.jpg',
         additionalImages: [
             'https://eg-rv.homzmart.net/catalog/product/w/p/wp104_2_1024x1024_.jpg',
@@ -19,88 +23,88 @@ const Decore = {
     },
     '2': {
         id: '2',
-        name: 'MATTE OVAL EARRINGS',
-        price: 'EGP 685.00',
+        name: 'ROO.ART.W.AW073 Towel Holder',
+        price: 'EGP 1,119.00',
         mainImage: 'https://i.etsystatic.com/18424646/r/il/e44634/5902110444/il_794xN.5902110444_sfuy.jpg',
         additionalImages: [
             'https://i.etsystatic.com/18424646/r/il/aba704/5902094224/il_794xN.5902094224_hf57.jpg',
             'https://i.etsystatic.com/18424646/r/il/54981c/5950174203/il_794xN.5950174203_lgrq.jpg',
         ],
 
-        description: 'rochet bag, Granny Square Bag from 100 % premium cotton, summer tote bag, crochet flowers bag, large beach bag for woman',
+        description: 'ROO.ART.W.AW073 Towel Holder - Brown - 28 x 15 x 60 cm',
         rating: 5,
     },
     '3': {
         id: '3',
-        name: 'Crochet bag pattern',
-        price: 'EGP 899.00',
-        mainImage: 'https://img.freepik.com/free-photo/colorful-kitted-bag-by-window_23-2150709557.jpg?t=st=1714907630~exp=1714911230~hmac=c3f838bb2b1b2b28d6af0a1f0ed42b02609702d76742fbb572e460490ab408fd&w=996',
+        name: 'FEKHM.FKH0033 Wall Accessory',
+        price: 'EGP 695.00',
+        mainImage: 'https://eg-rv.homzmart.net/catalog/product/f/k/fkh0033-en.jpg',
         additionalImages: [
-            'https://img.freepik.com/free-photo/colorful-knitted-bag-still-life_23-2150709519.jpg?t=st=1714907676~exp=1714911276~hmac=753ff7acce377fd2d040347abd472b6340fbd80a163df0a2cd2a25fe7521f14e&w=996',
-            'https://img.freepik.com/free-photo/colorful-kitted-bag-by-window_23-2150709559.jpg?t=st=1714907772~exp=1714911372~hmac=1f57436f544078b64a62c1a46d65907b58c2eb3bcf837ca38a5f9127db898abb&w=996',
+            'https://eg-rv.homzmart.net/catalog/product/f/k/fkh0033-en.jpg',
+            
         ],
-        description: 'Crochet bag pattern, Granny Square pattern, Granny Square tote bag tutorial',
-        rating: 2,
+        description: 'FEKHM.FKH0033 Wall Accessory 60x65 cm - Beige',
+        rating: 4,
     },
     '4': {
         id: '4',
-        name: 'A pink purse with white flower',
-        price: 'EGP 1350.00',
-        mainImage: 'https://img.freepik.com/premium-photo/pink-purse-with-white-flowers-it-sitting-wooden-bench-plant-wooden-fence_961147-20023.jpg?w=740',
+        name: 'UNI.GAL.008 Wall accessory ',
+        price: 'EGP 725.00',
+        mainImage: 'https://eg-rv.homzmart.net/catalog/product/0/0/008_resized_pdp_1.jpg',
         additionalImages: [
-            'https://img.freepik.com/premium-photo/handbag-with-flowers-it-sitting-table-wall-white-background-with-brown_961147-20004.jpg?w=740',
-            'https://img.freepik.com/premium-photo/pink-white-purse-with-flowers_961147-20003.jpg?w=740',
+            'https://eg-rv.homzmart.net/catalog/product/0/0/008_modified_transparent_1_1.jpg',
+            'https://eg-rv.homzmart.net/catalog/product/0/0/008_modified_whitebg_1_1.png',
         ],
-        description: 'A handbag with flowers on it sitting on a table next to a wall',
-        rating: 1,
+        description: 'UNI.GAL.008 Wall accessory - gold and light blue',
+        rating: 5,
     },
     '5': {
         id: '5',
-        name: 'Beautiful and modern handmade',
-        price: 'EGP 999.00',
-        mainImage: 'https://img.freepik.com/premium-photo/beautiful-luxury-handmade-knitted-bag-with-intricate-patterns-textures_670421-23994.jpg?w=1060',
+        name: 'AHvn1 Wall Accessory handmade',
+        price: 'EGP 637.00',
+        mainImage: 'https://eg-rv.homzmart.net/catalog/product/v/n/vn_01.jpg',
         additionalImages: [
-            'https://img.freepik.com/premium-photo/beautiful-modern-handmade-knitted-bag-with-intricate-patterns-textures_670421-23914.jpg?w=1060',
-            'https://img.freepik.com/premium-photo/beautiful-luxury-handmade-knitted-bag-with-intricate-patterns-textures_670421-24001.jpg?w=740',
+            'https://eg-rv.homzmart.net/catalog/product/v/n/vn_01_wh.jpg',
+            'https://eg-rv.homzmart.net/catalog/product/v/n/vn_01_scale.jpg',
         ],
-        description: 'Set in molten gold-tone metal, these studs display twinkly, faceted stones in oceanic hues. Just add sunshineNon-refundable.',
+        description: 'AHvn1 Wall Accessory 40x40x40x4 cm - Multi Color',
         rating: 3,
     },
     '6': {
         id: '6',
-        name: 'Mediterranean aesthetics bag still life',
-        price: 'EGP 185.00',
-        mainImage: 'https://img.freepik.com/free-photo/mediterranean-aesthetics-bag-still-life_23-2151141446.jpg?t=st=1714911920~exp=1714915520~hmac=f1bdf0f8785ad5e31481370f991f120bdef2fa3648679ba6fe1b250573b933a9&w=996',
+        name: 'WA.M.576-4 Canvas wall frame',
+        price: 'EGP 988.00',
+        mainImage: 'https://eg-rv.homzmart.net/catalog/product/5/7/576_2.jpg',
         additionalImages: [
-            'https://img.freepik.com/free-photo/mediterranean-aesthetics-bag-still-life_23-2151141483.jpg?t=st=1714911653~exp=1714915253~hmac=636528933c8bda3bbca2c63f902d30ef5df87ff6551482cdd0cd0bc2c1fdc887&w=360',
-            'https://img.freepik.com/free-photo/mediterranean-aesthetics-bag-still-life_23-2151141438.jpg?t=st=1714911984~exp=1714915584~hmac=2988f6f5e9ba0673a899dfc1b8589d104cff6d0eeb15366095c59aebcb6e47ff&w=360',
+            'https://eg-rv.homzmart.net/catalog/product/8/0/80_resized_copy__2.png',
+            'https://eg-rv.homzmart.net/catalog/product/5/7/576-4.jpg',
         ],
-        description: 'Mediterranean aesthetics bag still life',
-        rating: 3,
+        description: 'WA.M.576-4 Canvas wall frame, 120×80 cm - Multi ',
+        rating: 5,
     },
     '7': {
         id: '7',
-        name: 'Tote bags',
-        price: 'EGP 290.00',
-        mainImage: 'https://i.imgur.com/K5X9fyb.png',
+        name: 'Plant pot 140 x 35 x 35 cm - gold and white - ANT.st11',
+        price: 'EGP 1,817.00',
+        mainImage: 'https://eg-rv.homzmart.net/catalog/product/a/n/ant.st111.jpg',
         additionalImages: [
-            'https://i.imgur.com/4mNbJLQ.png',
-            'https://i.imgur.com/xLMQpNR.png',
+            'https://eg-rv.homzmart.net/catalog/product/a/n/ant.st111.jpg',
+           
         ],
-        description: 'Tote bags , Kantha bag, Beach bag, Bags, Fashion bag,Handmade bag by indian women, Freeshipping, ONE OF A KIND ,',
+        description: 'Plant pot 140 x 35 x 35 cm - gold and white - ANT.st11',
         rating: 4,
     },
     '8': {
         id: '8',
-        name: 'Crochet Bag',
-        price: 'EGP 380.00',
-        mainImage: 'https://i.imgur.com/M4HL4mm.png',
+        name: 'AHCL31S Wall Clock 40x40x40 cm - Multi Color',
+        price: 'EGP 530.00',
+        mainImage: 'https://eg-rv.homzmart.net/catalog/product/3/1/31_copy_2__2.jpg',
         additionalImages: [
-            'https://i.imgur.com/mYsy9E1.png',
-            'https://i.imgur.com/hztioug.png',
+            'https://eg-rv.homzmart.net/catalog/product/c/l/cl_31s-0-.jpg',
+            'https://eg-rv.homzmart.net/catalog/product/c/l/cl_31l.jpg',
         ],
-        description: 'CROCHET PATTERN Crochet Bag Pattern Tote Pattern crochet purse woman bag, shopping bag, summer bag beach bag, handbag, crochet market bag',
-        rating: 1,
+        description: 'AHCL31S Wall Clock 40x40x40 cm - Multi Color',
+        rating: 5,
     },
 };
 const CartContext = React.createContext();
@@ -177,7 +181,7 @@ const styles = StyleSheet.create({
         padding: 16,
     },
     productName: {
-        fontSize: 18,
+        fontSize: scale(18),
         textAlign: 'center',
         color: 'black',
         fontWeight: "bold"

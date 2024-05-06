@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
   name: {
 
     textAlign: 'center',
-    color: '#10439F',
+    color: 'black',
     fontWeight: "bold",
     fontSize: scale(14),
   },
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     fontSize: scale(15),
     fontWeight: "bold",
     textAlign: 'center',
-    color: '#10439F',
+    color: 'blacl',
   },
 
   backToHomeText: {
@@ -239,6 +239,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingHorizontal: 40,
     paddingBottom: 4,
+    paddingTop: scale(5),
   },
   searchBar: {
     height: scale(40),

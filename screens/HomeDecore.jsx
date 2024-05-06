@@ -12,31 +12,62 @@ const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * fact
 const Decore = [
   {
     id: '1',
-    name: 'CROSS-BODY BAG',
-    price: 'EGP 1700.00',
+    name: 'Decorative Plates',
+    price: 'EGP 930.00',
     image: 'https://eg-rv.homzmart.net/catalog/product/w/p/wp104_1_1024x1024_.jpg',
   },
   {
     id: '2',
-    name: 'HANDHELD BAG ',
-    price: 'EGP 685.00',
-    image: 'https://i.etsystatic.com/18424646/r/il/e44634/5902110444/il_794xN.5902110444_sfuy.jpg',
+    name: 'ROO.ART.W.AW073 Towel Holder',
+    price: 'EGP 1,119.00',
+    image: 'https://eg-rv.homzmart.net/catalog/product/a/r/art.w.aw_073.jpg',
 
 
   },
   {
     id: '3',
-    name: 'INLAY HOOP EARRINGS',
-    price: 'EGP 230.00',
-    image: 'https://img.freepik.com/free-photo/colorful-kitted-bag-by-window_23-2150709557.jpg?t=st=1714907630~exp=1714911230~hmac=c3f838bb2b1b2b28d6af0a1f0ed42b02609702d76742fbb572e460490ab408fd&w=996',
-
+    name: 'FEKHM.FKH0033 Wall Accessory',
+    price: 'EGP 695.00',
+    image: 'https://eg-rv.homzmart.net/catalog/product/f/k/fkh0033-en.jpg',
   },
 
   {
     id: '4',
-    name: 'A pink purse with white flower',
-    price: 'EGP 1600.00',
-    image: 'https://img.freepik.com/premium-photo/pink-purse-with-white-flowers-it-sitting-wooden-bench-plant-wooden-fence_961147-20023.jpg?w=740'
+    name: 'UNI.GAL.008 Wall accessory ',
+    price: '725.00',
+    image: 'https://eg-rv.homzmart.net/catalog/product/0/0/008_resized_pdp_1.jpg'
+    ,
+
+  },
+  {
+    id: '5',
+    name: 'AHvn1 Wall Accessory handmade',
+    price: '637.00',
+    image: 'https://eg-rv.homzmart.net/catalog/product/v/n/vn_01.jpg'
+    ,
+
+  },
+  {
+    id: '6',
+    name: 'WA.M.576-4 Canvas wall frame',
+    price: '988.00',
+    image: 'https://eg-rv.homzmart.net/catalog/product/8/0/80_resized_copy__2.png'
+    ,
+
+  },
+  {
+    id: '7',
+    name: 'Plant pot 140 x 35 x 35 cm - gold and white ',
+    price: '1,817.00',
+    image: 'https://eg-rv.homzmart.net/catalog/product/a/n/ant.st111.jpg'
+    ,
+
+  },
+  {
+    id: '8',
+    name: 'AHCL31S Wall Clock 40x40x40 cm - Multi Color',
+    price: '530.00',
+    image: 'https://eg-rv.homzmart.net/catalog/product/3/1/31_copy_2__2.jpg'
     ,
 
   },
@@ -98,7 +129,6 @@ export default function HomeDecore() {
 
                       <FontAwesome name={favorites.includes(item.id) ? 'heart' : 'heart-o'}
                         size={26}
-
                         color="#10439F"
                       />
                     </TouchableOpacity >
@@ -156,7 +186,7 @@ const styles = StyleSheet.create({
   name: {
 
     textAlign: 'center',
-    color: '#10439F',
+    color: 'black',
     fontWeight: "bold",
     fontSize: scale(14),
   },
@@ -170,10 +200,10 @@ const styles = StyleSheet.create({
     borderRadius: scale(10),
   },
   price: {
-    fontSize: scale(15),
+    fontSize: scale(16),
     fontWeight: "bold",
     textAlign: 'center',
-    color: '#10439F',
+    color: 'black',
   },
 
   backToHomeText: {
@@ -202,6 +232,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingHorizontal: 40,
     paddingBottom: 4,
+    paddingTop: scale(5),
   },
   searchBar: {
     height: scale(40),
