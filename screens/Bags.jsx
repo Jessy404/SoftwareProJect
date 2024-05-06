@@ -1,7 +1,7 @@
 import { Image, FlatList, Text, View, Dimensions, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Link, useRouter } from 'expo-router';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import NavBar from '../components/NavBar/NavBar';
 const { width, height } = Dimensions.get('window');
@@ -12,9 +12,9 @@ const scale = size => (width / guidelineBaseWidth) * size;
 
 const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * factor;
 async function loadFonts() {
-    await Font.loadAsync({
-        'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
-    });
+  await Font.loadAsync({
+    'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
+  });
 }
 const Product = [
   {
@@ -36,7 +36,7 @@ const Product = [
     name: 'INLAY HOOP EARRINGS',
     price: 'EGP 230.00',
     image: 'https://img.freepik.com/free-photo/colorful-kitted-bag-by-window_23-2150709557.jpg?t=st=1714907630~exp=1714911230~hmac=c3f838bb2b1b2b28d6af0a1f0ed42b02609702d76742fbb572e460490ab408fd&w=996',
-   
+
   },
 
   {
@@ -45,7 +45,7 @@ const Product = [
     price: 'EGP 1600.00',
     image: 'https://img.freepik.com/premium-photo/pink-purse-with-white-flowers-it-sitting-wooden-bench-plant-wooden-fence_961147-20023.jpg?w=740'
     ,
- 
+
   },
   {
     id: '5',
@@ -104,7 +104,7 @@ export default function Bags() {
 
     <View style={styles.container}>
 
-      
+
       {/* Search bar */}
       <TextInput
         style={styles.searchBar}
@@ -127,34 +127,34 @@ export default function Bags() {
               <Text style={styles.price}>{item.price}</Text>
               <View style={styles.Buttons}>
                 <View style={styles.productContainer}>
-                    <View style={styles.icon}>
+                  <View style={styles.icon}>
                     <TouchableOpacity onPress={() => toggleFavorite(item.id)}>
-                 
-                 <FontAwesome name={favorites.includes(item.id) ? 'heart' : 'heart-o'}
-                   size={26}
-                 
-                   color="#10439F"
-                 />
-               </TouchableOpacity >
-               <View>
-               <FontAwesome name="shopping-cart" size={29} color="#10439F" />
-               </View>
-               
+
+                      <FontAwesome name={favorites.includes(item.id) ? 'heart' : 'heart-o'}
+                        size={26}
+
+                        color="#10439F"
+                      />
+                    </TouchableOpacity >
+                    <View>
+                      <FontAwesome name="shopping-cart" size={29} color="#10439F" />
                     </View>
+
+                  </View>
                   <TouchableOpacity style={styles.addtocartButton} onPress={() => addToCart(item)}>
-                 
+
                     <Text style={styles.addtocartButtonText}>Add to Cart</Text>
                   </TouchableOpacity>
 
 
-               
+
                 </View>
               </View>
             </View>
           </TouchableOpacity>
         )}
       />
-      <NavBar/>
+      <NavBar />
     </View>
   );
 }
@@ -167,8 +167,8 @@ const styles = StyleSheet.create({
     paddingTop: scale(10),
   },
   Buttons: {
-    flexDirection: 'row', 
-    justifyContent: 'space-between', 
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     paddingTop: scale(10),
   },
   addtocart: {
@@ -178,17 +178,17 @@ const styles = StyleSheet.create({
     width: 160,
     height: 50,
   },
- icon: {
+  icon: {
     justifyContent: 'center',
     width: 180,
     height: 40,
     flexDirection: 'row', // Horizontal alignment
     justifyContent: 'space-around',
-   
+
   },
 
   name: {
-    
+
     textAlign: 'center',
     color: '#10439F',
     fontWeight: "bold",
@@ -227,16 +227,16 @@ const styles = StyleSheet.create({
     padding: scale(8),
     borderRadius: scale(5),
     marginTop: scale(10),
-},
-addtocartButtonText: {
-  color: 'white',
-  fontWeight: 'bold',
-  width: 200,
-  height: 30,
-  textAlign: 'center',
-  paddingHorizontal: 40,
-  paddingBottom: 4,
-},
+  },
+  addtocartButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    width: 200,
+    height: 30,
+    textAlign: 'center',
+    paddingHorizontal: 40,
+    paddingBottom: 4,
+  },
   searchBar: {
     height: scale(40),
     width: '90%',
@@ -248,18 +248,18 @@ addtocartButtonText: {
   },
   image: {
     width: '100%',
-    height:200, 
-    aspectRatio: 1, 
+    height: 200,
+    aspectRatio: 1,
     borderRadius: scale(10),
     marginBottom: scale(10),
-    marginTop:scale(16),
+    marginTop: scale(16),
   },
   container: {
     alignItems: "center",
     justifyContent: "center",
     paddingTop: 30,
     flex: 1,
-    
+
   },
 
 });
