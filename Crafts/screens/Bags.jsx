@@ -238,8 +238,8 @@ addtocartButtonText: {
   paddingBottom: 4,
 },
   searchBar: {
-    height: scale(40),
-    width: '90%',
+    height: 40,
+    width: 300,
     borderColor: '#10439F',
     borderWidth: 1,
     borderRadius: scale(5),

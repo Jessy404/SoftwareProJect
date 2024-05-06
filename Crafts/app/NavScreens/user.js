@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import User from '../../screens/UserScreen'
+import AdminHome from '../../screens/AdminHome'
 
 export default function user() {
   return (
-    <User/>
+    <AdminHome/>
   )
 }
