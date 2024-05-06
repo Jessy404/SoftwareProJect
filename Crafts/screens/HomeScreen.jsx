@@ -11,8 +11,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const guidelineBaseWidth = 350;
 const guidelineBaseHeight = 680;
-
-
 const { width, height } = Dimensions.get('window');
 const smallScreenWidth = 400;
 const baseWidth = 360;
@@ -162,8 +160,7 @@ export default function HomeScreen() {
             <TextInput
                 style={styles.searchBar}
                 placeholder="Search...."
-                placeholderTextColor="white" // Set your desired color here
-
+                placeholderTextColor="white" 
                 value={searchQuery}
                 onChangeText={setSearchQuery}
             />
