@@ -56,7 +56,6 @@ export default function User() {
 
       <ScrollView style={styles.container}>
         <View style={styles.headerContainer}>
-          <Hamburger />
           <View style={styles.profileContainer}>
             <Image
               style={styles.profilePhoto}

@@ -2,12 +2,13 @@ import React, { useContext, useState } from 'react';
 import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, Pressable, TextInput } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
+import NavBar from '../../components/NavBar/NavBar';
 const products = {
     '1': {
         id: '1',
         name: 'TEXTURED DROP EARRINGS',
         price: 'EGP 220.00',
-        mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw77c7e0a6/images/large/03_30105460021_2.jpg?sw=663&sh=848&sm=cut',
+        mainImage: 'https://www.accessorizware.static/-/Sites-accessorize-master-catalog/default/dw77c7e0a6/images/large/03_30105460021_2.jpg?sw=663&sh=848&sm=cut',
         additionalImages: [
             'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw6dffdebf/images/large/01_30105460021_1.jpg?sw=663&sh=848&sm=cut',
             'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwf43f6b13/images/large/05_30105460021_5.jpg?sw=663&sh=848&sm=cut',
@@ -167,7 +168,7 @@ export default function ProductDetail() {
                     <Text style={styles.addtocartButtonText}>Add to Cart</Text>
                 </TouchableOpacity>
             </View>
-
+            <NavBar/>
         </View>
     );
 }
