@@ -6,8 +6,12 @@ import {
     sendPasswordResetEmail,
 } from "firebase/auth";
 // Listen for authentication state to change.
+
+export const currentUserId = null;
+
 onAuthStateChanged(auth, (user) => {
     if (user != null) {
+        currentUserId = user.uid;
         console.log("We are authenticated now!");
     }
 

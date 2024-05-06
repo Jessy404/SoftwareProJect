@@ -29,7 +29,7 @@ export default function NavBar() {
 
   const handlePress = (route, icon) => {
     setSelectedIcon(icon);
-    router.replace(route);
+    router.push(route);
   };
 
   
