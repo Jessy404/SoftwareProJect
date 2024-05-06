@@ -14,8 +14,8 @@ const Bags = {
             'https://img.freepik.com/premium-photo/purse-sitting-bench-with-plant-background-blue-white-tile-wall-it_961147-44069.jpg?w=996',
             'https://img.freepik.com/premium-photo/blue-white-purse-sitting-ledge-plant-potted-planter-ledge-jigsaw_961147-44070.jpg?w=996',
         ],
-        description: 'Fail-safe. Designed in faux leather, this 2-in-1 bag boasts two short handles and a detachable, chevron, webbing strap. It features two main compartments with a separate.',
-        rating: 4,
+        description: 'Fail-safe. Designed in faux leather, this 2-in-1 bag boasts two short handles and a detachable, chevron, webbing strap.',
+        rating: 3,
     },
     '2': {
         id: '2',
@@ -40,7 +40,7 @@ const Bags = {
             'https://img.freepik.com/free-photo/colorful-kitted-bag-by-window_23-2150709559.jpg?t=st=1714907772~exp=1714911372~hmac=1f57436f544078b64a62c1a46d65907b58c2eb3bcf837ca38a5f9127db898abb&w=996',
         ],
         description: 'Crochet bag pattern, Granny Square pattern, Granny Square tote bag tutorial',
-        rating: 1,
+        rating: 2,
     },
     '4': {
         id: '4',
@@ -52,7 +52,7 @@ const Bags = {
             'https://img.freepik.com/premium-photo/pink-white-purse-with-flowers_961147-20003.jpg?w=740',
         ],
         description: 'A handbag with flowers on it sitting on a table next to a wall',
-        rating: 5,
+        rating: 1,
     },
     '5': {
         id: '5',
@@ -76,38 +76,38 @@ const Bags = {
             'https://img.freepik.com/free-photo/mediterranean-aesthetics-bag-still-life_23-2151141438.jpg?t=st=1714911984~exp=1714915584~hmac=2988f6f5e9ba0673a899dfc1b8589d104cff6d0eeb15366095c59aebcb6e47ff&w=360',
         ],
         description: 'Mediterranean aesthetics bag still life',
-        rating: 4,
+        rating: 3,
     },
     '7': {
         id: '7',
-        name: 'LEAF DROP ANKLET',
-        price: 'EGP 140.00',
-        mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw403ddfec/images/large/01_30100360008_1.jpg?sw=663&sh=848&sm=cut',
+        name: 'Tote bags',
+        price: 'EGP 290.00',
+        mainImage: 'https://i.imgur.com/K5X9fyb.png',
         additionalImages: [
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw8df0cebd/images/large/03_30100360008_2.jpg?sw=663&sh=848&sm=cut',
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw53e481d7/images/large/05_30100360008_5.jpg?sw=663&sh=848&sm=cut',
+            'https://i.imgur.com/4mNbJLQ.png',
+            'https://i.imgur.com/xLMQpNR.png',
         ],
-        description: ' Which way to the beach? Stationed with leafy charms green beads, this anklet is designed in shiny gold-tone metal.',
-        rating: 5,
+        description: 'Tote bags , Kantha bag, Beach bag, Bags, Fashion bag,Handmade bag by indian women, Freeshipping, ONE OF A KIND ,',
+        rating: 4,
     },
     '8': {
         id: '8',
-        name: 'RESIN INLAY DROP EARRINGS',
-        price: 'EGP 250.00',
-        mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw56ecb162/images/large/01_30105410008_1.jpg?sw=663&sh=848&sm=cut',
+        name: 'Crochet Bag',
+        price: 'EGP 380.00',
+        mainImage: 'https://i.imgur.com/M4HL4mm.png',
         additionalImages: [
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw5eabf6c1/images/large/03_30105410008_2.jpg?sw=663&sh=848&sm=cut',
-            'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw3051c037/images/large/05_30105410008_5.jpg?sw=663&sh=848&sm=cut',
+            'https://i.imgur.com/mYsy9E1.png',
+            'https://i.imgur.com/hztioug.png',
         ],
-        description: 'Keep it contemporary with these resin hoop earrings. The sage green hoop charm boasts a gold-tone inlay, hanging from a simple molten stud.Non-refundable.',
-        rating: 5,
+        description: 'CROCHET PATTERN Crochet Bag Pattern Tote Pattern crochet purse woman bag, shopping bag, summer bag beach bag, handbag, crochet market bag',
+        rating: 1,
     },
 };
 const CartContext = React.createContext();
 export default function ProductBags() {
-    const [searchQuery, setSearchQuery] = useState(''); // State to store search input
+    const [searchQuery, setSearchQuery] = useState(''); 
     const [favorites, setFavorites] = useState([]);
-    const [cart, setCart] = useState([]); // State to track cart items
+    const [cart, setCart] = useState([]); 
     const { id } = useLocalSearchParams();
     const router = useRouter();
     const cartContext = useContext(CartContext);
@@ -148,8 +148,6 @@ export default function ProductBags() {
                 <Text style={styles.backToHomeText}>Craft</Text>
             </TouchableOpacity>
          
-
-            {/* Display filtered product list */}
             <Image source={{ uri: product.mainImage }} style={styles.productImage} />
             <View style={styles.additionalImagesContainer}>
                 {product.additionalImages.map((image, index) => (
@@ -181,12 +179,12 @@ const styles = StyleSheet.create({
     productName: {
         fontSize: 18,
         textAlign: 'center',
-        color: '#10439F',
+        color: 'black',
         fontWeight: "bold"
     },
     productPrice: {
         fontSize: 18,
-        color: '#10439F',
+        color: 'black',
     },
     ratingContainer: {
         flexDirection: 'row', // Aligns stars in a row
