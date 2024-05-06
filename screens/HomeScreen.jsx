@@ -65,7 +65,7 @@ export default function HomeScreen() {
                     router.replace('/RenderProducts/render2');
                     break;
                 case '3':
-                    router.replace('/RenderProducts/render');
+                    router.replace('/RenderProducts/render3');
                     break;
                 case '4':
                     router.replace('/RenderProducts/render');

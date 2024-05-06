@@ -9,17 +9,12 @@ const guidelineBaseWidth = 350;
 const guidelineBaseHeight = 680;
 const scale = size => (width / guidelineBaseWidth) * size;
 const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * factor;
-async function loadFonts() {
-  await Font.loadAsync({
-    'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
-  });
-}
-const Product = [
+const Decore = [
   {
     id: '1',
     name: 'CROSS-BODY BAG',
     price: 'EGP 1700.00',
-    image: 'https://img.freepik.com/premium-photo/woman-holding-blue-white-purse-street-corner-with-blue-wall-her-blue_961147-44091.jpg?w=996',
+    image: 'https://eg-rv.homzmart.net/catalog/product/w/p/wp104_1_1024x1024_.jpg',
   },
   {
     id: '2',
@@ -45,59 +40,32 @@ const Product = [
     ,
 
   },
-  {
-    id: '5',
-    name: 'Beautiful and modern handmade',
-    price: 'EGP 999.00',
-    image: 'https://img.freepik.com/premium-photo/beautiful-modern-handmade-knitted-bag-with-intricate-patterns-textures_670421-23943.jpg?w=1060',
-  },
-  {
-    id: '6',
-    name: 'MOLTEN DROP EARRINGS',
-    price: 'EGP 185.00',
-    image: 'https://img.freepik.com/free-photo/mediterranean-aesthetics-bag-still-life_23-2151141483.jpg?t=st=1714911653~exp=1714915253~hmac=636528933c8bda3bbca2c63f902d30ef5df87ff6551482cdd0cd0bc2c1fdc887&w=360',
-  },
-  {
-    id: '7',
-    name: 'Tote bags',
-    price: 'EGP 290.00',
-    image: 'https://i.imgur.com/K5X9fyb.png',
-  },
-  {
-    id: '8',
-    name: ' Crochet Bag',
-    price: 'EGP 380.00',
-    image: 'https://i.imgur.com/M4HL4mm.png',
-  },
+
 ];
-export default function Bags() {
+export default function HomeDecore() {
   const [searchQuery, setSearchQuery] = useState(''); // State to store search input
   const [favorites, setFavorites] = useState([]);
   const [cart, setCart] = useState([]); // State to track cart items
-  const [bags, setBags] = useState(Product);
+  const [bags, setBags] = useState(Decore);
   const router = useRouter();
 
-  const handleNavigation = (ProductId) => {
-    router.push(`/bags/${ProductId}`); // Navigate to the product detail page
+  const handleNavigation = (DecoreId) => {
+    router.push(`/home/${DecoreId}`); // Navigate to the product detail page
   };
-
-  const addToCart = (Product) => {
-    setCart([...cart, Product]); // Add the product to the cart
+  const addToCart = (Decore) => {
+    setCart([...cart, Decore]); // Add the product to the cart
   };
-  const toggleFavorite = (ProductId) => {
-    if (favorites.includes(ProductId)) {
-      setFavorites(favorites.filter((id) => id !== ProductId)); // Remove from favorites
+  const toggleFavorite = (DecoreId) => {
+    if (favorites.includes(DecoreId)) {
+      setFavorites(favorites.filter((id) => id !==DecoreId)); // Remove from favorites
     } else {
-      setFavorites([...favorites, ProductId]); // Add to favorites
+      setFavorites([...favorites, DecoreId]); // Add to favorites
     }
 
   };
-
-  // Filter the products based on the search query
-  const filteredProducts = Product.filter((Product) =>
-    Product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredProducts = Decore.filter((Decore) =>
+    Decore.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
   return (
 
     <View style={styles.container}>
