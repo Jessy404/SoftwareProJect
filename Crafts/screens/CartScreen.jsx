@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet, FlatList, Image, SafeAreaView, Dimensions, Pressable, Alert } from 'react-native'
 import React, { useState } from 'react'
 import NavBar from '../components/NavBar/NavBar';
-import Hamburger from "../components/Hamburger/Hamburger";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
 import { addToCart } from '@/firebase/apis/cart';
@@ -94,9 +93,6 @@ export default function CartScreen() {
                 />
             </View>
             <View style={styles.outer}>
-                <View style={styles.HamburgerContiner}>
-                    <Hamburger />
-                </View>
                 <NavBar />
             </View>
         </SafeAreaView>
@@ -180,16 +176,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         fontSize: 30,
         fontWeight: 'bold',
-    },
-    HamburgerContiner: {
-        position: 'absolute',
-        display: 'none', // TODO: remove me
-        top: 0,
-        left: 1,
-        width: width,
-        height: height,
-        borderWidth: 1,
-        borderColor: 'black',
     },
     text: {
         alignSelf: 'center',
