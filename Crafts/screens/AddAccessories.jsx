@@ -8,16 +8,15 @@ const AddProductForm = () => {
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [id, setId] = useState("")
-    const [imageUrl, setImage] = useState("")
+    // const [imageUrl, setImage] = useState("")
     const handleAddProduct = async () => {
         try {
             await addDoc(collection(db, "Products"),
                 {
                     name: name,
-                    description: description,
                     price: parseFloat(price),
                     id: id,
-                    imageUrl: imageUrl 
+                    description: description,
                     
                 }
 
@@ -66,13 +65,13 @@ const AddProductForm = () => {
                     value={id}
                     onChangeText={setId}
                 />
-                <TextInput
+                {/* <TextInput
                     style={styles.input}
                     placeholder="imageUrl"
                     placeholderTextColor="#10439F"
                     value={imageUrl}
                     onChangeText={setImage}
-                />
+                /> */}
                 <TextInput
                     style={styles.input}
                     placeholder="Price"
