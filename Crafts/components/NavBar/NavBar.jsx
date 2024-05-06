@@ -7,6 +7,7 @@ const userIcon = require('../../assets/regular icons/user.png');
 const homeIcon = require('../../assets/regular icons/home.png');
 const editIcon = require('../../assets/regular icons/edit.png');
 const cartIcon = require('../../assets/regular icons/shopping-cart.png');
+const hamburgerIcon = require('../../assets/regular icons/menu-burger.png');
 
 const smallScreenWidth = 400;
 const iconSize = width < smallScreenWidth ? 20 : 30;
@@ -47,8 +48,8 @@ export default function NavBar() {
         <Image source={cartIcon} style={[styles.icon, selectedIcon === 'cart' && styles.selectedIcon]} />
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => handlePress("/NavScreens/user", 'user')}>
-        <Image source={userIcon} style={[styles.icon, selectedIcon === 'user' && styles.selectedIcon]} />
+      <TouchableOpacity onPress={() => handlePress("/NavScreens/hamburger", 'hamburger')}>
+        <Image source={hamburgerIcon} style={[styles.icon, selectedIcon === 'hamburger' && styles.selectedIcon]} />
       </TouchableOpacity>
     </Animated.View>
   )
