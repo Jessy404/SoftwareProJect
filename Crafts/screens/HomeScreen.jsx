@@ -44,10 +44,10 @@ export default function HomeScreen() {
         { id: '4', image: require('../assets/category list/4.jpg'), },
     ];
     const images2 = [
-        { id: '1', image: require('../assets/featured products/03.jpg'), },
-        { id: '2', image: require('../assets/featured products/02.jpg'), },
-        { id: '3', image: require('../assets/featured products/04.jpg'), },
-        { id: '4', image: require('../assets/featured products/01.jpg'), },
+        { id: '1', image: require('../assets/featured products/03.jpg'), title: 'Product A', price: '$49.99' },
+        { id: '2', image: require('../assets/featured products/02.jpg'), title: 'Product B', price: '$39.99' },
+        { id: '3', image: require('../assets/featured products/04.jpg'), title: 'Product C', price: '$59.99' },
+        { id: '4', image: require('../assets/featured products/01.jpg'), title: 'Product D', price: '$29.99' },
     ];
     const [searchQuery, setSearchQuery] = useState('');
     // const filteredProducts = cardData.filter((item) =>
@@ -104,8 +104,18 @@ export default function HomeScreen() {
 
         return (
             <TouchableOpacity style={styles.card2} onPress={handleCardPress2}>
-                <Image source={item.image} style={styles.cardImage2} />
+            <Image source={item.image} style={styles.cardImage2} />
+            <MonoText style={styles.cardTitle}>{item.title}</MonoText>
+            <MonoText style={styles.cardPrice}>{item.price}</MonoText>
+            <TouchableOpacity onPress={toggleHeartFill}>
+                <Icon
+                    name={isHeartFilled ? 'heart' : 'heart-o'}
+                    size={19}
+                    color={isHeartFilled ? 'purple' : 'grey'}
+                    style={styles.heartIcon}
+                />
             </TouchableOpacity>
+        </TouchableOpacity>
         );
     };
 
@@ -134,21 +144,6 @@ export default function HomeScreen() {
                 showsHorizontalScrollIndicator={false}
                 style={styles.cardList2}
             />
-            {/* <MonoText style={styles.producttext}>Beautiful and modern handmade</MonoText> */}
-            {/* <View style={styles.productPriceContainer}>
-                <MonoText style={styles.productPriceText}>EGP 999.00</MonoText>
-                <TouchableOpacity onPress={toggleHeartFill}>
-                <Icon
-                    name={isHeartFilled ? 'heart' : 'heart-o'}
-                    size={19}
-                    color={isHeartFilled ? 'purple' : 'grey'}
-                    style={styles.heartIcon}
-                />
-            </TouchableOpacity>
-
-            </View>
-             */}
-
 
             <ScrollView style={styles.scrollView}>
                 <Scroll />
@@ -204,6 +199,29 @@ const styles = StyleSheet.create({
         color: 'black',
 
     },
+    cardTitle:{
+        position: 'absolute',
+        justifyContent: 'center',
+        bottom: '28%',
+        fontWeight: 'bold',
+        fontSize: moderateScale(14),
+        color: 'black',
+    },
+    cardPrice:{
+        position: 'absolute',
+        left:'70%',
+        bottom: '5%',
+        fontWeight: 'bold',
+        fontSize: moderateScale(9),
+        color: 'black',
+        backgroundColor: 'purple',
+        borderRadius: 25,
+        color: 'white',
+        paddingVertical: 5,
+        paddingHorizontal: 10,
+        overflow: 'hidden', 
+        // height:'10%',
+    },
     featuredtitle: {
         position: 'absolute',
         justifyContent: 'center',
@@ -211,41 +229,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: moderateScale(16),
         color: 'black',
-    },
-    producttext: {
-        position: 'absolute',
-        // justifyContent: 'center',
-        bottom: '19.5%',
-        fontWeight: 'bold',
-        fontSize: moderateScale(11),
-        color: 'black',
-        right: '49.5%',
-    },
-    productPriceContainer: {
-        position: 'absolute',
-        bottom: '13%',
-        right: '49.5%',
-        backgroundColor: 'purple', 
-        borderRadius: 25, 
-        paddingVertical: 5, 
-        paddingHorizontal: 10, 
-    },
-    productPriceText: {
-        fontWeight: 'bold',
-        fontSize: moderateScale(9),
-        color: 'white',
-        textAlign: 'center', 
-    },
+    },   
     heartIcon: {
-        position: 'absolute',
-        right: '280 %', 
-        bottom: '50%'    , 
+        // position: 'absolute',
+        right: '40%', 
+        top: '450%', 
     },
-    // hamburgerPosition: {
-    //     position: 'absolute',
-    //     top: 40,
-    //     left: 20,
-    // },
+  
     cardList: {
         position: 'absolute',
         bottom: '50%',
