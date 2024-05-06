@@ -164,7 +164,6 @@ export default function HomeScreen() {
 
             <MonoText style={styles.categtitle}>Discover</MonoText>
             <MonoText style={styles.featuredtitle}>Featured Products</MonoText>
-            <View style={styles.flatscrollcontanier}></View>
             <NavBar />
 
         </View>
@@ -185,6 +184,15 @@ const styles = StyleSheet.create({
     },
     scrollViewStyle: {
 
+    },
+    searchBar:{
+        position:'absolute',
+        width: '80%',
+        height: '3%',
+        borderColor:'white',
+        borderWidth:2,
+        borderRadius:60,
+        fontSize: moderateScale(10),
     },
 
     categtitle: {
