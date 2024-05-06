@@ -20,6 +20,9 @@ const heightScale = height / baseHeight;
 const scaleWidth = (size) => widthScale * size;
 const scaleHeight = (size) => heightScale * size;
 const banner = require('../assets/banner/banner.jpg');
+const scale = size => (width / guidelineBaseWidth) * size;
+const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * factor;
+
 
 
 
@@ -176,7 +179,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
-    },
     scrollView: {
         position: 'absolute',
         bottom: height * 0.75,
