@@ -17,6 +17,7 @@
     "@react-navigation/native": "^6.0.2",
     "expo": "~50.0.17",
     "expo-font": "~11.10.3",
+    "expo-image-picker": "~14.7.1",
     "expo-linking": "~6.2.2",
     "expo-router": "~3.4.10",
     "expo-splash-screen": "~0.26.5",
@@ -33,7 +34,7 @@
     "react-native-screens": "~3.29.0",
     "react-native-web": "~0.19.6",
     "react-router-dom": "^6.23.0",
-    "expo-image-picker": "~14.7.1"
+    "tailwind-rn": "^4.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

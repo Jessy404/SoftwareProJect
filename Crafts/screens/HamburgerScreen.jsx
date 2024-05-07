@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Dimensions, Image, ScrollView, TextInput, FlatL
 import React from 'react'
 import { router } from "expo-router";
 import Icon from 'react-native-vector-icons/Ionicons';
-import { MonoText } from '../components/StyledText';
+// import { MonoText } from '../components/StyledText';
 
 const { width, height } = Dimensions.get('window');
 const guidelineBaseWidth = 350;
@@ -21,7 +21,7 @@ export default function HamburgerScreen() {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.userbutton} onPress={() => router.replace("/NavScreens/user")}>
-        <MonoText style={styles.usertext}>My Profile</MonoText>
+        <Text style={styles.usertext}>My Profile</Text>
         <Image source={userIcon} style={styles.usericon}/>
 
         {/* <Icon name="sign-in" size={24} color="#000" style={styles.usericon} /> */}
