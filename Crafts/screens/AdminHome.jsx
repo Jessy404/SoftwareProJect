@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet, Dimensions, Image, ScrollView, TextInput, FlatList, TouchableOpacity, } from 'react-native';
 import React from 'react';
 import Scroll from '../components/ScrollView/ScrollView';
-import NavBar from "../components/NavBar/NavBar";
-import Hamburger from "../components/Hamburger/Hamburger";
+// import NavBar from "../components/NavBar/NavBar";
+// import Hamburger from "../components/Hamburger/Hamburger";
 import { router } from "expo-router";
 
 
@@ -35,7 +35,7 @@ export default function AdminHome() {
     return (
 
         <View style={styles.container}>
-            <Hamburger style={styles.hamburgerPosition} />
+            {/* <Hamburger style={styles.hamburgerPosition} /> */}
 
             <ScrollView style={styles.scrollView}>
                 <Scroll />
@@ -81,7 +81,7 @@ export default function AdminHome() {
                 style={styles.cardList}
             /> */}
 
-            <NavBar />
+            {/* <NavBar /> */}
 
 
         </View>

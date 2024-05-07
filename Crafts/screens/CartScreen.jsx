@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, FlatList, Image, SafeAreaView, Dimensions, Pressable, Alert } from 'react-native'
 import React, { useState } from 'react'
-import NavBar from '../components/NavBar/NavBar';
+// import NavBar from '../components/NavBar/NavBar';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
 import { addToCart } from '@/firebase/apis/cart';
@@ -93,7 +93,7 @@ export default function CartScreen() {
                 />
             </View>
             <View style={styles.outer}>
-                <NavBar />
+                {/* <NavBar /> */}
             </View>
         </SafeAreaView>
     )

@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Dimensions, Image, ScrollView, TextInput, FlatList, TouchableOpacity, } from 'react-native';
-import NavBar from "../components/NavBar/NavBar";
+// import NavBar from "../components/NavBar/NavBar";
 import React from 'react'
 import { router } from "expo-router";
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -29,7 +29,7 @@ export default function HamburgerScreen() {
       </TouchableOpacity>
 
 
-      <NavBar/>
+      {/* <NavBar/> */}
 
     </View>
   )

@@ -1,7 +1,7 @@
 import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, VeiwMode, TextInput } from 'react-native';
 import React from 'react'
-import NavBar from '../components/NavBar/NavBar';
-import Hamburger from "../components/Hamburger/Hamburger";
+// import NavBar from '../components/NavBar/NavBar';
+// import Hamburger from "../components/Hamburger/Hamburger";
 import { db, auth } from '../firebase/config';
 import { useState } from 'react';
 import { doc, getDoc } from "firebase/firestore";
@@ -143,7 +143,7 @@ export default function User() {
 
 
       </ScrollView>
-      <NavBar />
+      {/* <NavBar /> */}
     </View>
   );
 

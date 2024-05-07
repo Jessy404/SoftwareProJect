@@ -3,7 +3,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Link, useRouter } from 'expo-router';
 import { useState,useEffect } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
-import NavBar from '../components/NavBar/NavBar';
+// import NavBar from '../components/NavBar/NavBar';
 const { width, height } = Dimensions.get('window');
 const guidelineBaseWidth = 350;
 const guidelineBaseHeight = 680;
@@ -154,7 +154,7 @@ export default function Bags() {
           </TouchableOpacity>
         )}
       />
-      <NavBar/>
+      {/* <NavBar/> */}
     </View>
   );
 }
