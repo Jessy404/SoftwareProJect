@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
         bottom: '5%',
         fontWeight: 'bold',
         fontSize: moderateScale(9),
-        color: 'black',
+        // color: 'black',
         backgroundColor: '#FF7315',
         borderRadius: 25,
         color: '#F4F4F4',

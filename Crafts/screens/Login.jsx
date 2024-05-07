@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     position:'relative',
     backgroundColor: "#FF7315",
     top:'100%',
-    width: width * 0.90,
+    width: width * 0.80,
     height: height * 0.04,  
       // borderColor: "gray",
     // borderWidth: 1,

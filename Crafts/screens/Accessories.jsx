@@ -115,9 +115,10 @@ export default function Accessories() {
 
       {/* Display filtered product list */}
       <FlatList
-        numColumns={2}
+        numColumns={1}
         data={filteredProducts}
         keyExtractor={(item) => item.id}
+        key={1}
         renderItem={({ item }) => (
           
           <TouchableOpacity style={styles.productContainer}
@@ -127,21 +128,20 @@ export default function Accessories() {
             <Image source={{ uri: item.image }} style={styles.image} />
             <View style={styles.info}>
               <Text style={styles.name}>{item.name}</Text>
-              <Text style={styles.price}>{item.price}</Text>
               <View style={styles.Buttons}>
                 <View style={styles.productContainer}>
                   <TouchableOpacity style={styles.addtocart} onPress={() => addToCart(item)}>
-                    <FontAwesome name="shopping-cart" size={29} color="#C65BCF" />
-                    <Text style={styles.addtocart}>Add to Cart</Text>
+                    <FontAwesome name="shopping-cart" size={23} color="#FF7315" />
+                    {/* <Text style={styles.addtocart}>Add to Cart</Text> */}
+
                   </TouchableOpacity>
-
-
+                  <Text style={styles.price}>{item.price}</Text>
                   <TouchableOpacity onPress={() => toggleFavorite(item.id)}>
                     {/* Show filled star if favorited, otherwise an empty star */}
                     <FontAwesome name={favorites.includes(item.id) ? 'heart' : 'heart-o'}
-                      size={24}
+                      size={23  }
                       textAlign='center'
-                      color="#874CCC"
+                      color="#FF7315"
                     />
                   </TouchableOpacity>
                 </View>
@@ -176,25 +176,40 @@ const styles = StyleSheet.create({
     color: '#10439F',
     fontSize: 17,
     width: 175,
-    height: 50,
+    // height: 50,
   },
   name: {
     fontSize: 13,
     textAlign: 'center',
-    color: '#10439F',
+    color: '#3A3535',
     fontWeight: "bold",
   },
   productContainer: {
+    width:'100%',
+    // height:'35%',
+    alignSelf: 'center', 
+    backgroundColor: '#F4F4F4',
     padding: 10,
     marginBottom: 1,
     borderRadius: 10,
   },
   price: {
-    fontSize: 15,
+    fontSize: moderateScale(11),
     fontWeight: "bold",
-    textAlign: 'center',
-    color: '#874CCC',
+    // textAlign: 'center',
+    position:'relative',
+    top:'15%',
+    left:'75%',
     fontFamily: 'Lato-Bold',
+    backgroundColor: '#FF7315',
+    borderRadius: 25,
+    color: '#F4F4F4',
+    paddingVertical: 5,
+    paddingHorizontal: 13 ,
+    overflow: 'hidden',
+    width:'25%',
+    alignItems:'center',
+    justifyContent:'center',
   },
   
     texttitle:{
@@ -238,9 +253,12 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: 200,
+    width: "100%",
     height: 200,
     alignSelf: 'center',
+    position:'relative',
+    bottom:'3%',
+    // borderRadius:'50%',
   },
   container: {
     alignItems: "center",
