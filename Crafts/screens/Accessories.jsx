@@ -1,8 +1,12 @@
-import { Image, FlatList, Text, View,  Dimensions, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Image, FlatList, Text, View,  Dimensions,Pressable, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+// import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Link, useRouter } from 'expo-router';
 import { useState,useEffect } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
+import { router } from 'expo-router';
+import Ionicons from '@expo/vector-icons/Ionicons';
+
+
 // import NavBar from '../components/NavBar/NavBar';
 const { width, height } = Dimensions.get('window');
 const guidelineBaseWidth = 350;
@@ -102,12 +106,23 @@ export default function Accessories() {
   return (
 
     <View style={styles.container}>
+
+       <View style={styles.header}>
+                <Pressable
+                    style={styles.BackButton}
+                    onPress={() => router.replace("/(tabs)/home")}
+                >
+                    <Ionicons name="arrow-back" size={28} color="black" />
+                </Pressable>
+                {/* <Text style={styles.Title5}>Accessories Page</Text> */}
+            </View>
       
     
       {/* Search bar */}
       <TextInput
         style={styles.searchBar}
         placeholder="Search...."
+        placeholderTextColor='#3A3535'
         value={searchQuery}
         onChangeText={setSearchQuery}
       />
@@ -161,15 +176,31 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
    
   },
+  header: {
+    flexDirection: 'row',
+    padding: 10,
+    gap: 20,
+},
+Title5: {
+  alignSelf: 'center',
+  fontSize: moderateScale(15),
+  fontWeight: 'bold',
+},
+BackButton: {
+  padding: 10,
+  position:'absolute',
+  right:'42%',
+  bottom:'25%',
+},
   Buttons: {
-    flexDirection: 'row', // Arrange elements horizontally
-    justifyContent: 'space-between', // Distribute space evenly
-    paddingTop: 10, // Optional padding
+    flexDirection: 'row',
+    justifyContent: 'space-between', 
+    paddingTop: 10, 
   },
   row: {
-    flexDirection: 'row', // Horizontal alignment
-    justifyContent: 'space-around', // Space between texts
-    marginBottom: 25, // Optional margin for spacing
+    flexDirection: 'row', 
+    justifyContent: 'space-around', 
+    marginBottom: 25,
   },
   addtocart: {
     justifyContent: 'center',
@@ -245,9 +276,9 @@ const styles = StyleSheet.create({
   searchBar: {
     height: 40,
     width: 300,
-    borderColor: '#10439F',
+    borderColor: '#3A3535',
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 20,
     paddingLeft: 10,
     marginBottom: 16,
   },
