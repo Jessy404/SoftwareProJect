@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, TextInput, Alert, StyleSheet, Text, Pressable } from 'react-native';
 import { db ,auth } from '../firebase/config';
 import { doc, setDoc, addDoc, collection } from 'firebase/firestore';
-import NavBar from '../components/NavBar/NavBar';
+// import NavBar from '../components/NavBar/NavBar';
 const AddProductForm = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');

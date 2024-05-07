@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet, Dimensions, Image, ScrollView, TextInput, FlatList, TouchableOpacity, } from 'react-native';
 import { React, useState } from 'react';
 import Scroll from '../components/ScrollView/ScrollView';
-import NavBar from "../components/NavBar/NavBar";
-import Hamburger from "../components/Hamburger/Hamburger";
+// import NavBar from "../components/NavBar/NavBar";
+// import Hamburger from "../components/Hamburger/Hamburger";
 import { router } from "expo-router";
 import { MonoText } from '../components/StyledText';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -159,7 +159,7 @@ export default function HomeScreen() {
 
             <MonoText style={styles.categtitle}>Discover</MonoText>
             <MonoText style={styles.featuredtitle}>Featured Products</MonoText>
-            <NavBar />
+            {/* <NavBar /> */}
 
         </View>
 
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
 
     scrollView: {
         position: 'absolute',
-        bottom: height * 0.75,
+        bottom: height * 0.71,
     },
     scrollViewStyle: {
 

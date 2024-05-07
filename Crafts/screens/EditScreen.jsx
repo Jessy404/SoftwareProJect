@@ -1,14 +1,14 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
-import NavBar from '../components/NavBar/NavBar';
-import Hamburger from "../components/Hamburger/Hamburger";
+// import NavBar from '../components/NavBar/NavBar';
+// import Hamburger from "../components/Hamburger/Hamburger";
 
 
 export default function EditScreen() {
     return (
         <View style={styles.container}>
-            <NavBar />
-            <Hamburger />
+            {/* <NavBar /> */}
+            {/* <Hamburger /> */}
             <Text style={styles.text}> Hi, From Edit Post Page</Text>
 
         </View>
