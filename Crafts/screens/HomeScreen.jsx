@@ -4,7 +4,7 @@ import Scroll from '../components/ScrollView/ScrollView';
 // import NavBar from "../components/NavBar/NavBar";
 // import Hamburger from "../components/Hamburger/Hamburger";
 import { router } from "expo-router";
-import { MonoText } from '../components/StyledText';
+import { PoppinsText } from '../components/StyledText';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
@@ -105,13 +105,13 @@ export default function HomeScreen() {
         return (
             <TouchableOpacity style={styles.card2} onPress={handleCardPress2}>
             <Image source={item.image} style={styles.cardImage2} />
-            <MonoText style={styles.cardTitle}>{item.title}</MonoText>
-            <MonoText style={styles.cardPrice}>{item.price}</MonoText>
+            <PoppinsText style={styles.cardTitle}>{item.title}</PoppinsText>
+            <PoppinsText style={styles.cardPrice}>{item.price}</PoppinsText>
             <TouchableOpacity onPress={toggleHeartFill}>
                 <Icon
                     name={isHeartFilled ? 'heart' : 'heart-o'}
                     size={19}
-                    color={isHeartFilled ? 'purple' : 'grey'}
+                    color={isHeartFilled ? '#FF7315' : 'grey'}
                     style={styles.heartIcon}
                 />
             </TouchableOpacity>
@@ -157,8 +157,8 @@ export default function HomeScreen() {
                 onChangeText={setSearchQuery}
             />
 
-            <MonoText style={styles.categtitle}>Discover</MonoText>
-            <MonoText style={styles.featuredtitle}>Featured Products</MonoText>
+            <PoppinsText style={styles.categtitle}>Discover</PoppinsText>
+            <PoppinsText style={styles.featuredtitle}>Featured Products</PoppinsText>
             {/* <NavBar /> */}
 
         </View>
@@ -169,7 +169,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: '#F4F4F4',
         alignItems: 'center',
     },
 
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
         bottom: '71%',
         fontWeight: 'bold',
         fontSize: moderateScale(16),
-        color: 'black',
+        color: '#3A3535',
 
     },
     cardTitle:{
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
         bottom: '28%',
         fontWeight: 'bold',
         fontSize: moderateScale(14),
-        color: 'black',
+        color: '#3A3535',
     },
     cardPrice:{
         position: 'absolute',
@@ -214,9 +214,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: moderateScale(9),
         color: 'black',
-        backgroundColor: 'purple',
+        backgroundColor: '#FF7315',
         borderRadius: 25,
-        color: 'white',
+        color: '#F4F4F4',
         paddingVertical: 5,
         paddingHorizontal: 10,
         overflow: 'hidden', 
@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
         bottom: '42%',
         fontWeight: 'bold',
         fontSize: moderateScale(16),
-        color: 'black',
+        color: '#3A3535',
     },   
     heartIcon: {
         // position: 'absolute',
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
         height: '50%',
     },
     card: {
-        backgroundColor: 'white',
+        backgroundColor: '#F4F4F4',
         borderRadius: 20,
         marginHorizontal: 10,
         shadowColor: '#000',
@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
 
     },
     card2: {
-        backgroundColor: 'white',
+        backgroundColor: '#F4F4F4',
         borderRadius: 20,
         marginHorizontal: 10,
         shadowColor: '#000',

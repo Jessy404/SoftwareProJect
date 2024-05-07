@@ -1,4 +1,4 @@
-import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, VeiwMode, TextInput } from 'react-native';
+import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, VeiwMode, TextInput,Pressable } from 'react-native';
 import React from 'react'
 // import NavBar from '../components/NavBar/NavBar';
 // import Hamburger from "../components/Hamburger/Hamburger";
@@ -6,7 +6,12 @@ import { db, auth } from '../firebase/config';
 import { useState } from 'react';
 import { doc, getDoc } from "firebase/firestore";
 import { updateDoc } from "firebase/firestore";
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { router } from 'expo-router';
+import { throttle } from 'lodash';
+
 export default function User() {
+  
 
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
@@ -55,6 +60,12 @@ export default function User() {
     <View style={styles.container1}>
 
       <ScrollView style={styles.container}>
+      <Pressable
+                    style={styles.BackButton}
+                    onPress={() => router.back()}
+                >
+                    <Ionicons name="arrow-back" size={24} color="black" />
+                </Pressable>
         <View style={styles.headerContainer}>
           <View style={styles.profileContainer}>
             <Image
@@ -154,6 +165,9 @@ const styles = {
     flex: 1,
     backgroundColor: '#fff',
   },
+  BackButton: {
+    padding: 50
+},
   container1: {
     flex: 1,
     backgroundColor: '#fff',
