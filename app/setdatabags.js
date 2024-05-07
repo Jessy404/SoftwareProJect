@@ -2,7 +2,7 @@ import { doc, setDoc, collection } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
 async function setUserData() {
-  const usersRef = collection(db, 'Product');
+  const usersRef = collection(db, 'Bags');
   const usersData = [
         {
         id: '1',
@@ -18,7 +18,7 @@ async function setUserData() {
     },
     {
         id: '2',
-        name: 'MATTE OVAL EARRINGS',
+        name: 'HANDHELD BAG',
         price: 'EGP 685.00',
         mainImage: 'https://i.etsystatic.com/18424646/r/il/e44634/5902110444/il_794xN.5902110444_sfuy.jpg',
         additionalImages: [
@@ -105,13 +105,13 @@ async function setUserData() {
     ];
 
    
-        for (const Product of usersData) {
-          await setDoc(doc(usersRef, Product.id), {
-            name: Product.name,
-            price: Product.price,
-            description: Product.description,
-            image: Product.mainImage,
-            additionalImages: Product.additionalImages,
+        for (const Bags of usersData) {
+          await setDoc(doc(usersRef, Bags.id), {
+            name: Bags.name,
+            price:  Bags.price,
+            description:  Bags.description,
+            image:  Bags.mainImage,
+            additionalImages:  Bags.additionalImages,
           });
         }
     
