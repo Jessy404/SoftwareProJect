@@ -15,6 +15,7 @@ async function loadFonts() {
     'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
   });
 }
+
 const products = [
   {
     id: '1',

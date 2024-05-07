@@ -1,7 +1,7 @@
 import { doc, setDoc, collection } from 'firebase/firestore';
 import { db } from '../firebase/config';
 async function setUserData() {
-    const usersRef = collection(db, 'Decore ');
+    const usersRef = collection(db, 'Decore');
     const usersData = [
          {
             id: '1',
@@ -104,10 +104,10 @@ async function setUserData() {
     for (const Decore of usersData) {
         await setDoc(doc(usersRef, Decore.id), {
           name: Decore.name,
-          price: Product.price,
-          description: Product.description,
-          image: Product.mainImage,
-          additionalImages: Product.additionalImages,
+          price: Decore.price,
+          description: Decore.description,
+          image: Decore.mainImage,
+          additionalImages: Decore.additionalImages,
         });
       }
 }
