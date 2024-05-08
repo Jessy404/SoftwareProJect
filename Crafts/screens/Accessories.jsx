@@ -1,7 +1,7 @@
-import { Image, FlatList, Text, View,  Dimensions,Pressable, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { Image, FlatList, Text, View, Dimensions, Pressable, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 // import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Link, useRouter } from 'expo-router';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -15,9 +15,9 @@ const guidelineBaseHeight = 680;
 const scale = size => (width / guidelineBaseWidth) * size;
 const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * factor;
 async function loadFonts() {
-    await Font.loadAsync({
-        'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
-    });
+  await Font.loadAsync({
+    'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
+  });
 }
 const products = [
   {
@@ -39,7 +39,7 @@ const products = [
     name: 'INLAY HOOP EARRINGS',
     price: 'EGP 230.00',
     image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw1b393395/images/large/01_30105430004_1.jpg?sw=663&sh=848&sm=cut',
-   
+
   },
 
   {
@@ -48,7 +48,7 @@ const products = [
     price: 'EGP 320.00',
     image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dweaa8489c/images/large/01_30108020021_1.jpg?sw=663&sh=848&sm=cut'
     ,
- 
+
   },
   {
     id: '5',
@@ -107,17 +107,17 @@ export default function Accessories() {
 
     <View style={styles.container}>
 
-       <View style={styles.header}>
-                <Pressable
-                    style={styles.BackButton}
-                    onPress={() => router.replace("/(tabs)/home")}
-                >
-                    <Ionicons name="arrow-back" size={28} color="black" />
-                </Pressable>
-                {/* <Text style={styles.Title5}>Accessories Page</Text> */}
-            </View>
-      
-    
+      <View style={styles.header}>
+        <Pressable
+          style={styles.BackButton}
+          onPress={() => router.replace("/(tabs)/home")}
+        >
+          <Ionicons name="arrow-back" size={28} color="black" />
+        </Pressable>
+        {/* <Text style={styles.Title5}>Accessories Page</Text> */}
+      </View>
+
+
       {/* Search bar */}
       <TextInput
         style={styles.searchBar}
@@ -135,18 +135,20 @@ export default function Accessories() {
         keyExtractor={(item) => item.id}
         key={1}
         renderItem={({ item }) => (
-          
-          <TouchableOpacity style={styles.productContainer}
+
+          <TouchableOpacity 
             onPress={() => handleNavigation(item.id)}
           >
 
-            <Image source={{ uri: item.image }} style={styles.image} />
-            <View style={styles.info}>
-              <Text style={styles.name}>{item.name}</Text>
-              <View style={styles.Buttons}>
-                <View style={styles.productContainer}>
+
+            <View style={styles.productContainer}>
+              <Image source={{ uri: item.image }} style={styles.image} />
+              <View style={styles.info}>
+              </View>
+                <Text style={styles.name}>{item.name}</Text>
+                {/* <View style={styles.Buttons}> */}
                   <TouchableOpacity style={styles.addtocart} onPress={() => addToCart(item)}>
-                    <FontAwesome name="shopping-cart" size={23} color="#FF7315" />
+                    <FontAwesome name="shopping-cart" size={23} color="#3A3535" />
                     {/* <Text style={styles.addtocart}>Add to Cart</Text> */}
 
                   </TouchableOpacity>
@@ -154,13 +156,11 @@ export default function Accessories() {
                   <TouchableOpacity onPress={() => toggleFavorite(item.id)}>
                     {/* Show filled star if favorited, otherwise an empty star */}
                     <FontAwesome name={favorites.includes(item.id) ? 'heart' : 'heart-o'}
-                      size={23  }
-                      textAlign='center'
-                      color="#FF7315"
+                      size={20}
+                      color="#3A3535"
                     />
                   </TouchableOpacity>
-                </View>
-              </View>
+                {/* </View> */}
             </View>
           </TouchableOpacity>
         )}
@@ -170,96 +170,114 @@ export default function Accessories() {
   );
 }
 const styles = StyleSheet.create({
-
+  container: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: 70,
+    flex: 1,
+    backgroundColor:'#F4F4F4',
+  },
 
   info: {
     justifyContent: 'center',
-   
+    backgroundColor:'#F4F4F4',
+
+
   },
   header: {
     flexDirection: 'row',
     padding: 10,
     gap: 20,
-},
-Title5: {
-  alignSelf: 'center',
-  fontSize: moderateScale(15),
-  fontWeight: 'bold',
-},
-BackButton: {
-  padding: 10,
-  position:'absolute',
-  right:'42%',
-  bottom:'25%',
-},
+  },
+  Title5: {
+    alignSelf: 'center',
+    fontSize: moderateScale(15),
+    fontWeight: 'bold',
+  },
+  BackButton: {
+    padding: 10,
+    position: 'absolute',
+    right: '42%',
+    bottom: '25%',
+  },
   Buttons: {
     flexDirection: 'row',
-    justifyContent: 'space-between', 
-    paddingTop: 10, 
+    justifyContent: 'space-between',
+    paddingTop: 10,
+    backgroundColor:'#F4F4F4',
+
   },
   row: {
-    flexDirection: 'row', 
-    justifyContent: 'space-around', 
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     marginBottom: 25,
   },
   addtocart: {
-    justifyContent: 'center',
-    color: '#10439F',
+    // justifyContent: 'center',
+    color: '#3A3535',
     fontSize: 17,
     width: 175,
+    position:'relative',
+    bottom:'85%',
     // height: 50,
   },
   name: {
-    fontSize: 13,
+    fontSize: moderateScale(14),
     textAlign: 'center',
     color: '#3A3535',
     fontWeight: "bold",
+    backgroundColor:'#F4F4F4',
+
   },
   productContainer: {
-    width:'100%',
+    width: width,
     // height:'35%',
-    alignSelf: 'center', 
+    alignSelf: 'center',
     backgroundColor: '#F4F4F4',
     padding: 10,
-    marginBottom: 1,
+    marginBottom: 10,
     borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 3,
   },
   price: {
     fontSize: moderateScale(11),
     fontWeight: "bold",
-    // textAlign: 'center',
-    position:'relative',
-    top:'15%',
-    left:'75%',
-    fontFamily: 'Lato-Bold',
+    textAlign: 'center',
+    position: 'absolute',
+    top: '94%',
+    right: '1%',
     backgroundColor: '#FF7315',
     borderRadius: 25,
     color: '#F4F4F4',
     paddingVertical: 5,
-    paddingHorizontal: 13 ,
+    paddingHorizontal: 13,
     overflow: 'hidden',
-    width:'25%',
-    alignItems:'center',
-    justifyContent:'center',
+    width: '25%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  
-    texttitle:{
-      fontSize: moderateScale(12),
-      fontWeight: 'bold',
-      color: '#874CCC',
-    },
-    texttitle2:{
-      fontFamily: 'Lato-Bold',
-       color: '#874CCC',
-       fontSize: moderateScale(20),
-       textAlign: 'center',
-       marginVertical: 10,
-       bottom: '0%',
-       width: width,
-       flexDirection:'row',
-       alignItems: 'center', // Align items in the center vertically
-       justifyContent: 'space-between',
-   },
+
+  texttitle: {
+    fontSize: moderateScale(12),
+    fontWeight: 'bold',
+    color: '#874CCC',
+  },
+  texttitle2: {
+    fontFamily: 'Lato-Bold',
+    color: '#874CCC',
+    fontSize: moderateScale(20),
+    textAlign: 'center',
+    marginVertical: 10,
+    bottom: '0%',
+    width: width,
+    flexDirection: 'row',
+    alignItems: 'center', // Align items in the center vertically
+    justifyContent: 'space-between',
+  },
 
   backToHomeText: {
     fontWeight: "bold",
@@ -270,7 +288,7 @@ BackButton: {
     width: 150,
     color: '#874CCC',
     marginLeft: 8,
-    fontFamily: 'Lato-Bold', 
+    fontFamily: 'Lato-Bold',
   },
 
   searchBar: {
@@ -287,16 +305,11 @@ BackButton: {
     width: "100%",
     height: 200,
     alignSelf: 'center',
-    position:'relative',
-    bottom:'3%',
+    position: 'relative',
+    bottom: '3%',
     // borderRadius:'50%',
   },
-  container: {
-    alignItems: "center",
-    justifyContent: "center",
-    paddingTop: 70,
-     flex: 1,
-  },
+  
   description: {
     fontSize: 16,
     textAlign: 'center',
