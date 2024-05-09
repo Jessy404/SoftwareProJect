@@ -1,10 +1,20 @@
-import { StyleSheet, TextInput, Button, Alert, Pressable } from 'react-native';
+import { StyleSheet, TextInput, Button, Alert, Pressable, Dimensions } from 'react-native';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from '../firebase/config';
 import { Text, View } from '@/components/Themed';
 import { useState } from 'react';
 import { Link } from 'expo-router';
 import { doc, setDoc , addDoc , collection} from 'firebase/firestore';
+
+
+const { width, height } = Dimensions.get('window');
+const guidelineBaseWidth = 350;
+const guidelineBaseHeight = 680;
+
+
+const scale = size => (width / guidelineBaseWidth) * size;
+const verticalScale = size => (height / guidelineBaseHeight) * size;
+const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * factor;
 
 export default function Register() {
   const [email, setEmail] = useState("")
@@ -56,14 +66,14 @@ export default function Register() {
         <TextInput
           style={styles.input}
           placeholder="Name"
-          placeholderTextColor="#10439F"
+          placeholderTextColor="#3A3535"
           value={name}
           onChangeText={setName}
         />
         <TextInput
           style={styles.input}
           placeholder="Email"
-          placeholderTextColor="#10439F"
+          placeholderTextColor="#3A3535"
           value={email}
           onChangeText={setEmail}
 
@@ -71,7 +81,7 @@ export default function Register() {
          <TextInput
           style={styles.input}
           placeholder="Phone"
-          placeholderTextColor="#10439F"
+          placeholderTextColor="#3A3535"
           value={phone}
           onChangeText={setPhone}
 
@@ -79,7 +89,7 @@ export default function Register() {
         <TextInput
           style={styles.input}
           placeholder="Password"
-          placeholderTextColor="#10439F"
+          placeholderTextColor="#3A3535"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
@@ -89,14 +99,19 @@ export default function Register() {
             <Text style={styles.buttonText}>Register</Text>
           </Pressable>
           <View style={styles.sideBySide}>
-            <Text fontWeight = "bold">
+            <Text style = {{
+              fontWeight : "bold" ,
+              color:'#3A3535',
+              fontSize: moderateScale(9),
+
+              }}>
               Already have an Email ?
             </Text>
             {/* <Text style={styles.text}>
              "Register Now"
             </Text> */}
 
-            <Link href="Account/login" style={styles.text2}> "LOGIN Now" </Link>
+            <Link href="Account/login" style={styles.text2}> "Sign In Now" </Link>
           </View>
 
         </View>
@@ -111,19 +126,21 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor:'#F4F4F4',
   },
   text2: {
     fontWeight: "bold",
-    color:"#10439F"
+    color:"#3A3535"
   },
   sideBySide: {
-
+    backgroundColor:'#F4F4F4',
     flexDirection: "row",
   },
   title: {
+    fontSize: moderateScale(28),
     fontSize: 60,
     fontWeight: 'bold',
-    color: "#10439F"
+    color: "#3A3535"
   },
   sep: {
     height: "10%",
@@ -137,23 +154,25 @@ const styles = StyleSheet.create({
     gap: 15,
     width: "100%",
     paddingHorizontal: 40,
-    marginBottom: 5
+    marginBottom: 5,
+    backgroundColor:'#F4F4F4',
+
   },
   input: {
     height: 50,
     paddingHorizontal: 20,
-    borderColor: "#10439F",
-    borderWidth: 1,
-    borderRadius: 7
+    borderColor: "#3A3535",
+    borderWidth: 0.5,
+    borderRadius: 20
   },
   button: {
     marginTop: 40,
     marginBottom: 10,
-    backgroundColor: "#10439F",
+    backgroundColor: "#FF7315",
     height: 45,
-    borderColor: "gray",
-    borderWidth: 1,
-    borderRadius: 5,
+    // borderColor: "gray",
+    // borderWidth: 1,
+    borderRadius: 20,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 150,
@@ -165,6 +184,8 @@ const styles = StyleSheet.create({
   },
   buttonView: {
     width: "100%",
-    paddingHorizontal: 50
+    paddingHorizontal: 50,
+    backgroundColor:'#F4F4F4',
+
   },
 });
