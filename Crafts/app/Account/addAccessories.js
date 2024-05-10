@@ -1,7 +1,7 @@
-import AddAccessories  from "../../screens/AddAccessories";
+import AddAccessories from "../Admin/AddAccessories";
 
 export default function addAccess() {
     return (
-        <AddAccessories />
+        < AddAccessories />
     );
 }

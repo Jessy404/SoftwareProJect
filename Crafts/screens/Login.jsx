@@ -4,7 +4,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { auth } from '../firebase/config';
 import { Link, Stack, router } from 'expo-router';
 import { useState } from 'react';
-import {signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 // import profile from './profile';
 
 
@@ -24,19 +24,24 @@ export default function Login() {
 
 
   const handelSignin = () => {
-    // signInWithEmailAndPassword(auth, email, password)
-    //   .then((userCredential) => {
-    //     // Signed in 
-    //     console.log("login done")
-    //     const user = userCredential.user;
-        router.replace("/(tabs)/home")
-        // ...
-      // })
-      // .catch((error) => {
-      //   const errorCode = error.code;
-      //   const errorMessage = error.message;
-      //   console.log(errorMessage);
-      // });
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        // Signed in 
+        console.log("login done")
+        // const user = userCredential.user;
+        if (auth.currentUser.uid == "oPaayaka98e90JVtKWByLoMLQ2z2")
+           {
+          router.replace("/Account/adminHome")
+          }
+        else
+          router.replace("/(tabs)/home")
+
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
   }
   return (
     <View style={styles.container}>
@@ -62,50 +67,50 @@ export default function Login() {
           onChangeText={setPassword}
           secureTextEntry
         />
-        </View>
+      </View>
 
-        
-          {/* <Link href= "Account/forget"  style={styles.text1}> Forget Password </Link> */}
-          <View style={styles.buttonView}>
-            <Pressable style={styles.button} onPress={handelSignin}>
-              <Text style={styles.buttonText}>Sign In</Text>
-            </Pressable>
-          </View>
-          <View style={styles.sideBySide}>
-            {/* <Text style={styles.text1}>
+
+      {/* <Link href= "Account/forget"  style={styles.text1}> Forget Password </Link> */}
+      <View style={styles.buttonView}>
+        <Pressable style={styles.button} onPress={handelSignin}>
+          <Text style={styles.buttonText}>Sign In</Text>
+        </Pressable>
+      </View>
+      <View style={styles.sideBySide}>
+        {/* <Text style={styles.text1}>
               Not a member ?
             </Text> */}
-            {/* <Text style={styles.text}>
+        {/* <Text style={styles.text}>
              "Register Now"
             </Text> */}
-            <Pressable onPress={() => router.replace("Account/signup")}>
-              <Text style={{ 
-                position:'relative',
-                top:'40%',
-                fontWeight: "bold" , 
-                color :"#3A3535" ,
-                // alignItems:'center',
-                justifyContent:'center',
-                backgroundColor:'#F4F4F4',
-                fontSize: moderateScale(9),
-                }}> Register Now </Text>
-            </Pressable>
-            <Pressable onPress={() => router.replace("Account/forget")}>
-              <Text style={{ 
-                position:'relative',
-                top:'50%',
-                fontWeight: "bold" , 
-                color :"#3A3535" ,
-                // alignItems:'center',
-                justifyContent:'center',
-                fontSize: moderateScale(9),
+        <Pressable onPress={() => router.replace("Account/signup")}>
+          <Text style={{
+            position: 'relative',
+            top: '40%',
+            fontWeight: "bold",
+            color: "#3A3535",
+            // alignItems:'center',
+            justifyContent: 'center',
+            backgroundColor: '#F4F4F4',
+            fontSize: moderateScale(9),
+          }}> Register Now </Text>
+        </Pressable>
+        <Pressable onPress={() => router.replace("Account/forget")}>
+          <Text style={{
+            position: 'relative',
+            top: '50%',
+            fontWeight: "bold",
+            color: "#3A3535",
+            // alignItems:'center',
+            justifyContent: 'center',
+            fontSize: moderateScale(9),
 
-                }}>Forget Password</Text>
-            </Pressable>
-            
-          
-        </View>
-      
+          }}>Forget Password</Text>
+        </Pressable>
+
+
+      </View>
+
 
 
     </View>
@@ -121,8 +126,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   text1: {
-    position:'relative',
-    top:'100%',
+    position: 'relative',
+    top: '100%',
     // backgroundColor:'white',
     fontWeight: "bold",
     color: "#3A3535",
@@ -136,12 +141,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingTop: 70,
     flex: 1,
-    backgroundColor:'#F4F4F4',
+    backgroundColor: '#F4F4F4',
   },
   inputView: {
     gap: 20,
     width: "100%",
-    backgroundColor:'#F4F4F4',
+    backgroundColor: '#F4F4F4',
     paddingHorizontal: 40,
     marginBottom: 5
   },
@@ -154,17 +159,17 @@ const styles = StyleSheet.create({
   },
 
   sideBySide: {
-    position:'relative',
-    top:'6%',
+    position: 'relative',
+    top: '6%',
     // justifyContent:'center',
     // flexDirection: "row",
-    backgroundColor:'#F4F4F4',
-    justifyContent:'center',
+    backgroundColor: '#F4F4F4',
+    justifyContent: 'center',
 
   },
   title: {
-    position:'relative',
-    bottom:'10%',
+    position: 'relative',
+    bottom: '10%',
     fontSize: moderateScale(28),
     fontWeight: 'bold',
     color: "#3A3535",
@@ -172,12 +177,12 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    position:'relative',
+    position: 'relative',
     backgroundColor: "#FF7315",
-    top:'100%',
+    top: '100%',
     width: width * 0.80,
-    height: height * 0.04,  
-      // borderColor: "gray",
+    height: height * 0.04,
+    // borderColor: "gray",
     // borderWidth: 1,
     borderRadius: 20,
     alignItems: "center",
@@ -193,7 +198,7 @@ const styles = StyleSheet.create({
   buttonView: {
     // width: "100%",
     paddingHorizontal: 50,
-    backgroundColor:'#F4F4F4',
+    backgroundColor: '#F4F4F4',
   },
 
   separator: {
