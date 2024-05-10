@@ -149,13 +149,6 @@ const styles = StyleSheet.create({
         paddingVertical: moderateScale(25), // Adjust the value as needed for your design
       },
 
-    //   scroll:{
-    //     position:'relative',
-    //     bottom:'50%',
-
-
-    //   },
-
 })
 
 export default Home;

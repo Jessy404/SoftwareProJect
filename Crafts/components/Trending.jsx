@@ -4,17 +4,16 @@ import * as Animatable from "react-native-animatable";
 import {
   FlatList,
   Image,
-  ImageBackground,
   TouchableOpacity,
   View,
   Text,
   StyleSheet,
   Dimensions,
 } from "react-native";
-
+import { useRouter } from 'expo-router';
 import { icons } from "../constants";
 
-// Get the full width of the device
+
 const { width, height } = Dimensions.get('window');
 
 const zoomIn = {
@@ -35,22 +34,19 @@ const zoomOut = {
   },
 };
 
-// Card component
 const Card = ({ item }) => {
   return (
     <View style={styles.card}>
       <Image
         source={{ uri: item.image }}
         style={styles.cardImage}
-        resizeMode="cover" // This will ensure the image covers the available space
+        resizeMode="cover"
       />
       <Text style={styles.cardTitle}>{item.title}</Text>
-      {/* Add more details as needed */}
     </View>
   );
 };
 
-// Styles for the card
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#F4F4F4',
@@ -75,23 +71,40 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginTop: 10,
   },
-  // ... other styles remain unchanged
 });
 
 const TrendingItem = ({ activeItem, item }) => {
+  const router = useRouter();
+
+  const handleCardPress = () => {
+    let path;
+    for (let i = 1; i <= 4; i++) {
+      if (item.id === `${i}`) {
+        if (i === 1) {
+          path = '/RenderProducts/render';
+        } else if (i === 2) {
+          path = '/RenderProducts/render2';
+        } else {
+          path = '/RenderProducts/render';
+        }
+        break;
+      }
+    }
+    router.replace(path);
+  };
+
   return (
     <Animatable.View
       animation={activeItem === item.$id ? zoomIn : zoomOut}
       duration={500}
       useNativeDriver={true}
     >
-      <TouchableOpacity>
+      <TouchableOpacity onPress={handleCardPress}>
         <Card item={item} />
       </TouchableOpacity>
     </Animatable.View>
   );
 };
-
 
 const Trending = ({ posts }) => {
   const [activeItem, setActiveItem] = useState(posts[2]);

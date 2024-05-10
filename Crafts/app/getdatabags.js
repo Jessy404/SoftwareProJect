@@ -3,7 +3,7 @@
 
 // async function getProducts() {
 
-// const querySnapshot = await getDoc(collection(db, "Product"));
+// const querySnapshot = await getDoc(collection(db, "categoryone"));
 // querySnapshot.forEach((doc) => {
 //   console.log(doc.id, " => ", doc.products());
 // });
