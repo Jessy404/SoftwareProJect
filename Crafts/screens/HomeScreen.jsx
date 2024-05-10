@@ -6,6 +6,7 @@ import Scroll from '../components/ScrollView/ScrollView';
 import { router } from "expo-router";
 import { PoppinsText } from '../components/StyledText';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { SafeAreaView } from "react-native-safe-area-context";
 
 
 
@@ -124,7 +125,7 @@ export default function HomeScreen() {
     return (
 
 
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
 
             {/* <Hamburger style={styles.hamburgerPosition} /> */}
             <FlatList
@@ -161,7 +162,7 @@ export default function HomeScreen() {
             <PoppinsText style={styles.featuredtitle}>Featured Products</PoppinsText>
             {/* <NavBar /> */}
 
-        </View>
+        </SafeAreaView>
 
     );
 }

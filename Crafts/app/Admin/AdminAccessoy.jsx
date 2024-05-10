@@ -16,7 +16,7 @@ const scale = size => (width / guidelineBaseWidth) * size;
 const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * factor;
 async function loadFonts() {
   await Font.loadAsync({
-    'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
+    'Lato-Bold': require('@/assets/fonts/Lato-Bold.ttf'),
   });
 }
 const products = [
@@ -106,26 +106,33 @@ export default function Accessories() {
   return (
 
     <View style={styles.container}>
-
+    <View  style ={styles.sideBySide}>
       <View style={styles.header}>
         <Pressable
           style={styles.BackButton}
-          onPress={() => router.replace("/(tabs)/home")}
+          onPress={() => router.replace("/Account/adminHome")}
         >
           <Ionicons name="arrow-back" size={28} color="black" />
         </Pressable>
-        {/* <Text style={styles.Title5}>Accessories Page</Text> */}
-      </View>
-
-
-      {/* Search bar */}
-      <TextInput
+        </View>
+    
+        <TextInput
         style={styles.searchBar}
         placeholder="Search...."
         placeholderTextColor='#3A3535'
         value={searchQuery}
         onChangeText={setSearchQuery}
       />
+        <Pressable style={styles.button} onPress={() => router.replace("Account/addAccessories")}>
+          <Text style={styles.buttonText}> Add new </Text>
+        </Pressable>
+
+      </View>
+     
+
+
+      {/* Search bar */}
+   
 
 
       {/* Display filtered product list */}
@@ -177,11 +184,24 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor:'#F4F4F4',
   },
-
+  header: {
+    flexDirection: 'row',
+    padding: 10,
+    // gap: 20,
+  },
   info: {
     justifyContent: 'center',
     backgroundColor:'#F4F4F4',
 
+
+  },
+  sideBySide: {
+    // position: 'relative',
+    // justifyContent:'center',
+    flexDirection: "row",
+    backgroundColor: '#F4F4F4',
+    // justifyContent: 'center',
+    marginBottom : 60 ,
 
   },
   header: {
@@ -207,6 +227,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#F4F4F4',
 
   },
+  
   row: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -259,6 +280,24 @@ const styles = StyleSheet.create({
     width: '25%',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  button: {
+    fontSize: moderateScale(11),
+    fontWeight: "bold",
+    textAlign: 'center',
+    // position: ,
+    // top: '94%',
+    right: '1%',
+    backgroundColor: '#FF7315',
+    borderRadius: 25,
+    color: '#F4F4F4',
+    // paddingVertical: 5,
+    paddingHorizontal: 13,
+    overflow: 'hidden',
+    // width: '25%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  paddingRight :5 ,
   },
 
   texttitle: {
@@ -335,17 +374,17 @@ const styles = StyleSheet.create({
     color: "#0E46A3",
   },
 
-  button: {
-    backgroundColor: "#0E46A3",
-    height: 45,
-    borderColor: "gray",
-    borderWidth: 1,
-    borderRadius: 5,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 10,
-    marginBottom: 10
-  },
+//   button: {
+//     backgroundColor: "#0E46A3",
+//     height: 45,
+//     borderColor: "gray",
+//     borderWidth: 1,
+//     borderRadius: 5,
+//     alignItems: "center",
+//     justifyContent: "center",
+//     marginTop: 10,
+//     marginBottom: 10
+//   },
   buttonText: {
     color: "white",
     fontSize: 18,

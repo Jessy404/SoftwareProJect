@@ -1,9 +1,8 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import EditScreen from '../../screens/EditScreen'
-
+import UploadScreen from '../Admin/UploadScreen'
 export default function edit() {
   return (
-    <EditScreen/>
+    <UploadScreen/>
   )
 }

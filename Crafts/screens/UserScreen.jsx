@@ -1,7 +1,7 @@
-import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, VeiwMode, TextInput,Pressable } from 'react-native';
+import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, VeiwMode, TextInput, Pressable } from 'react-native';
 import React from 'react'
-// import NavBar from '../components/NavBar/NavBar';
-// import Hamburger from "../components/Hamburger/Hamburger";
+import NavBar from '../components/NavBar/NavBar';
+import Hamburger from "../components/Hamburger/Hamburger";
 import { db, auth } from '../firebase/config';
 import { useState } from 'react';
 import { doc, getDoc } from "firebase/firestore";
@@ -9,9 +9,10 @@ import { updateDoc } from "firebase/firestore";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
 import { throttle } from 'lodash';
-
+import { SafeAreaView } from 'react-native-safe-area-context';
+import UploadImageToFirebase from '@/app/Admin/UploadScreen';
 export default function User() {
-  
+
 
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
@@ -33,7 +34,7 @@ export default function User() {
     setVeiwMode(false);
   }
   const handleSavePress = () => {
-    updateUserData ();
+    updateUserData();
     setVeiwMode(true);
   }
 
@@ -53,24 +54,27 @@ export default function User() {
       console.log("No such document!");
     }
   }
-{
-  VeiwMode ? getUser() : null
-}
+  {
+    VeiwMode ? getUser() : null
+  }
   return (
     <View style={styles.container1}>
+      <>
 
+      </>
       <ScrollView style={styles.container}>
-      <Pressable
-                    style={styles.BackButton}
-                    onPress={() => router.back()}
-                >
-                    <Ionicons name="arrow-back" size={24} color="black" />
-                </Pressable>
+        <Pressable
+          style={styles.BackButton}
+          onPress={() => router.replace("/(tabs)/home")}
+        >
+          <Ionicons name="arrow-back" size={24} color="black" />
+        </Pressable>
         <View style={styles.headerContainer}>
           <View style={styles.profileContainer}>
+
             <Image
               style={styles.profilePhoto}
-              source={{ uri: 'https://i.pinimg.com/564x/d1/fa/c1/d1fac1931c956c908f6b183e39097a88.jpg' }}
+              source={{ uri: 'https://i.pinimg.com/564x/ec/e2/47/ece24715b797dadf57292752cf502cab.jpg' }}
 
             />
             {/* <Text style={styles.nameText}>
@@ -80,24 +84,6 @@ export default function User() {
           </View>
         </View>
 
-        {/* <View style={styles.statsContainer}>
-          <View style={styles.statContainer}>
-            <Text style={styles.statLabel}>Posts</Text>
-            <Text style={styles.statCount}>1234</Text>
-
-          </View>
-          <View style={styles.statContainer}>
-            <Text style={styles.statLabel}>orders</Text>
-            <Text style={styles.statCount}>555 </Text>
-
-          </View>
-          <View style={styles.statContainer}>
-            <Text style={styles.statLabel}>Following</Text>
-            <Text style={styles.statCount}>9101</Text>
-
-          </View>
-          <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-        </View> */}
 
 
         {
@@ -106,11 +92,11 @@ export default function User() {
               <View style={styles.DataView}>
                 <Text style={styles.nameText1}> User NAME :</Text>
                 <Text style={styles.nameText}> {name}</Text>
-                 </View>
+              </View>
               <View style={styles.DataView}>
                 <Text style={styles.nameText1}> EMAIL : </Text>
                 <Text style={styles.nameText}>{email} </Text>
-                 </View>
+              </View>
               <View style={styles.DataView}>
                 <Text style={styles.nameText1}>PHONE : </Text>
                 <Text style={styles.nameText}>{phone} </Text>
@@ -122,20 +108,17 @@ export default function User() {
           ) :
             (
               <>
-                <TextInput
+                <View style={styles.DataView}>
+                  <Text style={styles.nameText1}> EMAIL : </Text>
+                  <Text style={styles.nameText}>{email} </Text>
+                </View>
+              <SafeAreaView style={styles.inputView}>
+              <TextInput
                   style={styles.input}
                   placeholder="Name"
                   placeholderTextColor="#10439F"
                   value={name}
                   onChangeText={setName}
-                />
-                <TextInput
-                  style={styles.input}
-                  placeholder="Email"
-                  placeholderTextColor="#10439F"
-                  value={email}
-                  onChangeText={setEmail}
-
                 />
                 <TextInput
                   style={styles.input}
@@ -145,6 +128,7 @@ export default function User() {
                   onChangeText={setPhone}
 
                 />
+              </SafeAreaView>
                 <TouchableOpacity style={styles.button} onPress={handleSavePress}>
                   <Text style={styles.buttonText}>Save</Text>
                 </TouchableOpacity>
@@ -167,7 +151,7 @@ const styles = {
   },
   BackButton: {
     padding: 50
-},
+  },
   container1: {
     flex: 1,
     backgroundColor: '#fff',
@@ -180,24 +164,30 @@ const styles = {
     flex: 1,
   },
   DataView: {
-    // backgroundColor: "#FFB5DA",
+    // backgroundColor: "#F4F4F4",
     paddingTop: 20,
     paddingBottom: 20,
-    marginHorizontal: 20,
+    marginHorizontal: 40,
     marginTop: 5,
     flexDirection: "row",
     marginBottom: 5,
-    //  borderWidth: 1,
-    // borderColor: "#10439F" ,
-    // borderRadius: 150,
+    gap: 20,
+    borderRadius: 150,
+  },
+  inputView: {
+    gap: 20,
+    width: "100%",
+    paddingHorizontal: 40,
+    marginBottom: 5
   },
   input: {
     height: 50,
     paddingHorizontal: 20,
-    // borderColor: "#10439F",
-    borderWidth: 1,
-    borderRadius: 7,
-    marginBottom: 10,
+    // borderColor: "#3A3535",
+    borderWidth: 0.5,
+    borderRadius: 150 ,
+    // backgroundColor: '#F4F4F4',
+
   },
   coverPhoto: {
     width: '100%',
@@ -228,7 +218,7 @@ const styles = {
     // fontWeight: 'bold',
     marginTop: 10,
     // color :"#10439F",
-    marginHorizontal: 20,
+    // marginHorizontal: 20,
 
 
   },
@@ -254,7 +244,7 @@ const styles = {
     // fontWeight :"bold"
   },
   button: {
-    backgroundColor: '#10439F',
+    backgroundColor: '#FF7315',
     borderRadius: 5,
     padding: 10,
     marginHorizontal: 20,
