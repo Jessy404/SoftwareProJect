@@ -81,7 +81,7 @@ export default function CartScreen() {
                 >
                     <Ionicons name="arrow-back" size={24} color="black" />
                 </Pressable>
-                <Text style={styles.Title}>Cart Page</Text>
+                {/* <Text style={styles.Title}>Cart Page</Text> */}
             </View>
             <View style={styles.FlatListContiner}>
                 <FlatList
@@ -136,14 +136,14 @@ const CartItem = ({ item, setCartItems, cartItems }) => {
 
                     >
                         <Text>Delete</Text>
-                        <Ionicons name="close-circle-outline" size={24} color="red" />
+                        <Ionicons name="close-circle-outline" size={24} color="#3A3535" />
                     </Pressable>
                     <Pressable
                         style={styles.CarBtn}
                         onPress={handledIncreaseQuantity}
                     >
                         <Text>Add More</Text>
-                        <Ionicons name="add-circle-sharp" size={24} color="blue" />
+                        <Ionicons name="add-circle-sharp" size={24} color="#FF7315" />
                     </Pressable>
                 </View>
             </View>
@@ -163,6 +163,7 @@ const styles = StyleSheet.create({
         flex: 1,
         width: width,
         height: height,
+        backgroundColor:'#F4F4F4',
     },
     header: {
         flexDirection: 'row',

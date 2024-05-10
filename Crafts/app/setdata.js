@@ -1,112 +1,109 @@
 import { doc, setDoc, collection } from "firebase/firestore";
 import { db } from "../firebase/config";
 
-async function setUserData() {
-    const usersRef = collection(db, "products");
+async function setProductrData() {
+    const usersRef = collection(db, "categoryone");
     const usersData = [
 
         {
             id: '1',
-            name: 'TEXTURED DROP EARRINGS',
+            title: 'TEXTURED DROP EARRINGS',
             price: 'EGP 220.00',
-            mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw77c7e0a6/images/large/03_30105460021_2.jpg?sw=663&sh=848&sm=cut',
-            additionalImages: [
-                'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw6dffdebf/images/large/01_30105460021_1.jpg?sw=663&sh=848&sm=cut',
-                'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwf43f6b13/images/large/05_30105460021_5.jpg?sw=663&sh=848&sm=cut',
-            ],
+            image1:'https://i.etsystatic.com/11706858/r/il/50d7e7/3505978851/il_600x600.3505978851_70rd.jpg',
+            image2:'https://i.etsystatic.com/11706858/r/il/b03a43/3505985437/il_794xN.3505985437_rvqd.jpg',
+            image3:'https://i.etsystatic.com/11706858/r/il/f4e297/3505981137/il_794xN.3505981137_9qv6.jpg',
+            image4:'https://i.etsystatic.com/11706858/r/il/213d23/3458315676/il_794xN.3458315676_kqhx.jpg',
+
+            
             description: 'Beautiful textured drop earrings perfect for any occasion.',
         },
         {
             id: '2',
-            name: 'MATTE OVAL EARRINGS',
+            title: 'MATTE OVAL EARRINGS',
             price: 'EGP 185.00',
-            mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw6c9d4ae9/images/large/02_30103170008_2.jpg?sw=663&sh=848&sm=cut',
-            additionalImages: [
-                'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw3d328a7c/images/large/01_30103170008_1.jpg?sw=663&sh=848&sm=cut',
-                'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwea97f116/images/large/05_30103170008_5.jpg?sw=663&sh=848&sm=cut',
-            ],
+            image1:'https://i.etsystatic.com/21615986/r/il/25e554/4302097936/il_600x600.4302097936_mwl3.jpg',
+            image2:'https://i.etsystatic.com/21615986/r/il/847fe2/4296926046/il_794xN.4296926046_q4xr.jpg',
+            image3:'https://i.etsystatic.com/21615986/r/il/ec05dd/4344314267/il_794xN.4344314267_girf.jpg',
+            image4:'https://i.etsystatic.com/21615986/r/il/c974f9/4296926318/il_794xN.4296926318_n7l4.jpg',
+
             description: 'MATTE OVAL EARRINGS',
         },
         {
             id: '3',
-            name: 'INLAY HOOP EARRINGS',
+            title: 'INLAY HOOP EARRINGS',
             price: 'EGP 230.00',
-            mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwf0e21880/images/large/03_30105430004_2.jpg?sw=663&sh=848&sm=cut',
-            additionalImages: [
-                'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwccc104e1/images/large/05_30105430004_5.jpg?sw=1920&sh=2460&sm=cut',
-                'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw1b393395/images/large/01_30105430004_1.jpg?sw=663&sh=848&sm=cut',
-            ],
+            image1:'https://i.etsystatic.com/18218740/r/il/5aadea/4940932423/il_600x600.4940932423_2ppc.jpg',
+            image2:'https://i.etsystatic.com/18218740/r/il/3a6f9b/4940932543/il_794xN.4940932543_qmne.jpg',
+            image3:'https://i.etsystatic.com/18218740/r/il/bbf63b/4940932597/il_794xN.4940932597_gvv0.jpg',
+            image4:'https://i.etsystatic.com/18218740/r/il/51d370/4892667268/il_794xN.4892667268_2blt.jpg',
+
             description: 'MOTHER OF PEARL INLAY HOOP EARRINGS',
         },
         {
             id: '4',
-            name: '2-PACK SEED BEAD RINGS',
+            title: '2-PACK SEED BEAD RINGS',
             price: 'EGP 320.00',
-            mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwf0e21880/images/large/03_30105430004_2.jpg?sw=663&sh=848&sm=cut',
-            additionalImages: [
-                'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwccc104e1/images/large/05_30105430004_5.jpg?sw=1920&sh=2460&sm=cut',
-                'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw1b393395/images/large/01_30105430004_1.jpg?sw=663&sh=848&sm=cut',
-            ],
+            image1:'https://i.etsystatic.com/36391007/r/il/def73b/5814565418/il_600x600.5814565418_bhhr.jpg',
+            image2:'https://i.etsystatic.com/36391007/r/il/78e75a/5814565660/il_794xN.5814565660_1liq.jpg',
+            image3:'https://i.etsystatic.com/36391007/r/il/609ddf/5862647191/il_794xN.5862647191_jmuj.jpg',
+            image4:'https://i.etsystatic.com/36391007/r/il/023b1b/5862646963/il_794xN.5862646963_dlar.jpg',
             description: 'MOTHER OF PEARL INLAY HOOP EARRINGS',
 
         },
         {
             id: '5',
-            name: '3-PACK MOLTEN STUDS',
+            title: '3-PACK MOLTEN STUDS',
             price: 'EGP 230.00',
-            mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw59e292ee/images/large/02_30105540008_2.jpg?sw=663&sh=848&sm=cut',
-            additionalImages: [
-                'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwed021d96/images/large/01_30105540008_1.jpg?sw=663&sh=848&sm=cut',
-                'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw73a593fb/images/large/05_30105540008_5.jpg?sw=663&sh=848&sm=cut',
-            ],
+            image1:'https://i.etsystatic.com/37700854/c/2000/2000/558/0/il/948f49/4172186860/il_600x600.4172186860_2uf1.jpg',
+            image2:'https://i.etsystatic.com/37700854/r/il/948f49/4172186860/il_794xN.4172186860_2uf1.jpg',
+            image3:'https://i.etsystatic.com/37700854/r/il/ba2195/4377711507/il_794xN.4377711507_oirh.jpg',
+            image4:'https://i.etsystatic.com/37700854/r/il/e3b9d6/4219627059/il_794xN.4219627059_t47c.jpg',
             description: 'Set in molten gold-tone metal, these studs display twinkly, faceted stones in oceanic hues. Just add sunshineNon-refundable.',
         },
         {
             id: '6',
-            name: 'MOLTEN DROP EARRINGS',
+            title: 'MOLTEN DROP EARRINGS',
             price: 'EGP 185.00',
-            mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwc75119c8/images/large/01_30108050021_1.jpg?sw=663&sh=848&sm=cut',
-            additionalImages: [
-                'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw85570527/images/large/03_30108050021_2.jpg?sw=663&sh=848&sm=cut',
-                'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwb74475df/images/large/05_30108050021_5.jpg?sw=663&sh=848&sm=cut',
-            ],
+            image1:'https://i.etsystatic.com/5358616/r/il/82dc32/5562206613/il_600x600.5562206613_qbjf.jpg',
+            image2:'https://i.etsystatic.com/5358616/r/il/61c3fe/4333846104/il_794xN.4333846104_ejdj.jpg',
+            image3:'https://i.etsystatic.com/5358616/r/il/a6a187/4333846150/il_794xN.4333846150_lc87.jpg',
+            image4:'https://i.etsystatic.com/5358616/r/il/4aa126/4381241391/il_794xN.4381241391_3lgg.jpg',
             description: 'Mesmerising molten cascades from these earrings, designed in gold-tone metal. Tuck your hair behind your ears to show them off Non-refundable',
         },
         {
             id: '7',
-            name: 'LEAF DROP ANKLET',
+            title: 'LEAF DROP ANKLET',
             price: 'EGP 140.00',
-            mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw403ddfec/images/large/01_30100360008_1.jpg?sw=663&sh=848&sm=cut',
-            additionalImages: [
-                'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw8df0cebd/images/large/03_30100360008_2.jpg?sw=663&sh=848&sm=cut',
-                'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw53e481d7/images/large/05_30100360008_5.jpg?sw=663&sh=848&sm=cut',
-            ],
+            image1:'https://i.etsystatic.com/8878834/r/il/beecf6/1832450558/il_794xN.1832450558_hzb2.jpg',
+            image2:'https://i.etsystatic.com/8878834/r/il/f37e12/1879922165/il_794xN.1879922165_tug1.jpg',
+            image3:'https://i.etsystatic.com/8878834/r/il/e9ba4a/1832450850/il_794xN.1832450850_4bxo.jpg',
+            image4:'https://i.etsystatic.com/8878834/r/il/8bc4eb/1879922411/il_794xN.1879922411_pvpk.jpg',
 
             description: ' Which way to the beach? Stationed with leafy charms green beads, this anklet is designed in shiny gold-tone metal.',
         },
         {
             id: '8',
-            name: 'RESIN INLAY DROP EARRINGS',
+            title: 'RESIN INLAY DROP EARRINGS',
             price: 'EGP 250.00',
-            mainImage: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw56ecb162/images/large/01_30105410008_1.jpg?sw=663&sh=848&sm=cut',
-            additionalImages: [
-                'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw5eabf6c1/images/large/03_30105410008_2.jpg?sw=663&sh=848&sm=cut',
-                'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw3051c037/images/large/05_30105410008_5.jpg?sw=663&sh=848&sm=cut',
-            ],
+            image1:'https://i.etsystatic.com/37780115/r/il/a7a5b9/5716301342/il_794xN.5716301342_46yz.jpg',
+            image2:'https://i.etsystatic.com/37780115/r/il/55f5bb/5716150024/il_794xN.5716150024_7u8c.jpg',
+            image3:'https://i.etsystatic.com/37780115/r/il/05e1a5/5716149812/il_794xN.5716149812_e5u1.jpg',
+            image4:'https://i.etsystatic.com/37780115/r/il/091ba2/5716150070/il_794xN.5716150070_4ale.jpg',
+
             description: 'Keep it contemporary with these resin hoop earrings. The sage green hoop charm boasts a gold-tone inlay, hanging from a simple molten stud.Non-refundable.',
         },
 
     ];
 
-    for (const products of usersData) {
-        await setDoc(doc(usersRef, products.id.toString()), {
-            name: products.name,
-            price: products.price,
-            description: products.description,
-            image: products.mainImage,
-            additionalImage: products.additionalImages
+    for (const categoryone of usersData) {
+        await setDoc(doc(usersRef, categoryone.id.toString()), {
+            title: categoryone.title,
+            price: categoryone.price,
+            description: categoryone.description,
+            image1: categoryone.image1,
+            image2: categoryone.image2
         });
     }
 }
 
-setUserData();
+setProductrData();

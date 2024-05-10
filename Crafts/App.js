@@ -5,7 +5,7 @@ import {
 } from "react-native";
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView className="" >
       <StatusBar style="dark" />
     </SafeAreaView>
   );
