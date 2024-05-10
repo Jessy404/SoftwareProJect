@@ -1,11 +1,9 @@
-import { Image, FlatList, Text, View, Dimensions, Pressable, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
-// import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Image, FlatList, Pressable, Text, View, Dimensions, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Link, useRouter } from 'expo-router';
 import { useState, useEffect } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
-import { router } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
-
 
 // import NavBar from '../components/NavBar/NavBar';
 const { width, height } = Dimensions.get('window');
@@ -13,24 +11,25 @@ const guidelineBaseWidth = 350;
 const guidelineBaseHeight = 680;
 
 const scale = size => (width / guidelineBaseWidth) * size;
+
 const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * factor;
 async function loadFonts() {
   await Font.loadAsync({
     'Lato-Bold': require('@/assets/fonts/Lato-Bold.ttf'),
   });
 }
-const products = [
+const Product = [
   {
     id: '1',
-    name: 'TEXTURED DROP EARRINGS',
-    price: 'EGP 220.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw77c7e0a6/images/large/03_30105460021_2.jpg?sw=663&sh=848&sm=cut',
+    name: 'CROSS-BODY BAG',
+    price: 'EGP 1700.00',
+    image: 'https://img.freepik.com/premium-photo/woman-holding-blue-white-purse-street-corner-with-blue-wall-her-blue_961147-44091.jpg?w=996',
   },
   {
     id: '2',
-    name: 'MATTE OVAL EARRINGS',
-    price: 'EGP 185.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw6c9d4ae9/images/large/02_30103170008_2.jpg?sw=663&sh=848&sm=cut',
+    name: 'HANDHELD BAG ',
+    price: 'EGP 685.00',
+    image: 'https://i.etsystatic.com/18424646/r/il/e44634/5902110444/il_794xN.5902110444_sfuy.jpg',
 
 
   },
@@ -38,75 +37,75 @@ const products = [
     id: '3',
     name: 'INLAY HOOP EARRINGS',
     price: 'EGP 230.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw1b393395/images/large/01_30105430004_1.jpg?sw=663&sh=848&sm=cut',
+    image: 'https://img.freepik.com/free-photo/colorful-kitted-bag-by-window_23-2150709557.jpg?t=st=1714907630~exp=1714911230~hmac=c3f838bb2b1b2b28d6af0a1f0ed42b02609702d76742fbb572e460490ab408fd&w=996',
 
   },
 
   {
     id: '4',
-    name: '2-PACK SEED BEAD RINGS',
-    price: 'EGP 320.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dweaa8489c/images/large/01_30108020021_1.jpg?sw=663&sh=848&sm=cut'
+    name: 'A pink purse with white flower',
+    price: 'EGP 1600.00',
+    image: 'https://img.freepik.com/premium-photo/pink-purse-with-white-flowers-it-sitting-wooden-bench-plant-wooden-fence_961147-20023.jpg?w=740'
     ,
 
   },
   {
     id: '5',
-    name: '3-PACK MOLTEN STUDS',
-    price: 'EGP 230.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwf6271341/images/large/03_30105420008_2.jpg?sw=663&sh=848&sm=cut',
+    name: 'Beautiful and modern handmade',
+    price: 'EGP 999.00',
+    image: 'https://img.freepik.com/premium-photo/beautiful-modern-handmade-knitted-bag-with-intricate-patterns-textures_670421-23943.jpg?w=1060',
   },
   {
     id: '6',
     name: 'MOLTEN DROP EARRINGS',
     price: 'EGP 185.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwc75119c8/images/large/01_30108050021_1.jpg?sw=663&sh=848&sm=cut',
+    image: 'https://img.freepik.com/free-photo/mediterranean-aesthetics-bag-still-life_23-2151141483.jpg?t=st=1714911653~exp=1714915253~hmac=636528933c8bda3bbca2c63f902d30ef5df87ff6551482cdd0cd0bc2c1fdc887&w=360',
   },
   {
     id: '7',
-    name: 'LEAF DROP ANKLET',
-    price: 'EGP 140.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw403ddfec/images/large/01_30100360008_1.jpg?sw=663&sh=848&sm=cut',
+    name: 'Tote bags',
+    price: 'EGP 290.00',
+    image: 'https://i.imgur.com/K5X9fyb.png',
   },
   {
     id: '8',
-    name: 'RESIN INLAY DROP EARRINGS',
-    price: 'EGP 250.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw56ecb162/images/large/01_30105410008_1.jpg?sw=663&sh=848&sm=cut',
+    name: ' Crochet Bag',
+    price: 'EGP 380.00',
+    image: 'https://i.imgur.com/M4HL4mm.png',
   },
 ];
-export default function Accessories() {
+export default function Bags() {
   const [searchQuery, setSearchQuery] = useState(''); // State to store search input
   const [favorites, setFavorites] = useState([]);
   const [cart, setCart] = useState([]); // State to track cart items
-  const [accessories, setAccessories] = useState(products);
+  const [bags, setBags] = useState(Product);
   const router = useRouter();
 
-  const handleNavigation = (productId) => {
-    router.push(`/accessories/${productId}`); // Navigate to the product detail page
+  const handleNavigation = (ProductId) => {
+    router.push(`/bags/${ProductId}`); // Navigate to the product detail page
   };
 
-  const addToCart = (product) => {
-    setCart([...cart, product]); // Add the product to the cart
+  const addToCart = (Product) => {
+    setCart([...cart, Product]); // Add the product to the cart
   };
-  const toggleFavorite = (productId) => {
-    if (favorites.includes(productId)) {
-      setFavorites(favorites.filter((id) => id !== productId)); // Remove from favorites
+  const toggleFavorite = (ProductId) => {
+    if (favorites.includes(ProductId)) {
+      setFavorites(favorites.filter((id) => id !== ProductId)); // Remove from favorites
     } else {
-      setFavorites([...favorites, productId]); // Add to favorites
+      setFavorites([...favorites, ProductId]); // Add to favorites
     }
 
   };
 
   // Filter the products based on the search query
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredProducts = Product.filter((Product) =>
+    Product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
 
     <View style={styles.container}>
-    <View  style ={styles.sideBySide}>
+
       <View style={styles.header}>
         <Pressable
           style={styles.BackButton}
@@ -114,60 +113,50 @@ export default function Accessories() {
         >
           <Ionicons name="arrow-back" size={28} color="black" />
         </Pressable>
-        </View>
-    
-        <TextInput
+        {/* <Text style={styles.Title5}>Accessories Page</Text> */}
+      </View>
+
+<View style = {styles.sideBySide}>
+<TextInput
         style={styles.searchBar}
         placeholder="Search...."
         placeholderTextColor='#3A3535'
         value={searchQuery}
         onChangeText={setSearchQuery}
       />
-        <Pressable style={styles.button} onPress={() => router.replace("Account/addAccessories")}>
-          <Text style={styles.buttonText}> Add new </Text>
-        </Pressable>
-
-      </View>
-     
-
-
-      {/* Search bar */}
-   
-
-
-      {/* Display filtered product list */}
+      <Pressable style={styles.button} onPress={() => router.replace("/Account/addBag")}>
+        <Text style={styles.buttonText}> Add new </Text>
+      </Pressable>
+</View>
       <FlatList
         numColumns={1}
         data={filteredProducts}
         keyExtractor={(item) => item.id}
         key={1}
         renderItem={({ item }) => (
-
-          <TouchableOpacity 
+          <TouchableOpacity
             onPress={() => handleNavigation(item.id)}
           >
-
-
             <View style={styles.productContainer}>
               <Image source={{ uri: item.image }} style={styles.image} />
               <View style={styles.info}>
               </View>
-                <Text style={styles.name}>{item.name}</Text>
-                {/* <View style={styles.Buttons}> */}
-                  <TouchableOpacity style={styles.addtocart} onPress={() => addToCart(item)}>
-                    <FontAwesome name="shopping-cart" size={23} color="#3A3535" />
-                    {/* <Text style={styles.addtocart}>Add to Cart</Text> */}
+              <Text style={styles.name}>{item.name}</Text>
+              {/* <View style={styles.Buttons}> */}
+              <TouchableOpacity style={styles.addtocart} onPress={() => addToCart(item)}>
+                <FontAwesome name="shopping-cart" size={23} color="#3A3535" />
+                {/* <Text style={styles.addtocart}>Add to Cart</Text> */}
 
-                  </TouchableOpacity>
-                  <Text style={styles.price}>{item.price}</Text>
-                  <TouchableOpacity onPress={() => toggleFavorite(item.id)}>
-                    {/* Show filled star if favorited, otherwise an empty star */}
-                    <FontAwesome name={favorites.includes(item.id) ? 'heart' : 'heart-o'}
-                      size={20}
-                      color="#3A3535"
-                    />
-                  </TouchableOpacity>
-                {/* </View> */}
+              </TouchableOpacity>
+              <Text style={styles.price}>{item.price}</Text>
+              <TouchableOpacity onPress={() => toggleFavorite(item.id)}>
+                {/* Show filled star if favorited, otherwise an empty star */}
+                <FontAwesome name={favorites.includes(item.id) ? 'heart' : 'heart-o'}
+                  size={20}
+                  color="#3A3535"
+                />
+              </TouchableOpacity>
+              {/* </View> */}
             </View>
           </TouchableOpacity>
         )}
@@ -177,31 +166,20 @@ export default function Accessories() {
   );
 }
 const styles = StyleSheet.create({
+
+
   container: {
     alignItems: "center",
     justifyContent: "center",
     paddingTop: 70,
     flex: 1,
-    backgroundColor:'#F4F4F4',
+    backgroundColor: '#F4F4F4',
   },
-  header: {
-    flexDirection: 'row',
-    padding: 10,
-    // gap: 20,
-  },
+
   info: {
     justifyContent: 'center',
-    backgroundColor:'#F4F4F4',
-
-
-  },
-  sideBySide: {
-    // position: 'relative',
-    // justifyContent:'center',
-    flexDirection: "row",
     backgroundColor: '#F4F4F4',
-    // justifyContent: 'center',
-    marginBottom : 60 ,
+
 
   },
   header: {
@@ -224,10 +202,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingTop: 10,
-    backgroundColor:'#F4F4F4',
+    backgroundColor: '#F4F4F4',
 
   },
-  
   row: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -238,8 +215,8 @@ const styles = StyleSheet.create({
     color: '#3A3535',
     fontSize: 17,
     width: 175,
-    position:'relative',
-    bottom:'85%',
+    position: 'relative',
+    bottom: '85%',
     // height: 50,
   },
   name: {
@@ -247,7 +224,37 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#3A3535',
     fontWeight: "bold",
-    backgroundColor:'#F4F4F4',
+    backgroundColor: '#F4F4F4',
+
+  },
+  button: {
+    fontSize: moderateScale(11),
+    fontWeight: "bold",
+    textAlign: 'center',
+    // position: ,
+    height :40 ,
+    
+    // top: '94%',
+    right: '1%',
+    backgroundColor: '#FF7315',
+    borderRadius: 20,
+    color: '#F4F4F4',
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    marginLeft :10,
+    overflow: 'hidden',
+    // width: '25%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  paddingRight :5 ,
+  },
+  sideBySide: {
+    // position: 'relative',
+    // justifyContent:'center',
+    flexDirection: "row",
+    backgroundColor: '#F4F4F4',
+    // justifyContent: 'center',
+    marginBottom : 60 ,
 
   },
   productContainer: {
@@ -281,27 +288,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  button: {
-    fontSize: moderateScale(11),
-    fontWeight: "bold",
-    textAlign: 'center',
-    // position: ,
-    height :40 ,
-    
-    // top: '94%',
-    right: '1%',
-    backgroundColor: '#FF7315',
-    borderRadius: 20,
-    color: '#F4F4F4',
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    marginLeft :10,
-    overflow: 'hidden',
-    // width: '25%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  paddingRight :5 ,
-  },
 
   texttitle: {
     fontSize: moderateScale(12),
@@ -317,7 +303,7 @@ const styles = StyleSheet.create({
     bottom: '0%',
     width: width,
     flexDirection: 'row',
-    alignItems: 'center', // Align items in the center vertically
+    alignItems: 'center',
     justifyContent: 'space-between',
   },
 
@@ -351,7 +337,7 @@ const styles = StyleSheet.create({
     bottom: '3%',
     // borderRadius:'50%',
   },
-  
+
   description: {
     fontSize: 16,
     textAlign: 'center',
@@ -377,17 +363,17 @@ const styles = StyleSheet.create({
     color: "#0E46A3",
   },
 
-//   button: {
-//     backgroundColor: "#0E46A3",
-//     height: 45,
-//     borderColor: "gray",
-//     borderWidth: 1,
-//     borderRadius: 5,
-//     alignItems: "center",
-//     justifyContent: "center",
-//     marginTop: 10,
-//     marginBottom: 10
-//   },
+  // button: {
+  //   backgroundColor: "#0E46A3",
+  //   height: 45,
+  //   borderColor: "gray",
+  //   borderWidth: 1,
+  //   borderRadius: 5,
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  //   marginTop: 10,
+  //   marginBottom: 10
+  // },
   buttonText: {
     color: "white",
     fontSize: 18,
@@ -403,4 +389,6 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
+
+
 });

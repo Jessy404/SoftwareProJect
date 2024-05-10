@@ -114,6 +114,11 @@ const AddProductForm = () => {
                         <Text style={styles.buttonText}>Add Product</Text>
                     </Pressable>
                 </View>
+                {/* <View style={styles.buttonView}>
+                    <Pressable style={styles.button} onPress={getProduct}>
+                        <Text style={styles.buttonText}>get Product</Text>
+                    </Pressable>
+                </View> */}
                 {/* <Button title="Add Product" onPress={handleAddProduct}  /> */}
 
             </View>
