@@ -1,11 +1,10 @@
-import { View, Text, StyleSheet, Dimensions, Image, ScrollView, TextInput, FlatList, TouchableOpacity, } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, Image, ScrollView, TextInput, FlatList, TouchableOpacity, Pressable } from 'react-native';
 import React from 'react';
-import Scroll from '../components/ScrollView/ScrollView';
-// import NavBar from "../components/NavBar/NavBar";
-// import Hamburger from "../components/Hamburger/Hamburger";
+import Scroll from '@/components/ScrollView/ScrollView';
+import NavBar from "@/components/NavBar/NavBar";
+import Hamburger from '@/components/Hamburger/Hamburger';
 import { router } from "expo-router";
-
-
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 
 const { width, height } = Dimensions.get('window');
@@ -16,13 +15,13 @@ const widthScale = width / baseWidth;
 const heightScale = height / baseHeight;
 const scaleWidth = (size) => widthScale * size;
 const scaleHeight = (size) => heightScale * size;
-const banner = require('../assets/banner/banner.jpg');
+const banner = require('@/assets/banner/banner.jpg');
 export default function AdminHome() {
     const cardData = [
-        { id: '1', image: require('../assets/category list/1.jpg'), title: 'Product 1' },
-        { id: '2', image: require('../assets/category list/2.jpg'), title: 'Product 2' },
-        { id: '3', image: require('../assets/category list/3.jpg'), title: 'Product 3' },
-        { id: '4', image: require('../assets/category list/4.jpg'), title: 'Product 4' },
+        { id: '1', image: require('@/assets/category list/1.jpg'), title: 'Product 1' },
+        { id: '2', image: require('@/assets/category list/2.jpg'), title: 'Product 2' },
+        { id: '3', image: require('@/assets/category list/3.jpg'), title: 'Product 3' },
+        { id: '4', image: require('@/assets/category list/4.jpg'), title: 'Product 4' },
     ];
 
     const renderCardItem = ({ item }) => (
@@ -35,40 +34,43 @@ export default function AdminHome() {
     return (
 
         <View style={styles.container}>
-            {/* <Hamburger style={styles.hamburgerPosition} /> */}
-
+            <Hamburger style={styles.hamburgerPosition} />
+  
+           
             <ScrollView style={styles.scrollView}>
                 <Scroll />
             </ScrollView>
-            <Text style={styles.categtitle}>Discover</Text>
-
-            <TouchableOpacity style={styles.categoryCard} onPress={() => router.replace("/Account/addAccessories")}>
-                <Image source={require('../assets/category list/1.jpg')} style={styles.imgcategory1}></Image>
-                <Text style={styles.categtext}>Add Accessories</Text>
+            {/* <NavBar /> */}
+            <View style={styles.DataView}>
+                <Text style={styles.categtitle}>Select the category </Text>
+            </View>
+            <TouchableOpacity style={styles.categoryCard} onPress={() => router.replace("/Account/AdminAccess")}>
+                <Image source={require('@/assets/category list/2.jpg')} style={styles.imgcategory1}></Image>
+                <Text style={styles.categtext}>Accessories</Text>
 
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.categoryCard2} onPress={() => router.replace("/Account/addBag")}>
-                <Image source={require('../assets/category list/4.jpg')} style={styles.imgcategory1}></Image>
-                <Text style={styles.categtext}>Add Bags</Text>
+                <Image source={require('@/assets/category list/1.jpg')} style={styles.imgcategory1}></Image>
+                <Text style={styles.categtext}> Bags </Text>
 
 
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.categoryCard3}>
-                <Image source={require('../assets/category list/3.jpg')} style={styles.imgcategory1}></Image>
+                <Image source={require('@/assets/category list/3.jpg')} style={styles.imgcategory1}></Image>
 
-                <Text style={styles.categtext}> add Category 3</Text>
+                <Text style={styles.categtext}> Home Decore</Text>
 
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.categoryCard4}>
-                <Image source={require('../assets/category list/2.jpg')} style={styles.imgcategory1}></Image>
+                <Image source={require('@/assets/category list/2.jpg')} style={styles.imgcategory1}></Image>
                 <Text style={styles.categtext}> add Category 4</Text>
 
 
             </TouchableOpacity>
-{/* 
+            {/* 
             <Text style={styles.featuredtitle}>Featured Products</Text>
             <View style={styles.flatscrollcontanier}></View>
 
@@ -81,7 +83,6 @@ export default function AdminHome() {
                 style={styles.cardList}
             /> */}
 
-            {/* <NavBar /> */}
 
 
         </View>
@@ -98,6 +99,23 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
         alignItems: 'center',
+    },
+    DataView: {
+        backgroundColor: "#F4F4F4",
+        paddingTop: 20,
+        paddingBottom: 20,
+        marginHorizontal: 40,
+        marginTop: 5,
+        flexDirection: "row",
+        marginBottom: 5,
+        gap: 20,
+        borderRadius: 150,
+    },
+    BackButton: {
+        padding: 10,
+        position: 'absolute',
+        right: '42%',
+        bottom: '25%',
     },
     searchBar: {
         width: '97%',
