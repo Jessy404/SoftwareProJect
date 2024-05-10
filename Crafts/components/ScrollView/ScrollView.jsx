@@ -40,7 +40,7 @@ const Scroll = () => {
       nextIndex = 0; 
     }
     const offset = nextIndex * windowDimensions.width;
-    scrollViewRef.current.scrollTo({ x: offset, animated: true });
+    // scrollViewRef.current.scrollTo({ x: offset, animated: true });
   };
 
   useEffect(() => {
