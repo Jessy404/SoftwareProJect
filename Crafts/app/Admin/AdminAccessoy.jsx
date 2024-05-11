@@ -83,7 +83,7 @@ export default function Accessories() {
   const router = useRouter();
 
   const handleNavigation = (productId) => {
-    router.push(`/accessories/${productId}`); // Navigate to the product detail page
+    router.push(`/accessoriesadmin/${productId}`); // Navigate to the product detail page
   };
 
   const addToCart = (product) => {

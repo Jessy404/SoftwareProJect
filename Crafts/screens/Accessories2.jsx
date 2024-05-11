@@ -9,7 +9,7 @@ import { getDocs, collection } from "firebase/firestore";
 import { db } from '../firebase/config';
 import Category from '@/components/category';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCategrioes, selectMyCategories, setCredentials } from '@/Store/Categories/CategoriesSlice';
+import { fetchCategrioes, selectMyCategories, setCredentials } from '@/Store/Categories/CategoriesSlice2';
 import { VideoCard } from '@/components';
 import BA from '@/components/B/BA';
 // import { router } from 'expo-router';

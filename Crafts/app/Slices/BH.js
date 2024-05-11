@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import BA from '@/components/B/BA'
+import BH from '@/components/B/BH'
 import { useRouter } from 'expo-router';
-export default function BAA() {
+export default function BHH() {
   return (
-    <BA/>
+    <BH/>
   )
 }

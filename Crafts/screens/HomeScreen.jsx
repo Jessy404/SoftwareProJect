@@ -1,14 +1,16 @@
-import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FlatList, Image, Dimensions,RefreshControl, Text, View, StyleSheet } from "react-native";
 import { Link, useRouter } from 'expo-router';
+import { useState, useEffect } from 'react';
 // import { TailwindProvider } from 'tailwindcss-react-native';
 import Scroll from "@/components/ScrollView/ScrollView";
-
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCategrioes, selectMyCategories, setCredentials } from '@/Store/Categories/CategoriesSlice';
 import { images } from "../constants";
 // import useAppwrite from "../../lib/useAppwrite";
 // import { getAllPosts, getLatestPosts } from "../../lib/appwrite";
 import { EmptyState, SearchInput, Trending, Arrival, Discover, VideoCard } from "../components";
+import Discoverr from "@/components/Discoverr";
 
 
 const { width, height } = Dimensions.get('window');
@@ -37,14 +39,6 @@ const products = [
     },
     {
       id: '3',
-      name: 'INLAY HOOP EARRINGS',
-      price: 'EGP 230.00',
-      image: 'https://i.imgur.com/Wi5g9wU.jpg',
-  
-    },
-  
-    {
-      id: '4',
       name: '2-PACK SEED BEAD RINGS',
       price: 'EGP 320.00',
       image: 'https://i.imgur.com/dtr4Pay.jpg'
@@ -55,15 +49,15 @@ const products = [
 ]
 
 const Home = () => {
+  const value = useSelector(selectMyCategories) 
+  const dispatch = useDispatch()
+
     const [searchQuery, setSearchQuery] = useState(''); // State to store search input
 
 
     const [accessories, setAccessories] = useState(products);
     const router = useRouter();
 
-    const filteredProducts = products.filter((product) =>
-        product.name.toLowerCase().includes(searchQuery.toLowerCase())
-      );
 //   const { data: posts, refetch } = useAppwrite(getAllPosts);
 //   const { data: latestPosts } = useAppwrite(getLatestPosts);
 
@@ -77,22 +71,46 @@ const Home = () => {
 
   // one flatlist
   // with list header
-  // and horizontal flatlist
+  
+  useEffect(() => {
+    // const fetchProducts = async () => {
+    //   try {
+    //     const querySnapshot = await getDocs(collection(db, "categoryone"));
+    //     const productsFromFirestore = querySnapshot.docs.map(doc => ({
+    //       id: doc.id,
+    //       ...doc.data()
+    //     }));
+    //     console.log('Products from Firestore:', productsFromFirestore);
+    //     dispatch(setCredentials(productsFromFirestore));
+    //     console.log(value)
+    //   } catch (error) {
+    //     console.error("Error fetching products:", error);
+    //   }
+    // };
+
+    // fetchProducts();
+    dispatch(fetchCategrioes())
+  }, [dispatch]);
+
+  const filteredProducts = accessories.filter((product) =>
+    product.name?.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
 
   //  we cannot do that with just scrollview as there's both horizontal and vertical scroll (two flat lists, within trending)
 
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={filteredProducts}
+        data={value}
         keyExtractor={(item) => item.$id}
         renderItem={({ item }) => (
           <VideoCard
           key={item.id}
             // title={item.name}
-            thumbnail={item.image}
+            thumbnail={item.image1}
             price={item.price}
-            title={item.name}
+            title={item.title}
             id={item.id}
             // video={item.video}
             // creator={item.creator.username}
@@ -116,7 +134,7 @@ const Home = () => {
                 Trending
               </Text>
 
-              <Trending posts={filteredProducts}/>
+              <Discoverr posts={value}/>
             </View>
             <View>
               <Text style={styles.text}> 

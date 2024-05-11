@@ -12,16 +12,38 @@ const ProductCard = ({ id,title, price, thumbnail }) => {
       if (id === `${i}`) {
         if (i === 1) {
           path = '/Slices/BA';
-        } else if (i === 2) {
-          path = '/RenderProducts/render2';
-        } else {
-          path = '/RenderProducts/render';
+        } 
+        else if (i === 2) {
+          path = '/Slices/BB' ;
+        } 
+        else if (i === 3) {
+          path = '/Slices/BC';
+        } 
+        else if (i === 4) {
+          path = '/Slices/BD';
+        } 
+        else if (i === 5) {
+          path = '/Slices/BE';
+        } 
+        else if (i === 6) {
+          path = '/Slices/BF';
+        } 
+        else if (i === 7) {
+          path = '/Slices/BG';
+        } 
+        else if (i === 8) {
+          path = '/Slices/BH';
+        } 
+        else {
+          path = '/Slices/BI';
         }
         break;
       }
     }
-    router.replace(path);
+    router.replace(path,{ state: { id } });
   };
+
+ 
   return (
     <View style={styles.cardContainer}>
       <View style={styles.headerContainer}>
@@ -40,7 +62,7 @@ const ProductCard = ({ id,title, price, thumbnail }) => {
         <Image source={icons.menu} style={styles.menuIcon} />
       </View>
 
-      <TouchableOpacity style={styles.imageContainer} onPress={handleCardPress}>
+      <TouchableOpacity style={styles.imageContainer} onPress={handleCardPress} >
         <Image
           source={{ uri: thumbnail }}
           style={styles.fullImage}

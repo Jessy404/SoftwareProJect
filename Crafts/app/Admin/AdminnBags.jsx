@@ -82,7 +82,7 @@ export default function Bags() {
   const router = useRouter();
 
   const handleNavigation = (ProductId) => {
-    router.push(`/bags/${ProductId}`); // Navigate to the product detail page
+    router.push(`/bagsadmin/${ProductId}`); // Navigate to the product detail page
   };
 
   const addToCart = (Product) => {
