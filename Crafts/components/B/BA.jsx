@@ -1,4 +1,4 @@
-import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, Pressable } from 'react-native'
 import React from 'react'
 import { Link, useRouter } from 'expo-router';
 import { useState, useEffect } from 'react';
@@ -6,11 +6,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategrioes, selectMyCategories, setCredentials } from '@/Store/Categories/CategoriesSlice';
 import VideoCard from '../VideoCard';
 import { Dimensions, PixelRatio } from 'react-native';
+import { router } from 'expo-router';
+import Ionicons from '@expo/vector-icons/Ionicons';
+
 const { width, height } = Dimensions.get('window');
-// Function to scale the size based on the screen width
+
 const scaleSize = (size) => (width / 375) * size;
 
-// Function to scale the font size based on the screen width
+
 const scaleFont = (size) => size * PixelRatio.getFontScale();
 
 
@@ -23,9 +26,9 @@ export default function BA() {
     dispatch(fetchCategrioes())
   }, [dispatch]);
 
-  // Function to render items conditionally based on index
+
   const renderItem = ({ item, index }) => {
-    // Check if the current item is the one at index 1
+  
     
     if (index === 0) {
 
@@ -51,6 +54,7 @@ export default function BA() {
 
   return (
     <>
+    
     <FlatList
     showsVerticalScrollIndicator
     marginVertical
@@ -65,6 +69,12 @@ export default function BA() {
         style={styles.fullWidthButton}>
         <Text style={styles.buttonText}>Add To Cart</Text>
       </TouchableOpacity>
+      <Pressable
+          style={styles.BackButton}
+          onPress={() => router.replace("/RenderProducts/render")}
+        >
+          <Ionicons name="arrow-back" size={28} color="black" />
+        </Pressable>
   </>
   );
 }
@@ -79,15 +89,15 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 10,
-    width: '100%', // Set width to 100%
+    width: '100%', 
     // height:'100%'
   },
   imageContainer: {
-    flexDirection: 'row', // Arrange images in a row
-    justifyContent: 'center', // Center images horizontally
-    flexWrap: 'wrap', // Allow items to wrap to the next line
-    justifyContent: 'space-between', // Distribute extra space evenly
-    paddingHorizontal: scaleSize(10), // Add horizontal padding
+    flexDirection: 'row', 
+    justifyContent: 'center', 
+    flexWrap: 'wrap', 
+    justifyContent: 'space-between', 
+    paddingHorizontal: scaleSize(10), 
   },
   productImage: {
     width: scaleSize(355), 
@@ -119,11 +129,17 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%', // Set width to 100% of the screen
+    width: '100%', 
   },
   buttonText: {
     color: '#F4F4F4',
     fontSize: scaleFont(18),
     fontWeight: 'bold',
+  },
+  BackButton: {
+    padding: 10,
+    position: 'absolute',
+    right: '90%',
+    bottom: '93%',
   },
 });

@@ -1,4 +1,4 @@
-import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, Pressable } from 'react-native'
 import React from 'react'
 import { Link, useRouter } from 'expo-router';
 import { useState, useEffect } from 'react';
@@ -7,6 +7,9 @@ import { fetchCategrioes, selectMyCategories, setCredentials } from '@/Store/Cat
 import VideoCard from '../VideoCard';
 import { Dimensions, PixelRatio } from 'react-native';
 const { width, height } = Dimensions.get('window');
+import { router } from 'expo-router';
+import Ionicons from '@expo/vector-icons/Ionicons';
+
 // Function to scale the size based on the screen width
 const scaleSize = (size) => (width / 375) * size;
 
@@ -51,6 +54,12 @@ export default function BG() {
 
   return (
     <>
+    <Pressable
+          style={styles.BackButton}
+          onPress={() => router.replace("/(tabs)/home")}
+        >
+          <Ionicons name="arrow-back" size={24} color="black" />
+        </Pressable>
     <FlatList
     showsVerticalScrollIndicator
     marginVertical
@@ -81,6 +90,12 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     width: '100%', // Set width to 100%
     // height:'100%'
+  },
+  BackButton: {
+    padding: 10,
+    position: 'absolute',
+    right: '42%',
+    bottom: '25%',
   },
   imageContainer: {
     flexDirection: 'row', // Arrange images in a row

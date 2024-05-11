@@ -1,4 +1,4 @@
-import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, Pressable } from 'react-native'
 import React from 'react'
 import { Link, useRouter } from 'expo-router';
 import { useState, useEffect } from 'react';
@@ -6,7 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategrioes, selectMyCategories, setCredentials } from '@/Store/Categories/CategoriesSlice';
 import VideoCard from '../VideoCard';
 import { Dimensions, PixelRatio } from 'react-native';
+import { router } from 'expo-router';
 const { width, height } = Dimensions.get('window');
+import Ionicons from '@expo/vector-icons/Ionicons';
+
 // Function to scale the size based on the screen width
 const scaleSize = (size) => (width / 375) * size;
 
@@ -113,6 +116,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 10,
+  },
+  BackButton: {
+    padding: 10,
+    position: 'absolute',
+    right: '42%',
+    bottom: '25%',
   },
   fullWidthButton: {
     backgroundColor: '#FF7315',
