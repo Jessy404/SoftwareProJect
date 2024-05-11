@@ -39,20 +39,13 @@ const products = [
     },
     {
       id: '3',
-      name: 'INLAY HOOP EARRINGS',
-      price: 'EGP 230.00',
-      image: 'https://i.imgur.com/Wi5g9wU.jpg',
-  
-    },
-  
-    {
-      id: '4',
       name: '2-PACK SEED BEAD RINGS',
       price: 'EGP 320.00',
       image: 'https://i.imgur.com/dtr4Pay.jpg'
       
   
     },
+  
     
 ]
 
