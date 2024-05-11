@@ -88,10 +88,12 @@ const Home = () => {
         keyExtractor={(item) => item.$id}
         renderItem={({ item }) => (
           <VideoCard
+          key={item.id}
             // title={item.name}
             thumbnail={item.image}
             price={item.price}
             title={item.name}
+            id={item.id}
             // video={item.video}
             // creator={item.creator.username}
             // avatar={item.creator.avatar}

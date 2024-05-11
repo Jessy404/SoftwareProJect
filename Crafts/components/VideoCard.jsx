@@ -1,8 +1,27 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { icons } from '../constants';
+import { useRouter } from 'expo-router';
 
-const ProductCard = ({ title, price, thumbnail }) => {
+const ProductCard = ({ id,title, price, thumbnail }) => {
+  const router = useRouter();
+
+  const handleCardPress = () => {
+    let path;
+    for (let i = 1; i <= 8; i++) {
+      if (id === `${i}`) {
+        if (i === 1) {
+          path = '/Slices/BA';
+        } else if (i === 2) {
+          path = '/RenderProducts/render2';
+        } else {
+          path = '/RenderProducts/render';
+        }
+        break;
+      }
+    }
+    router.replace(path);
+  };
   return (
     <View style={styles.cardContainer}>
       <View style={styles.headerContainer}>
@@ -21,7 +40,7 @@ const ProductCard = ({ title, price, thumbnail }) => {
         <Image source={icons.menu} style={styles.menuIcon} />
       </View>
 
-      <TouchableOpacity style={styles.imageContainer}>
+      <TouchableOpacity style={styles.imageContainer} onPress={handleCardPress}>
         <Image
           source={{ uri: thumbnail }}
           style={styles.fullImage}
@@ -72,7 +91,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: '100%',
-    height: 240,
+    height: 450,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 16,
