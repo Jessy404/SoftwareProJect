@@ -25,7 +25,7 @@ const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * fact
         '2': {
             id: '2',
             name: 'MATTE OVAL EARRINGS',
-            price: 'EGP 685.00',
+            price: 'EGP 285.00',
             mainImage: 'https://i.etsystatic.com/18424646/r/il/e44634/5902110444/il_794xN.5902110444_sfuy.jpg',
             additionalImages: [
                 'https://i.etsystatic.com/18424646/r/il/aba704/5902094224/il_794xN.5902094224_hf57.jpg',

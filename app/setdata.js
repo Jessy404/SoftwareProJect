@@ -2,7 +2,7 @@ import { doc, setDoc, collection } from "firebase/firestore";
 import { db } from "../firebase/config";
 
 async function setUserData() {
-    const usersRef = collection(db, "products");
+    const usersRef = collection(db, "accsessories");
     const usersData = [
 
         {
@@ -15,6 +15,7 @@ async function setUserData() {
                 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwf43f6b13/images/large/05_30105460021_5.jpg?sw=663&sh=848&sm=cut',
             ],
             description: 'Beautiful textured drop earrings perfect for any occasion.',
+            rating: 3,
         },
         {
             id: '2',
@@ -26,6 +27,7 @@ async function setUserData() {
                 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwea97f116/images/large/05_30103170008_5.jpg?sw=663&sh=848&sm=cut',
             ],
             description: 'MATTE OVAL EARRINGS',
+            rating: 5,
         },
         {
             id: '3',
@@ -37,6 +39,7 @@ async function setUserData() {
                 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw1b393395/images/large/01_30105430004_1.jpg?sw=663&sh=848&sm=cut',
             ],
             description: 'MOTHER OF PEARL INLAY HOOP EARRINGS',
+            rating: 3,
         },
         
         {
@@ -49,6 +52,7 @@ async function setUserData() {
                 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw1b393395/images/large/01_30105430004_1.jpg?sw=663&sh=848&sm=cut',
             ],
             description: 'MOTHER OF PEARL INLAY HOOP EARRINGS',
+            rating: 4,
 
         },
         {
@@ -61,6 +65,7 @@ async function setUserData() {
                 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw73a593fb/images/large/05_30105540008_5.jpg?sw=663&sh=848&sm=cut',
             ],
             description: 'Set in molten gold-tone metal, these studs display twinkly, faceted stones in oceanic hues. Just add sunshineNon-refundable.',
+            rating: 2,
         },
         {
             id: '6',
@@ -72,6 +77,7 @@ async function setUserData() {
                 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwb74475df/images/large/05_30108050021_5.jpg?sw=663&sh=848&sm=cut',
             ],
             description: 'Mesmerising molten cascades from these earrings, designed in gold-tone metal. Tuck your hair behind your ears to show them off Non-refundable',
+            rating: 4,
         },
         {
             id: '7',
@@ -84,6 +90,7 @@ async function setUserData() {
             ],
 
             description: ' Which way to the beach? Stationed with leafy charms green beads, this anklet is designed in shiny gold-tone metal.',
+            rating: 5,
         },
         {
             id: '8',
@@ -95,17 +102,19 @@ async function setUserData() {
                 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw3051c037/images/large/05_30105410008_5.jpg?sw=663&sh=848&sm=cut',
             ],
             description: 'Keep it contemporary with these resin hoop earrings. The sage green hoop charm boasts a gold-tone inlay, hanging from a simple molten stud.Non-refundable.',
+            rating: 1,
         },
 
     ];
 
-    for (const products of usersData) {
-        await setDoc(doc(usersRef, products.id.toString()), {
-            name: products.name,
-            price: products.price,
-            description: products.description,
-            image: products.mainImage,
-            additionalImage: products.additionalImages
+    for (const accsessories of usersData) {
+        await setDoc(doc(usersRef,accsessories.id.toString()), {
+            name: accsessories.name,
+            price: accsessories.price,
+            description: accsessories.description,
+            image: accsessories.mainImage,
+            additionalImage: accsessories.additionalImages,
+            rating: accsessories.rating,
         });
     }
 }
