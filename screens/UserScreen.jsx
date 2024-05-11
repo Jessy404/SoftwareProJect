@@ -1,4 +1,4 @@
-import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, VeiwMode, TextInput, Pressable } from 'react-native';
+import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, VeiwMode, TextInput, Pressable, Button } from 'react-native';
 import React from 'react'
 import NavBar from '../components/NavBar/NavBar';
 import Hamburger from "../components/Hamburger/Hamburger";
@@ -10,8 +10,48 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
 import { throttle } from 'lodash';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import UploadImageToFirebase from '@/app/Admin/UploadScreen';
+import * as ImagePicker from 'expo-image-picker';
 export default function User() {
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.cancelled) {
+      uploadImage(result.uri);
+    }
+  };
+
+  // Function to upload image to Firebase Storage
+  const uploadImage = async (uri) => {
+    const response = await fetch(uri);
+    const blob = await response.blob();
+
+    const user = firebase.auth().currentUser;
+    const storageRef = firebase.storage().ref().child(`profileImages/${user.uid}`);
+    storageRef.put(blob).then(() => {
+      // Update profile image URL in Firebase Authentication
+      storageRef.getDownloadURL().then((url) => {
+        user.updateProfile({
+          photoURL: url,
+        }).then(() => {
+          setProfileImage(url);
+          console.log("image changed")
+          // Update profile image in the state
+        }).catch((error) => {
+          console.error('Error updating profile image:', error);
+        });
+      });
+    }).catch((error) => {
+      console.error('Error uploading image:', error);
+    });
+  };
+
+
 
 
   const [email, setEmail] = useState("")
@@ -26,6 +66,7 @@ export default function User() {
       name: name,
       // email: email ,
       phone: phone,
+      photoURL: url,
 
     });
   }
@@ -74,7 +115,8 @@ export default function User() {
 
             <Image
               style={styles.profilePhoto}
-              source={{ uri: 'https://i.pinimg.com/564x/ec/e2/47/ece24715b797dadf57292752cf502cab.jpg' }}
+              source={{ uri: 
+                'https://i.pinimg.com/564x/ec/e2/47/ece24715b797dadf57292752cf502cab.jpg' }}
 
             />
             {/* <Text style={styles.nameText}>
@@ -108,30 +150,35 @@ export default function User() {
           ) :
             (
               <>
+                <TouchableOpacity style={styles.button} onPress={pickImage}>
+                  <Text style={styles.buttonText}>Chanage photo </Text>
+                </TouchableOpacity>
                 <View style={styles.DataView}>
+
                   <Text style={styles.nameText1}> EMAIL : </Text>
                   <Text style={styles.nameText}>{email} </Text>
                 </View>
-              <SafeAreaView style={styles.inputView}>
-              <TextInput
-                  style={styles.input}
-                  placeholder="Name"
-                  placeholderTextColor="#10439F"
-                  value={name}
-                  onChangeText={setName}
-                />
-                <TextInput
-                  style={styles.input}
-                  placeholder="Phone"
-                  placeholderTextColor="#10439F"
-                  value={phone}
-                  onChangeText={setPhone}
+                <SafeAreaView style={styles.inputView}>
+                  <TextInput
+                    style={styles.input}
+                    placeholder="Name"
+                    placeholderTextColor="#10439F"
+                    value={name}
+                    onChangeText={setName}
+                  />
+                  <TextInput
+                    style={styles.input}
+                    placeholder="Phone"
+                    placeholderTextColor="#10439F"
+                    value={phone}
+                    onChangeText={setPhone}
 
-                />
-              </SafeAreaView>
+                  />
+                </SafeAreaView>
                 <TouchableOpacity style={styles.button} onPress={handleSavePress}>
                   <Text style={styles.buttonText}>Save</Text>
                 </TouchableOpacity>
+
               </>
             )
         }
@@ -185,7 +232,7 @@ const styles = {
     paddingHorizontal: 20,
     // borderColor: "#3A3535",
     borderWidth: 0.5,
-    borderRadius: 150 ,
+    borderRadius: 150,
     // backgroundColor: '#F4F4F4',
 
   },
