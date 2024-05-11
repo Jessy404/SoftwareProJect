@@ -11,6 +11,7 @@ import Category from '@/components/category';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategrioes, selectMyCategories, setCredentials } from '@/Store/Categories/CategoriesSlice';
 import { VideoCard } from '@/components';
+import BA from '@/components/B/BA';
 
 
 // import NavBar from '../components/NavBar/NavBar';
@@ -80,6 +81,7 @@ export default function Accessories() {
 
 
   return (
+    <>
     <FlatList
     data={value}
     renderItem={({ item }) => (
@@ -89,10 +91,15 @@ export default function Accessories() {
         price={item.price}
         title={item.title}
         id={item.id}
+        
 
       />
+
     )}
   />
+  
+  </>
+
     
   );
 }

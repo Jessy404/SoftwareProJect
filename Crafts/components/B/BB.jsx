@@ -15,7 +15,7 @@ const scaleFont = (size) => size * PixelRatio.getFontScale();
 
 
 
-export default function BA() {
+export default function BB() {
   const value = useSelector(selectMyCategories)
   const dispatch = useDispatch()
 
@@ -27,7 +27,7 @@ export default function BA() {
   const renderItem = ({ item, index }) => {
     // Check if the current item is the one at index 1
     
-    if (index === 0) {
+    if (index === 1) {
 
       return (
         <View style={styles.productContainer}>

@@ -6,6 +6,43 @@ import { useRouter } from 'expo-router';
 const ProductCard = ({ id,title, price, thumbnail }) => {
   const router = useRouter();
 
+  const handleCardPress = () => {
+    let path;
+    for (let i = 1; i <= 8; i++) {
+      if (id === `${i}`) {
+        if (i === 1) {
+          path = '/Slices/BA';
+        } 
+        else if (i === 2) {
+          path = '/Slices/BB' ;
+        } 
+        else if (i === 3) {
+          path = '/Slices/BC';
+        } 
+        else if (i === 4) {
+          path = '/Slices/BD';
+        } 
+        else if (i === 5) {
+          path = '/Slices/BE';
+        } 
+        else if (i === 6) {
+          path = '/Slices/BF';
+        } 
+        else if (i === 7) {
+          path = '/Slices/BG';
+        } 
+        else if (i === 8) {
+          path = '/Slices/BH';
+        } 
+        else {
+          path = '/Slices/BI';
+        }
+        break;
+      }
+    }
+    router.replace(path,{ state: { id } });
+  };
+
  
   return (
     <View style={styles.cardContainer}>
@@ -25,7 +62,7 @@ const ProductCard = ({ id,title, price, thumbnail }) => {
         <Image source={icons.menu} style={styles.menuIcon} />
       </View>
 
-      <TouchableOpacity style={styles.imageContainer} >
+      <TouchableOpacity style={styles.imageContainer} onPress={handleCardPress} >
         <Image
           source={{ uri: thumbnail }}
           style={styles.fullImage}
