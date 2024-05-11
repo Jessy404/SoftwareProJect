@@ -50,7 +50,7 @@ export default function AdminHome() {
 
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.categoryCard2} onPress={() => router.replace("/Account/addBag")}>
+            <TouchableOpacity style={styles.categoryCard2} onPress={() => router.replace("/Account/adminBag")}>
                 <Image source={require('@/assets/category list/1.jpg')} style={styles.imgcategory1}></Image>
                 <Text style={styles.categtext}> Bags </Text>
 
