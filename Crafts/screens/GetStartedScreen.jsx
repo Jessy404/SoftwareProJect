@@ -43,7 +43,7 @@ const Welcome = () => {
 
             <Text style={styles.text1}>
               Discover Endless {"\n"}
-              Possibilities with <Text style={styles.textcolor2}>"AppName"</Text>
+              Possibilities with <Text style={styles.textcolor2}>"Craft"</Text>
             </Text>
             {/* <Image style={styles.lineimg}
               source={images.path}
@@ -52,7 +52,7 @@ const Welcome = () => {
 
           <Text style={styles.text2}>
             Where Creativity Meets Innovation: Embark on a Journey of Limitless
-            Exploration with <Text style={styles.textcolor}>"AppName"</Text>
+            Exploration with <Text style={styles.textcolor}>"Craft"</Text>
           </Text>
 
           <TouchableOpacity style={styles.button} onPress={() => router.push("/Account/login")}>

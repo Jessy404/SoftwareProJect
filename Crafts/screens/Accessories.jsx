@@ -87,7 +87,8 @@ export default function Accessories() {
           style={styles.BackButton}
           onPress={() => router.replace("/(tabs)/home")}
         >
-          <Ionicons name="arrow-back" size={24} color="black" />
+          <Ionicons name="arrow-back" size={24} color="black"
+           />
         </Pressable>
     <FlatList
     data={value}
