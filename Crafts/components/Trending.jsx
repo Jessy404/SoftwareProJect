@@ -84,8 +84,11 @@ const TrendingItem = ({ activeItem, item }) => {
           path = '/RenderProducts/render';
         } else if (i === 2) {
           path = '/RenderProducts/render2';
+        } 
+        else if (i === 3) {
+          path = '/RenderProducts/render3';
         } else {
-          path = '/RenderProducts/render';
+          path = '/RenderProducts/render3';
         }
         break;
       }

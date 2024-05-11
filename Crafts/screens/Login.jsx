@@ -24,24 +24,24 @@ export default function Login() {
 
 
   const handelSignin = () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        // Signed in 
-        console.log("login done")
-        if (auth.currentUser.uid == "oPaayaka98e90JVtKWByLoMLQ2z2")
-           {
-          router.replace("/Account/adminHome")
-          }
-        else
+    // signInWithEmailAndPassword(auth, email, password)
+    //   .then(() => {
+    //     // Signed in 
+    //     console.log("login done")
+    //     if (auth.currentUser.uid == "oPaayaka98e90JVtKWByLoMLQ2z2")
+    //        {
+    //       router.replace("/Account/adminHome")
+    //       }
+    //     else
           router.replace("/(tabs)/home")
 
-      })
+      // })
 
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
-      });
+      // .catch((error) => {
+      //   const errorCode = error.code;
+      //   const errorMessage = error.message;
+      //   console.log(errorMessage);
+      // });
   }
   return (
     <View style={styles.container}>
