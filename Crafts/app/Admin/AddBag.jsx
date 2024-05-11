@@ -14,19 +14,22 @@ const scale = size => (width / guidelineBaseWidth) * size;
 const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * factor;
 
 const AddProductForm = () => {
-    const [name, setName] = useState('');
+    const [image1, setImage1] = useState('');
+    const [image2, setImage2] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
-    const [id, setId] = useState("")
+    const [title, setTitle] = useState("")
     // const [imageUrl, setImage] = useState("")
     const handleAddProduct = async () => {
         try {
-            await addDoc(collection(db, "Bags"),
+            await addDoc(collection(db, "categoryone"),
                 {
-                    name: name,
-                    price: parseFloat(price),
-                    id: id,
                     description: description,
+                    image1: image1,
+                    image2: image2,
+                    price: parseFloat(price),
+                    title: title,
+
 
                 }
 
@@ -40,7 +43,7 @@ const AddProductForm = () => {
     };
     const getProduct = async () => {
         // if (uid)
-        const docRef = doc(db, "products", auth.beforeAuthStateChanged);
+        const docRef = doc(db, "categoryone", auth.beforeAuthStateChanged);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
@@ -49,6 +52,8 @@ const AddProductForm = () => {
             setName(data.name);
             setEmail(data.email);
             setPhone(data.phone);
+            setDescription(data.description);
+
         } else {
             // docSnap.data() will be undefined in this case
             console.log("No such document!");
@@ -59,12 +64,12 @@ const AddProductForm = () => {
         < View style={styles.container}>
 
             <View style={styles.header}>
-            <Pressable
-                style={styles.BackButton}
-                onPress={() => router.replace("/Account/adminHome")}
-            >
-                <Ionicons name="arrow-back" size={28} color="black" />
-            </Pressable>
+                <Pressable
+                    style={styles.BackButton}
+                    onPress={() => router.replace("/Account/adminHome")}
+                >
+                    <Ionicons name="arrow-back" size={28} color="black" />
+                </Pressable>
                 <Text style={styles.title}>Add product </Text>
             </View>
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
@@ -74,17 +79,24 @@ const AddProductForm = () => {
 
                 <TextInput
                     style={styles.input}
-                    placeholder="Name"
+                    placeholder="description"
                     placeholderTextColor="#3A3535"
-                    value={name}
-                    onChangeText={setName}
+                    value={description}
+                    onChangeText={setDescription}
                 />
                 <TextInput
                     style={styles.input}
-                    placeholder="id"
+                    placeholder="image1"
                     placeholderTextColor="#3A3535"
-                    value={id}
-                    onChangeText={setId}
+                    value={image1}
+                    onChangeText={setImage1}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="image2"
+                    placeholderTextColor="#3A3535"
+                    value={image2}
+                    onChangeText={setImage2}
                 />
                 {/* <TextInput
                     style={styles.input}
@@ -103,10 +115,10 @@ const AddProductForm = () => {
                 />
                 <TextInput
                     style={styles.input}
-                    placeholder="Description"
+                    placeholder="title"
                     placeholderTextColor="#3A3535"
-                    value={description}
-                    onChangeText={setDescription}
+                    value={title}
+                    onChangeText={setTitle}
                 />
 
                 <View style={styles.buttonView}>
@@ -165,7 +177,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: '62%',
         // bottom: '10%',
-        top :"10%"
+        top: "10%"
     },
     inputView: {
         gap: 20,

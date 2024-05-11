@@ -64,12 +64,6 @@ export default function AdminHome() {
 
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.categoryCard4}>
-                <Image source={require('@/assets/category list/2.jpg')} style={styles.imgcategory1}></Image>
-                <Text style={styles.categtext}> add Category 4</Text>
-
-
-            </TouchableOpacity>
             {/* 
             <Text style={styles.featuredtitle}>Featured Products</Text>
             <View style={styles.flatscrollcontanier}></View>
