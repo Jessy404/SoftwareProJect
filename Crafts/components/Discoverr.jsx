@@ -4,17 +4,16 @@ import * as Animatable from "react-native-animatable";
 import {
   FlatList,
   Image,
-  ImageBackground,
   TouchableOpacity,
   View,
   Text,
   StyleSheet,
   Dimensions,
 } from "react-native";
-
+import { useRouter } from 'expo-router';
 import { icons } from "../constants";
 
-// Get the full width of the device
+
 const { width, height } = Dimensions.get('window');
 
 const zoomIn = {
@@ -35,28 +34,25 @@ const zoomOut = {
   },
 };
 
-// Card component
 const Card = ({ item }) => {
   return (
     <View style={styles.card}>
       <Image
-        source={{ uri: item.image }}
+        source={{ uri: item.image1 }}
         style={styles.cardImage}
-        resizeMode="cover" // This will ensure the image covers the available space
+        resizeMode="cover"
       />
       <Text style={styles.cardTitle}>{item.title}</Text>
-      {/* Add more details as needed */}
     </View>
   );
 };
 
-// Styles for the card
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#F4F4F4',
     borderRadius: 10,
     padding: 10,
-    width: width * 0.6, 
+    width: width * 0.4, 
     height: height * 0.35,
     margin: width * 0.01, 
     shadowColor: '#000',
@@ -77,27 +73,45 @@ const styles = StyleSheet.create({
   },
 });
 
-const DiscoverItem = ({ activeItem, item }) => {
+const TrendingItem = ({ activeItem, item }) => {
+  const router = useRouter();
+
+  const handleCardPress = () => {
+    let path;
+    for (let i = 1; i <= 4; i++) {
+      if (item.id === `${i}`) {
+        if (i === 1) {
+          path = '/RenderProducts/render';
+        } else if (i === 2) {
+          path = '/RenderProducts/render2';
+        } else {
+          path = '/RenderProducts/render';
+        }
+        break;
+      }
+    }
+    router.replace(path);
+  };
+
   return (
     <Animatable.View
       animation={activeItem === item.$id ? zoomIn : zoomOut}
       duration={500}
       useNativeDriver={true}
     >
-      <TouchableOpacity>
+      <TouchableOpacity onPress={handleCardPress}>
         <Card item={item} />
       </TouchableOpacity>
     </Animatable.View>
   );
 };
 
-
-const Discover = ({ posts }) => {
+const Discoverr = ({ posts }) => {
   const [activeItem, setActiveItem] = useState(posts[2]);
 
   const viewableItemsChanged = ({ viewableItems }) => {
     if (viewableItems.length > 0) {
-      setActiveItem(viewableItems[1].key);
+      setActiveItem(viewableItems[0].key);
     }
   };
 
@@ -107,7 +121,7 @@ const Discover = ({ posts }) => {
       horizontal
       keyExtractor={(item) => item.$id}
       renderItem={({ item }) => (
-        <DiscoverItem activeItem={activeItem} item={item} />
+        <TrendingItem activeItem={activeItem} item={item} />
       )}
       onViewableItemsChanged={viewableItemsChanged}
       viewabilityConfig={{
@@ -118,4 +132,4 @@ const Discover = ({ posts }) => {
   );
 };
 
-export default Discover;
+export default Discoverr;

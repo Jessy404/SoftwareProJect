@@ -11,6 +11,8 @@ import Category from '@/components/category';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategrioes, selectMyCategories, setCredentials } from '@/Store/Categories/CategoriesSlice';
 import { VideoCard } from '@/components';
+import BA from '@/components/B/BA';
+// import { router } from 'expo-router';
 
 
 // import NavBar from '../components/NavBar/NavBar';
@@ -80,6 +82,13 @@ export default function Accessories() {
 
 
   return (
+    <>
+    <Pressable
+          style={styles.BackButton}
+          onPress={() => router.replace("/(tabs)/home")}
+        >
+          <Ionicons name="arrow-back" size={24} color="black" />
+        </Pressable>
     <FlatList
     data={value}
     renderItem={({ item }) => (
@@ -89,10 +98,15 @@ export default function Accessories() {
         price={item.price}
         title={item.title}
         id={item.id}
+        
 
       />
+
     )}
   />
+  
+  </>
+
     
   );
 }
@@ -133,6 +147,9 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     backgroundColor: '#F4F4F4',
 
+  },
+  BackButton: {
+    padding: 50
   },
   row: {
     flexDirection: 'row',
