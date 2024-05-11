@@ -5,6 +5,12 @@ import { useState, useEffect } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { getDocs, collection } from "firebase/firestore";
+import { db } from '../firebase/config';
+import Category from '@/components/category';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCategrioes, selectMyCategories, setCredentials } from '@/Store/Categories/CategoriesSlice';
+import { VideoCard } from '@/components';
 
 
 // import NavBar from '../components/NavBar/NavBar';
@@ -19,154 +25,75 @@ async function loadFonts() {
     'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
   });
 }
-const products = [
-  {
-    id: '1',
-    name: 'TEXTURED DROP EARRINGS',
-    price: 'EGP 220.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw77c7e0a6/images/large/03_30105460021_2.jpg?sw=663&sh=848&sm=cut',
-  },
-  {
-    id: '2',
-    name: 'MATTE OVAL EARRINGS',
-    price: 'EGP 185.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw6c9d4ae9/images/large/02_30103170008_2.jpg?sw=663&sh=848&sm=cut',
 
-
-  },
-  {
-    id: '3',
-    name: 'INLAY HOOP EARRINGS',
-    price: 'EGP 230.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw1b393395/images/large/01_30105430004_1.jpg?sw=663&sh=848&sm=cut',
-
-  },
-
-  {
-    id: '4',
-    name: '2-PACK SEED BEAD RINGS',
-    price: 'EGP 320.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dweaa8489c/images/large/01_30108020021_1.jpg?sw=663&sh=848&sm=cut'
-    ,
-
-  },
-  {
-    id: '5',
-    name: '3-PACK MOLTEN STUDS',
-    price: 'EGP 230.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwf6271341/images/large/03_30105420008_2.jpg?sw=663&sh=848&sm=cut',
-  },
-  {
-    id: '6',
-    name: 'MOLTEN DROP EARRINGS',
-    price: 'EGP 185.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dwc75119c8/images/large/01_30108050021_1.jpg?sw=663&sh=848&sm=cut',
-  },
-  {
-    id: '7',
-    name: 'LEAF DROP ANKLET',
-    price: 'EGP 140.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw403ddfec/images/large/01_30100360008_1.jpg?sw=663&sh=848&sm=cut',
-  },
-  {
-    id: '8',
-    name: 'RESIN INLAY DROP EARRINGS',
-    price: 'EGP 250.00',
-    image: 'https://www.accessorize.com/dw/image/v2/BDLV_PRD/on/demandware.static/-/Sites-accessorize-master-catalog/default/dw56ecb162/images/large/01_30105410008_1.jpg?sw=663&sh=848&sm=cut',
-  },
-];
 export default function Accessories() {
   const [searchQuery, setSearchQuery] = useState(''); // State to store search input
   const [favorites, setFavorites] = useState([]);
   const [cart, setCart] = useState([]); // State to track cart items
-  const [accessories, setAccessories] = useState(products);
+  const [accessories, setAccessories] = useState([]);
   const router = useRouter();
+  const value = useSelector(selectMyCategories) 
+  const dispatch = useDispatch()
 
   const handleNavigation = (productId) => {
-    router.push(`/accessories/${productId}`); // Navigate to the product detail page
+    router.push(`/accessories/${productId}`);
   };
 
   const addToCart = (product) => {
-    setCart([...cart, product]); // Add the product to the cart
+    setCart([...cart, product]);
   };
   const toggleFavorite = (productId) => {
     if (favorites.includes(productId)) {
-      setFavorites(favorites.filter((id) => id !== productId)); // Remove from favorites
+      setFavorites(favorites.filter((id) => id !== productId));
     } else {
-      setFavorites([...favorites, productId]); // Add to favorites
+      setFavorites([...favorites, productId]);
     }
 
   };
 
-  // Filter the products based on the search query
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+
+  useEffect(() => {
+    // const fetchProducts = async () => {
+    //   try {
+    //     const querySnapshot = await getDocs(collection(db, "categoryone"));
+    //     const productsFromFirestore = querySnapshot.docs.map(doc => ({
+    //       id: doc.id,
+    //       ...doc.data()
+    //     }));
+    //     console.log('Products from Firestore:', productsFromFirestore);
+    //     dispatch(setCredentials(productsFromFirestore));
+    //     console.log(value)
+    //   } catch (error) {
+    //     console.error("Error fetching products:", error);
+    //   }
+    // };
+
+    // fetchProducts();
+    dispatch(fetchCategrioes())
+  }, [dispatch]);
+
+
+
+  const filteredProducts = accessories.filter((product) =>
+    product.name?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+
   return (
+    <FlatList
+    data={value}
+    renderItem={({ item }) => (
+      <VideoCard
+      key={item.id}
+        thumbnail={item.image1}
+        price={item.price}
+        title={item.title}
+        id={item.id}
 
-    <View style={styles.container}>
-
-      <View style={styles.header}>
-        <Pressable
-          style={styles.BackButton}
-          onPress={() => router.replace("/(tabs)/home")}
-        >
-          <Ionicons name="arrow-back" size={28} color="black" />
-        </Pressable>
-        {/* <Text style={styles.Title5}>Accessories Page</Text> */}
-      </View>
-
-
-      {/* Search bar */}
-      <TextInput
-        style={styles.searchBar}
-        placeholder="Search...."
-        placeholderTextColor='#3A3535'
-        value={searchQuery}
-        onChangeText={setSearchQuery}
       />
-
-
-      {/* Display filtered product list */}
-      <FlatList
-        numColumns={1}
-        data={filteredProducts}
-        keyExtractor={(item) => item.id}
-        key={1}
-        renderItem={({ item }) => (
-
-          <TouchableOpacity 
-            onPress={() => handleNavigation(item.id)}
-          >
-
-
-            <View style={styles.productContainer}>
-              <Image source={{ uri: item.image }} style={styles.image} />
-              <View style={styles.info}>
-              </View>
-                <Text style={styles.name}>{item.name}</Text>
-                {/* <View style={styles.Buttons}> */}
-                  <TouchableOpacity style={styles.addtocart} onPress={() => addToCart(item)}>
-                    <FontAwesome name="shopping-cart" size={23} color="#3A3535" />
-                    {/* <Text style={styles.addtocart}>Add to Cart</Text> */}
-
-                  </TouchableOpacity>
-                  <Text style={styles.price}>{item.price}</Text>
-                  <TouchableOpacity onPress={() => toggleFavorite(item.id)}>
-                    {/* Show filled star if favorited, otherwise an empty star */}
-                    <FontAwesome name={favorites.includes(item.id) ? 'heart' : 'heart-o'}
-                      size={20}
-                      color="#3A3535"
-                    />
-                  </TouchableOpacity>
-                {/* </View> */}
-            </View>
-          </TouchableOpacity>
-        )}
-      />
-      {/* <NavBar/> */}
-    </View>
+    )}
+  />
+    
   );
 }
 const styles = StyleSheet.create({
@@ -175,12 +102,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingTop: 70,
     flex: 1,
-    backgroundColor:'#F4F4F4',
+    backgroundColor: '#F4F4F4',
   },
 
   info: {
     justifyContent: 'center',
-    backgroundColor:'#F4F4F4',
+    backgroundColor: '#F4F4F4',
 
 
   },
@@ -204,7 +131,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingTop: 10,
-    backgroundColor:'#F4F4F4',
+    backgroundColor: '#F4F4F4',
 
   },
   row: {
@@ -217,8 +144,8 @@ const styles = StyleSheet.create({
     color: '#3A3535',
     fontSize: 17,
     width: 175,
-    position:'relative',
-    bottom:'85%',
+    position: 'relative',
+    bottom: '85%',
     // height: 50,
   },
   name: {
@@ -226,7 +153,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#3A3535',
     fontWeight: "bold",
-    backgroundColor:'#F4F4F4',
+    backgroundColor: '#F4F4F4',
 
   },
   productContainer: {
@@ -309,7 +236,7 @@ const styles = StyleSheet.create({
     bottom: '3%',
     // borderRadius:'50%',
   },
-  
+
   description: {
     fontSize: 16,
     textAlign: 'center',
