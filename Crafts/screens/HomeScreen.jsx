@@ -20,39 +20,39 @@ const scale = size => (width / guidelineBaseWidth) * size;
 const verticalScale = size => (height / guidelineBaseHeight) * size;
 const moderateScale = (size, factor = 0.5) => size + (scale(size) - size) * factor;
 
-const products = [
-    {
-      id: '1',
-      name: 'TEXTURED DROP EARRINGS',
-      price: 'EGP 220.00',
-      image: 'https://i.imgur.com/NQEQ4dt.jpg',
-    },
-    {
-      id: '2',
-      name: 'MATTE OVAL EARRINGS',
-      price: 'EGP 185.00',
-      image: 'https://i.imgur.com/pt9rKKQ.jpg',
+// const products = [
+//     {
+//       id: '1',
+//       name: 'TEXTURED DROP EARRINGS',
+//       price: 'EGP 220.00',
+//       image: 'https://i.imgur.com/NQEQ4dt.jpg',
+//     },
+//     {
+//       id: '2',
+//       name: 'MATTE OVAL EARRINGS',
+//       price: 'EGP 185.00',
+//       image: 'https://i.imgur.com/pt9rKKQ.jpg',
   
   
-    },
-    {
-      id: '3',
-      name: 'INLAY HOOP EARRINGS',
-      price: 'EGP 230.00',
-      image: 'https://i.imgur.com/Wi5g9wU.jpg',
+//     },
+//     {
+//       id: '3',
+//       name: 'INLAY HOOP EARRINGS',
+//       price: 'EGP 230.00',
+//       image: 'https://i.imgur.com/Wi5g9wU.jpg',
   
-    },
+//     },
   
-    {
-      id: '4',
-      name: '2-PACK SEED BEAD RINGS',
-      price: 'EGP 320.00',
-      image: 'https://i.imgur.com/dtr4Pay.jpg'
+//     {
+//       id: '4',
+//       name: '2-PACK SEED BEAD RINGS',
+//       price: 'EGP 320.00',
+//       image: 'https://i.imgur.com/dtr4Pay.jpg'
       
   
-    },
+//     },
     
-]
+// ]
 
 const Home = () => {
     const [searchQuery, setSearchQuery] = useState(''); // State to store search input
